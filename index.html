@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SIMULADOR DE DIAGRAMAS FASORIALES PARA MÁQUINAS SÍNCRONAS</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>S<span class="pre">nom</span> (VA)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>V<span class="pre">nom</span> (V)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>No. Polos</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>R<span class="pre">A</span> (Ω)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>X<span class="pre">s</span> (Ω)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>fp<span class="pre">nom</span></label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>Sp (W/Hz)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>f<span class="pre">nom</span> (Hz)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>eef (pu)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" name="" >
+								</div>
+							</div>
+						</div> 
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<button class="btn btn-default  btn-block text-ad">Cargar curva de magnetización</button>
+						</div> 
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.pre{
+	font-size: 10px;
+}
+input{
+	width: 100%;
+}
+.margin-v{
+	margin: 10px 0;
+}
+.text-ad{
+	webkit­shape­inside: rectangle(0,0,100%,100%,100%,100%);
+}
