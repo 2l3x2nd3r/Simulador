@@ -10,3 +10,23 @@ input{
 .text-ad{
 	webkit­shape­inside: rectangle(0,0,100%,100%,100%,100%);
 }
+.cover-img{
+	width: 100%;
+}
+.blue-light{
+	background-color: #87CEFA;
+}
+.blue-dark{
+	background-color: #00008B;
+}
+.border-div{
+ border-style: solid;
+ border-color: red;
+ padding: 15px;
+}
+.margin-top-div{
+	margin-top: 15px;
+}
+.margin-h-left{
+	margin-left: 15px;
+}

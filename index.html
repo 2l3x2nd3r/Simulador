@@ -13,12 +13,12 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-<body>
+<body class="blue-dark">
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 blue-light border-div">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 							<div class="row">
@@ -111,21 +111,171 @@
 							</div>
 						</div> 
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-							<button class="btn btn-default  btn-block text-ad">Cargar curva de magnetización</button>
+							<button class="btn btn-default btn-block">Cargar curva de <br> magnetización</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+							<img src="img01.png" class="cover-img">
+						</div>
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+							<input type="range" min="0" max="1000" value="500" step="100">
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<label>IF (A)</label>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+									<input type="number" disabled >
+								</div>
+							</div>
 						</div> 
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					</div>		
+				</div>	
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
 					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blue-light border-div">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>Con bus inf.</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="checkbox">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>Solo</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="checkbox">
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row margin-top-div">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blue-light border-div">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>P<span class="pre">motor</span> (W)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>n<span class="pre">vacio</span> (rpm)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="row margin-top-div">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 blue-light border-div">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>V<span class="pre">carga</span> (V)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>f<span class="pre">carga</span> (Hz)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>P<span class="pre">max</span> (W)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>P<span class="pre">carga</span> (W)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" disabled="">
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+											<input type="range" min="0" max="1000" value="500" step="100">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>Q<span class="pre">max</span> (VAR)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" >
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>Q<span class="pre">carga</span> (VAR)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" disabled>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+											<input type="range" min="0" max="1000" value="500" step="100">
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>I (A)</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" disabled>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<label>fp</label>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<input type="number" name="" disabled>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
