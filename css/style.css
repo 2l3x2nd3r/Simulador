@@ -7,26 +7,42 @@ input{
 .margin-v{
 	margin: 10px 0;
 }
-.text-ad{
-	webkit­shape­inside: rectangle(0,0,100%,100%,100%,100%);
+.margin-l{
+	margin-left: 15px;
 }
 .cover-img{
 	width: 100%;
 }
 .blue-light{
-	background-color: #87CEFA;
+	background-color: #9CC3E4;
 }
 .blue-dark{
-	background-color: #00008B;
+	background-color: #224F76;
 }
 .border-div{
- border-style: solid;
- border-color: red;
  padding: 15px;
+}
+.border-div-top-no{
+	padding-top:0px;
 }
 .margin-top-div{
 	margin-top: 15px;
 }
 .margin-h-left{
 	margin-left: 15px;
+}
+.white{
+	color: white;
+}
+.center-text{
+	text-align: center;
+}
+.container-div-custom{
+	padding: 15px;
+}
+.margin-h{
+	padding: 0 8px 0 7px;
+}
+.blue-dark-1{
+	background-color: #3376B3
 }
