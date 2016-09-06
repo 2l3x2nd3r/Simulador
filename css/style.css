@@ -27,7 +27,17 @@ button:before {
  border-radius: 5px;
  transition: all 2s ease;
 }
-
+::-webkit-scrollbar {
+	width: 12px;
+}
+::-webkit-scrollbar-track {
+	background: none;
+}
+::-webkit-scrollbar-thumb {
+	background: -webkit-linear-gradient(left, #5D9CC6, #1A81C5);
+	border: 1px solid #333;
+	box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.4);
+}
 /*##############*/
 .margin-v{
 	margin: 10px 0;
