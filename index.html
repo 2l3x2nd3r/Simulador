@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="simu">
 <head>
 	<title>SIMULADOR DE DIAGRAMAS FASORIALES PARA MÁQUINAS SÍNCRONAS</title>
 	<meta charset="utf-8">
@@ -12,8 +12,10 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 </head>
-<body class="blue-dark">
+<body class="blue-dark" ng-controller="SimuCtrl as control">
 <div class="container">
 	<div class="row">
 		<h1 class="white center-text">Diagrama fasorial Maquinas Sincronas</h1>
@@ -21,7 +23,7 @@
 			<div class="row">
 				<h3 class="white margin-l">Entradas</h3>
 
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+				<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 border-div">
 
 				 	<div class="container-div-custom blue-light">
 						<h4>Parámetros del generador</h4>
@@ -32,7 +34,7 @@
 										<label>S<span class="pre">nom</span> (VA)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i1"  >
 									</div>
 								</div>
 							</div>
@@ -42,7 +44,7 @@
 										<label>V<span class="pre">nom</span> (V)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i2" name="" >
 									</div>
 								</div>
 							</div>
@@ -52,7 +54,7 @@
 										<label>No. Polos</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i3" name="" >
 									</div>
 								</div>
 							</div>
@@ -62,7 +64,7 @@
 										<label>R<span class="pre">A</span> (Ω)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i4" name="" >
 									</div>
 								</div>
 							</div>
@@ -72,7 +74,7 @@
 										<label>X<span class="pre">s</span> (Ω)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i5" name="" >
 									</div>
 								</div>
 							</div>
@@ -82,7 +84,7 @@
 										<label>fp<span class="pre">nom</span></label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i6" name="" >
 									</div>
 								</div>
 							</div>
@@ -92,7 +94,7 @@
 										<label>Sp (W/Hz)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i7" name="" >
 									</div>
 								</div>
 							</div>
@@ -102,7 +104,7 @@
 										<label>f<span class="pre">nom</span> (Hz)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i8" name="" >
 									</div>
 								</div>
 							</div>
@@ -112,7 +114,7 @@
 										<label>eef (pu)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" >
+										<input type="number" ng-model="input.i9" name="" >
 									</div>
 								</div>
 							</div>
@@ -125,7 +127,7 @@
 								<img src="img01.png" class="cover-img">
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<input type="range" min="0" max="1000" value="500" step="100">
+								<input type="range" ng-model="input.sc1.val" min="{{input.sc1.min}}" max="{{input.sc1.max}}" step="{{input.sc1.step}}">
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
@@ -133,15 +135,14 @@
 										<label>IF (A)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" disabled >
+										<input type="number" value="{{input.sc1.val}}" disabled >
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 border-div">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -155,7 +156,7 @@
 												<label>Con bus inf.</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="checkbox">
+												<input type="radio" ng-model="input.i10" value="1">
 											</div>
 										</div>
 									</div>
@@ -165,7 +166,7 @@
 												<label>Solo</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="checkbox">
+												<input type="radio" ng-model="input.i10" value="2">
 											</div>
 										</div>
 									</div>
@@ -185,7 +186,7 @@
 												<label>P<span class="pre">motor</span> (W)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i11" name="" >
 											</div>
 										</div>
 									</div>
@@ -195,7 +196,7 @@
 												<label>n<span class="pre">vacio</span> (rpm)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i12" name="" >
 											</div>
 										</div>
 									</div>
@@ -215,7 +216,7 @@
 												<label>V<span class="pre">carga</span> (V)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i13" name="" >
 											</div>
 										</div>
 									</div>
@@ -225,7 +226,7 @@
 												<label>f<span class="pre">carga</span> (Hz)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i14" name="" >
 											</div>
 										</div>
 									</div>
@@ -235,7 +236,7 @@
 												<label>P<span class="pre">max</span> (W)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i15" name="" >
 											</div>
 										</div>
 									</div>
@@ -245,10 +246,10 @@
 												<label>P<span class="pre">carga</span> (W)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled="">
+												<input type="number" name="" value="{{input.sc2.val}}" disabled="">
 											</div>
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-												<input type="range" min="0" max="1000" value="500" step="100">
+												<input type="range" ng-model="input.sc2.val" min="{{input.sc2.min}}" max="{{input.sc2.max}}" step="{{input.sc2.step}}">
 											</div>
 										</div>
 									</div>
@@ -258,7 +259,7 @@
 												<label>Q<span class="pre">max</span> (VAR)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" >
+												<input type="number" ng-model="input.i16" name="" >
 											</div>
 										</div>
 									</div>
@@ -268,10 +269,10 @@
 												<label>Q<span class="pre">carga</span> (VAR)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" name="" value="{{input.sc3.val}}" disabled>
 											</div>
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-												<input type="range" min="0" max="1000" value="500" step="100">
+												<input type="range" ng-model="input.sc3.val" min="{{input.sc3.min}}" max="{{input.sc3.max}}" step="{{input.sc3.step}}">
 											</div>
 										</div>
 									</div>
@@ -281,7 +282,7 @@
 												<label>I (A)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" name="" value="{{input.i17}}" disabled>
 											</div>
 										</div>
 									</div>
@@ -291,7 +292,7 @@
 												<label>fp</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" name="" value="{{input.i18}}" disabled>
 											</div>
 										</div>
 									</div>
@@ -302,25 +303,26 @@
 					</div>
 				</div>
 			</div>
-				</div>
+		</div>
 
 <!-- ################################## -->
 
 		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5 blue-dark-1">
 			<h3 class="white">Salidas</h3>
 			<div class="row">
-
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="container-div-custom blue-light">
-									<h4 class="">Generador</h4>
+							<h4>Generador</h4>
 								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 												<label>P<sub>gen</sub>(W)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o1}}" name="" disabled>
 											</div>
 										</div>
 									</div>
@@ -330,7 +332,7 @@
 												<label>Q<sub>gen</sub>(W)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o2}}" name="" disabled>
 											</div>
 										</div>
 									</div>
@@ -340,7 +342,7 @@
 												<label>f<sub>P</sub> nom</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o3}}" name="" disabled>
 											</div>
 										</div>
 									</div>
@@ -350,7 +352,7 @@
 												<label>I<sub>A</sub> (A)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o4}}" name="" disabled>
 											</div>
 										</div>
 									</div>
@@ -360,7 +362,7 @@
 												<label>𝛿 (°)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o5}}" name="" disabled>
 											</div>
 										</div>
 									</div>
@@ -370,88 +372,79 @@
 												<label>𝜃 (°)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" disabled>
+												<input type="number" value="{{output.o6}}" name="" disabled>
 											</div>
 										</div>
 									</div>
-		    				</div>
 								</div>
-								<div class="row ">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
-												<div class="container-div-custom blue-light">
-													<h4>Red</h4>
-													<div class="row">
-														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-															<div class="row">
-																<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-																	<label>P <sub>red</sub>(w)</label>
-																</div>
-																<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-																	<input type="number" name="" disabled>
-																</div>
-															</div>
-														</div>
-					            	</div>
-												<div class="row">
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-														<div class="row">
-															<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-															<label>P <sub>red</sub>(W)</label>
-															</div>
-															<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-																<input type="number" name="" disabled>
-															</div>
-														</div>
-													</div>
-
-											</div>
-											<div class="row">
-												<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-													<div class="row">
-														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-															<label>S <sub>red</sub>(VA)</label>
-														</div>
-														<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-															<input type="number" name="" disabled>
-														</div>
-													</div>
-												</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label><sup>f</sup>P<sub>red</sub></label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" name="" disabled>
-													</div>
-												</div>
-											</div>
-									</div>
-	      	            </div>
-
-										</div>
-										</div>
 							</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 border-div">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
+							<div class="container-div-custom blue-light">
+								<h4>Red</h4>
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<label>P <sub>red</sub>(w)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="{{output.o7}}" name="" disabled>
+											</div>
+										</div>
+									</div>
+            						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+											<label>P <sub>red</sub>(W)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="{{output.o8}}" name="" disabled>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<label>S <sub>red</sub>(VA)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="{{output.o9}}" name="" disabled>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<label><sup>f</sup>P<sub>red</sub></label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="{{output.o10}}" name="" disabled>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 border-div">
+					<div class="container-div-custom blue-light">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 								<button class="btn btn-default btn-block">Ejecutar Cálculos</button>
-								<br>
-
-<img src="img/img02.png" style="height: 100%; max-width:100%;"
-<div class="container-div-custom blue-light">
-
-</div>
-
-</div>
-</div>
-	</div>
-		</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+								<img src="img/img02.png" style="height: 100%; max-width:100%;"/>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-<!-- ################################## -->
- </div>
+		</div>
+	</div>
 </div>
-</div>
-
 </body>
 </html>

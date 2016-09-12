@@ -49,9 +49,9 @@ button:before {
 	width: 100%;
 }
 .cover-img2{
-float: right;
-height: 10px;
-width: auto;;
+	float: right;
+	height: 10px;
+	width: auto;
 }
 
 .blue-light{
@@ -61,10 +61,11 @@ width: auto;;
 	background-color: #224F76;
 }
 .border-div{
- padding: 15px;
+ 	padding: 15px;
 }
 .border-div-top-no{
 	padding-top:0px;
+	padding-bottom:0px;
 }
 .margin-top-div{
 	margin-top: 15px;
@@ -88,9 +89,7 @@ width: auto;;
 	background-color: #3376B3
 }
 .blue-dark-2{
-margin-left: 0px;
-float: right;
-background-color: #3376B3
+	background-color: #3376B3
 }
 h4{
 	color: rgb(0, 0, 0);
