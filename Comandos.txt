@@ -3,3 +3,8 @@ git add --all
 git commit -m "Simulador"
 git remote add origin https://github.com/FTorrenegraG/Simulador
 git push -u origin development
+
+----------
+git add --all
+git commit -m "Simulador"
+git push -u origin development
