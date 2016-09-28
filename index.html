@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<script src="js/Chart.js"></script>
-
-
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://www.chartjs.org/assets/Chart.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css"  href="jquery/jquery-ui.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="http://www.chartjs.org/assets/Chart.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 
 
 <!-- <script type="text/javascript" src="js/grafico.js"></script> -->
+
 </head>
 <body class="blue-dark" ng-controller="SimuCtrl as control">
 <div class="container">
@@ -132,8 +132,20 @@
 								<!-- <div id="canvas-holder">
 									<canvas id="chart-area4" width="600" height="300"></canvas>
 								</div> -->
-								<canvas id="myChart" width="340" height="300"></canvas>
-									<div id="slider"></div>
+
+							<canvas id="canvas" height="300" width="350"></canvas>
+				<div id="slider"></div>
+
+<!--
+							<script >
+							        $(document).ready(function(){
+							            $("#slider").click(function(otro){
+							                alert("Has escrito: " + $("#slider").val());
+							            });
+							        })
+							    </script>
+ -->
+
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 								<!-- <input type="range" id="scroll_1" ng-model="input.sc1.val" min="{{input.sc1.min}}" max="{{input.sc1.max}}" step="{{input.sc1.step}}"> -->
@@ -144,7 +156,7 @@
 										<label>IF (A)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="{{input.sc1.val}}" disabled >
+										<!-- <input type="number" value="{{input.sc1.val}}" disabled > -->
 									</div>
 								</div>
 							</div>
@@ -308,7 +320,6 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -455,9 +466,11 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript" src="js/app.js"></script>
 <script src="jquery/jquery-ui.min.js"> </script>
 <script type="text/javascript" src="js/exmaple.js"></script>
+<script type="text/javascript" src="js/Chart.js"></script>
 
 
 

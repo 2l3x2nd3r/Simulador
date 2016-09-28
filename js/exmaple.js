@@ -1,98 +1,114 @@
-// y = fn(x)
-function myFunction(x) {
-    return Math.pow(x, 2);
-}
-
-// construct data
-var labels = [];
-var data = [];
-for (var i = 0; i <= 10;) {
-    labels.push(i);
-    data.push(myFunction(i));
-    i += 1;
-}
-
-
-// move point to position x in myChart
-function updateChartPoint(myChart, xValue) {
-    var ctx = myChart.chart.ctx;
-    var scale = myChart.scale;
-    var scaling = (scale.width - (scale.xScalePaddingLeft + scale.xScalePaddingRight)) / (scale.xLabels[scale.xLabels.length - 1] - scale.xLabels[0]);
-
-    // cancel existing animations
-    if (myChart.animationLoop)
-        clearInterval(myChart.animationLoop);
-
-    // figure out where we want to go
-    var xTarget = Math.round(scale.xScalePaddingLeft + xValue * scaling);
-    var xCurrent;
-    if (myChart.point)
-        xCurrent = myChart.point.x;
-    else
-        xCurrent = xTarget;
-    var increment = (xTarget - xCurrent) / 30;
-
-    myChart.animationLoop = setInterval(function () {
-        myChart.point = {
-            x: xCurrent,
-            y: scale.calculateY(myFunction((xCurrent - scale.xScalePaddingLeft) / scaling))
-        }
-
-        myChart.update();
-
-        ctx.beginPath();
-        ctx.arc(myChart.point.x, myChart.point.y, 5, 0, 2 * Math.PI, false);
-        ctx.fillStyle = 'red';
-        ctx.fill();
-
-        // move / stop moving
-        if (Math.abs(xTarget - xCurrent) <= Math.abs(increment))
-            clearInterval(myChart.animationLoop);
-        else
-            xCurrent += increment;
-    }, 5);
-}
-
-
-$("#slider").slider({
-    min: 0,
-    max: 10,
-    step: 0.1,
-    value: 5
-});
-
-
-var data = {
-    labels: labels,
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: data
-        }
-    ]
+var lineChartData = {
+    "datasets": [{
+        "data": [
+            "85",
+            "87",
+            "70",
+            "80",
+            "78",
+            "100",],
+            "pointStrokeColor": "#1A81C5",
+            "fillColor": "rgba(254, 254, 254, 0.4)",
+            "pointColor": "#1A81C5",
+            "strokeColor": "#5D9CC6"
+    }],
+        "labels": [
+        "10",
+        "20",
+        "30",
+        "40",
+        "50",
+        "60"],
 };
 
-var ctx = document.getElementById("myChart").getContext("2d");
-var myLineChart = new Chart(ctx).Line(data, {
-    showTooltips: false,
-    pointDot: false,
-    // the initial setting of the point
-    onAnimationComplete: function () {
-        if (!this.point) {
-            var chart = this;
-            chart.options.animation = false;
+var options = {showTooltips: true};
 
-            $('#slider').slider("option", "slide", function (event, ui) {
-                updateChartPoint(chart, ui.value)
-            })
-
-            updateChartPoint(chart, $('#slider').slider("option", "value"))
+Chart.types.Line.extend({
+    name: "LineAlt",
+    highlightPoints: function(datasetIndex, pointIndexArray){
+        var activePoints = [];
+        var points = this.datasets[datasetIndex].points;
+        for(i in pointIndexArray){
+        	if(points[pointIndexArray[i]]){
+          	activePoints.push(points[pointIndexArray[i]]);
+          }
         }
+        this.showTooltip(activePoints);
     }
 });
+
+var myLine = new Chart(document.getElementById("canvas").getContext("2d")).LineAlt(lineChartData, options);
+
+var highlight = function(index){
+	myLine.highlightPoints(0, [index]);
+}
+$("#slider").slider({
+  max: lineChartData.datasets[0].data.length-1,
+  slide: function( event, ui ) { highlight(ui.value); },
+});
+
+// var lineChartData = {
+//     labels: ["January", "February", "March", "April", "May", "June", "July"],
+//     datasets: [
+//         {
+//             label: "My First dataset",
+//             fill: false,
+//             backgroundColor: "rgba(220,220,220,0.2)",
+//             borderColor: "rgba(220,220,220,1)",
+//             borderCapStyle: 'butt',
+//             borderDash: [],
+//             borderDashOffset: 0.0,
+//             borderJoinStyle: 'miter',
+//             pointBorderColor: "rgba(220,220,220,1)",
+//             pointBackgroundColor: "#fff",
+//             pointBorderWidth: 1,
+//             pointHoverRadius: 5,
+//             pointHoverBackgroundColor: "rgba(220,220,220,1)",
+//             pointHoverBorderColor: "rgba(220,220,220,1)",
+//             pointHoverBorderWidth: 2,
+//             tension: 0.1,
+//             data: [65, 59, 80, 81, 56, 55, 40]
+//         },
+//         {
+//             label: "My Second dataset",
+//             fill: true,
+//             backgroundColor: "rgba(220,220,220,0.2)",
+//             borderColor: "rgba(220,220,220,1)",
+//             pointBorderColor: "rgba(220,220,220,1)",
+//             pointBackgroundColor: "#fff",
+//             pointBorderWidth: 1,
+//             pointHoverRadius: 5,
+//             pointHoverBackgroundColor: "rgba(220,220,220,1)",
+//             pointHoverBorderColor: "rgba(220,220,220,1)",
+//             pointHoverBorderWidth: 2,
+//             data: [28, 48, 40, 19, 86, 27, 90]
+//         }
+//     ]
+//   };
+//
+// var options = {showTooltips: true};
+//
+// Chart.types.Line.extend({
+//     name: "LineAlt",
+//     highlightPoints: function(datasetIndex, pointIndexArray){
+//         var activePoints = [];
+//         var points = this.datasets[datasetIndex].points;
+//         for(i in pointIndexArray){
+//         	if(points[pointIndexArray[i]]){
+//           	activePoints.push(points[pointIndexArray[i]]);
+//           }
+//         }
+//         this.showTooltip(activePoints);
+//     }
+// });
+//
+// var myLine = new Chart(document.getElementById("canvas").getContext("2d")).LineAlt(lineChartData, options);
+//
+// var highlight = function(index){
+// 	myLine.highlightPoints(0, [index]);
+// }
+//
+// $("#slider").slider({
+//   max: lineChartData.datasets[0].data.length-1,
+//   slide: function( event, ui ) { highlight(ui.value); },
+// });
