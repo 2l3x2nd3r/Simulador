@@ -2371,7 +2371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  // push decimal index over by expDiff times
 	  while (--expDiff >= 0) decimalIdx++;
 
-	  // if all coefficient values are zero after the decimal point, don't add a decimal value. 
+	  // if all coefficient values are zero after the decimal point, don't add a decimal value.
 	  // otherwise concat with the rest of the coefficients
 	  var decimals = c.slice(decimalIdx).join('');
 	  var decimalVal = decimals.match(/[1-9]/) ? ('.' + decimals) : '';
@@ -9629,7 +9629,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var a = this["re"];
 	      var b = this["im"];
-	      
+
 	      if (b === 0 && a > 0) {
 	        //return new Complex(Math.log(a), 0);
 	      }
@@ -9984,7 +9984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var d = Math.cos(2 * b) - Math.cosh(2 * a);
 
 	      return new Complex(
-	           -2 * Math.sinh(a) * Math.cos(b) / d, 
+	           -2 * Math.sinh(a) * Math.cos(b) / d,
 	            2 * Math.cosh(a) * Math.sin(b) / d);
 	    },
 
@@ -10000,7 +10000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var d = Math.cos(2 * b) + Math.cosh(2 * a);
 
 	      return new Complex(
-	              2 * Math.cosh(a) * Math.cos(b) / d, 
+	              2 * Math.cosh(a) * Math.cos(b) / d,
 	             -2 * Math.sinh(a) * Math.sin(b) / d);
 	    },
 
@@ -10347,7 +10347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  } else {
 	    root["Complex"] = Complex;
 	  }
-	  
+
 	})(this);
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(29)(module)))
@@ -10696,7 +10696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  "use strict";
 
-	  // Maximum search depth for cyclic rational numbers. 2000 should be more than enough. 
+	  // Maximum search depth for cyclic rational numbers. 2000 should be more than enough.
 	  // Example: 1/7 = 0.(142857) has 6 repeating decimal places.
 	  // If MAX_CYCLE_LEN gets reduced, long cycles will not be detected and toString() only gets the first 10 digits
 	  var MAX_CYCLE_LEN = 2000;
@@ -10908,7 +10908,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // If we would like to compute really large numbers quicker, we could make use of Fermat's little theorem:
 	    // 10^(d-1) % d == 1
-	    // However, we don't need such large numbers and MAX_CYCLE_LEN should be the capstone, 
+	    // However, we don't need such large numbers and MAX_CYCLE_LEN should be the capstone,
 	    // as we want to translate the numbers to strings.
 
 	    var rem = 10 % d;
@@ -11324,7 +11324,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    /**
 	     * Returns an array of continued fraction elements
-	     * 
+	     *
 	     * Ex: new Fraction("7/8").toContinued() => [0,1,7]
 	     */
 	    'toContinued': function() {
@@ -11615,7 +11615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // must be implemented by each of the Matrix implementations
 	    throw new Error('Cannot invoke storage on a Matrix interface');
 	  };
-	  
+
 	  /**
 	   * Get the datatype of the data stored in the matrix.
 	   *
@@ -11681,7 +11681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  /**
-	   * Resize the matrix to the given size. Returns a copy of the matrix when 
+	   * Resize the matrix to the given size. Returns a copy of the matrix when
 	   * `copy=true`, otherwise return the matrix itself (resize in place).
 	   *
 	   * @param {number[]} size           The new size the matrix should have.
@@ -11780,7 +11780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // must be implemented by each of the Matrix implementations
 	    throw new Error('Cannot invoke toString on a Matrix interface');
 	  };
-	   
+
 	  // exports
 	  return Matrix;
 	}
@@ -12071,9 +12071,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/**
 	 * Unsqueeze a multi dimensional array: add dimensions when missing
-	 * 
+	 *
 	 * Paramter `size` will be mutated to match the new, unqueezed matrix size.
-	 * 
+	 *
 	 * @param {Array} array
 	 * @param {number} dims     Desired number of dimensions of the array
 	 * @param {number} [outer]  Number of outer dimensions to be added
@@ -12455,7 +12455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this._datatype = datatype;
 	    }
 	  }
-	  
+
 	  DenseMatrix.prototype = new Matrix();
 
 	  /**
@@ -12528,7 +12528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        throw new SyntaxError('Wrong number of arguments');
 	    }
 	  };
-	  
+
 	  /**
 	   * Get a single element from the matrix.
 	   * @memberof DenseMatrix
@@ -12554,7 +12554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return data;
 	  };
-	  
+
 	  /**
 	   * Replace a single element in the matrix.
 	   * @memberof DenseMatrix
@@ -12594,7 +12594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return this;
 	  };
-	  
+
 	  /**
 	   * Get a submatrix of this matrix
 	   * @memberof DenseMatrix
@@ -12632,7 +12632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return new DenseMatrix(_getSubmatrix(matrix._data, index, size.length, 0), matrix._datatype);
 	    }
 	  }
-	  
+
 	  /**
 	   * Recursively get a submatrix of a multi dimensional matrix.
 	   * Index is not checked for correct number or length of dimensions.
@@ -12660,7 +12660,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }).valueOf();
 	    }
 	  }
-	  
+
 	  /**
 	   * Replace a submatrix in this matrix
 	   * Indexes are zero-based.
@@ -12745,7 +12745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return matrix;
 	  }
-	  
+
 	  /**
 	   * Replace a submatrix of a multi dimensional matrix.
 	   * @memberof DenseMatrix
@@ -12773,7 +12773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }
-	  
+
 	  /**
 	   * Resize the matrix to the given size. Returns a copy of the matrix when
 	   * `copy=true`, otherwise return the matrix itself (resize in place).
@@ -12797,7 +12797,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // resize matrix
 	    return _resize(m, size, defaultValue);
 	  };
-	  
+
 	  var _resize = function (matrix, size, defaultValue) {
 	    // check size
 	    if (size.length === 0) {
@@ -12815,7 +12815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return matrix
 	    return matrix;
 	  };
-	  
+
 	  /**
 	   * Enlarge the matrix when it is smaller than given size.
 	   * If the matrix is larger or equal sized, nothing is done.
@@ -12848,7 +12848,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _resize(matrix, newSize, defaultValue);
 	    }
 	  }
-	  
+
 	  /**
 	   * Create a clone of the matrix
 	   * @memberof DenseMatrix
@@ -12862,7 +12862,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    return m;
 	  };
-	  
+
 	  /**
 	   * Retrieve the size of the matrix.
 	   * @memberof DenseMatrix
@@ -12871,7 +12871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.prototype.size = function() {
 	    return this._size.slice(0); // return a clone of _size
 	  };
-	  
+
 	  /**
 	   * Create a new matrix with the results of the callback function executed on
 	   * each entry of the matrix.
@@ -12902,7 +12902,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: this._datatype
 	    });
 	  };
-	  
+
 	  /**
 	   * Execute a callback function on each entry of the matrix.
 	   * @memberof DenseMatrix
@@ -12925,7 +12925,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    recurse(this._data, []);
 	  };
-	  
+
 	  /**
 	   * Create an Array with a copy of the data of the DenseMatrix
 	   * @memberof DenseMatrix
@@ -12934,7 +12934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.prototype.toArray = function () {
 	    return object.clone(this._data);
 	  };
-	  
+
 	  /**
 	   * Get the primitive value of the DenseMatrix: a multidimensional array
 	   * @memberof DenseMatrix
@@ -12943,7 +12943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.prototype.valueOf = function () {
 	    return this._data;
 	  };
-	  
+
 	  /**
 	   * Get a string representation of the matrix, with optional formatting options.
 	   * @memberof DenseMatrix
@@ -12956,7 +12956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.prototype.format = function (options) {
 	    return string.format(this._data, options);
 	  };
-	  
+
 	  /**
 	   * Get a string representation of the matrix
 	   * @memberof DenseMatrix
@@ -12965,7 +12965,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.prototype.toString = function () {
 	    return string.format(this._data);
 	  };
-	  
+
 	  /**
 	   * Get a JSON representation of the matrix
 	   * @memberof DenseMatrix
@@ -12979,7 +12979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: this._datatype
 	    };
 	  };
-	  
+
 	  /**
 	   * Get the kth Matrix diagonal.
 	   *
@@ -13013,10 +13013,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // number diagonal values
 	    var n = Math.min(rows - kSub, columns -  kSuper);
-	    
+
 	    // x is a matrix get diagonal from matrix
 	    var data = [];
-	    
+
 	    // loop rows
 	    for (var i = 0; i < n; i++) {
 	      data[i] = this._data[i + kSub][i + kSuper];
@@ -13029,7 +13029,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: this._datatype
 	    });
 	  };
-	  
+
 	  /**
 	   * Create a diagonal matrix.
 	   *
@@ -13057,7 +13057,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // validate arguments
 	      if (!isNumber(s) || !isInteger(s) || s < 1) {
 	        throw new Error('Size values must be positive integers');
-	      } 
+	      }
 	      return s;
 	    });
 
@@ -13075,7 +13075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // default value
 	      k = 0;
 	    }
-	    
+
 	    if (defaultValue && isString(datatype)) {
 	      // convert defaultValue to the same datatype
 	      defaultValue = typed.convert(defaultValue, datatype);
@@ -13083,7 +13083,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var kSuper = k > 0 ? k : 0;
 	    var kSub = k < 0 ? -k : 0;
-	    
+
 	    // rows and columns
 	    var rows = size[0];
 	    var columns = size[1];
@@ -13105,7 +13105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _value = function (i) {
 	        // return value @ i
 	        return value[i];
-	      };      
+	      };
 	    }
 	    else if (value && value.isMatrix === true) {
 	      // matrix size
@@ -13128,7 +13128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return value;
 	      };
 	    }
-	    
+
 	    // discover default value if needed
 	    if (!defaultValue) {
 	      // check first value in array
@@ -13147,7 +13147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        data[d + kSub][d + kSuper] = _value(d);
 	      }
 	    }
-	    
+
 	    // create DenseMatrix
 	    return new DenseMatrix({
 	      data: data,
@@ -13166,7 +13166,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  DenseMatrix.fromJSON = function (json) {
 	    return new DenseMatrix(json);
 	  };
-	  
+
 	  /**
 	   * Swap rows i and j in Matrix.
 	   *
@@ -13207,7 +13207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    data[i] = data[j];
 	    data[j] = vi;
 	  };
-	   
+
 	  /**
 	   * Preprocess data, which can be an Array or DenseMatrix with nested Arrays and
 	   * Matrices. Replaces all nested Matrices with Arrays
@@ -13277,7 +13277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      throw new SyntaxError('Constructor must be called with the new operator');
 	    if (datatype && !isString(datatype))
 	      throw new Error('Invalid datatype: ' + datatype);
-	    
+
 	    if (data && data.isMatrix === true) {
 	      // create from matrix
 	      _createFromMatrix(this, data, datatype);
@@ -13307,7 +13307,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this._datatype = datatype;
 	    }
 	  }
-	  
+
 	  var _createFromMatrix = function (matrix, source, datatype) {
 	    // check matrix type
 	    if (source.type === 'SparseMatrix') {
@@ -13323,7 +13323,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _createFromArray(matrix, source.valueOf(), datatype || source._datatype);
 	    }
 	  };
-	  
+
 	  var _createFromArray = function (matrix, data, datatype) {
 	    // initialize fields
 	    matrix._values = [];
@@ -13333,12 +13333,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // discover rows & columns, do not use math.size() to avoid looping array twice
 	    var rows = data.length;
 	    var columns = 0;
-	    
+
 	    // equal signature to use
 	    var eq = equalScalar;
 	    // zero value
 	    var zero = 0;
-	    
+
 	    if (isString(datatype)) {
 	      // find signature that matches (datatype, datatype)
 	      eq = typed.find(equalScalar, [datatype, datatype]) || equalScalar;
@@ -13389,7 +13389,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	        // increment index
-	        j++;      
+	        j++;
 	      }
 	      while (j < columns);
 	    }
@@ -13398,7 +13398,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // size
 	    matrix._size = [rows, columns];
 	  };
-	  
+
 	  SparseMatrix.prototype = new Matrix();
 
 	  /**
@@ -13459,7 +13459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // calculate density
 	    return rows !== 0 && columns !== 0 ? (this._index.length / (rows * columns)) : 0;
 	  };
-	  
+
 	  /**
 	   * Get a subset of the matrix, or replace a subset of the matrix.
 	   *
@@ -13492,7 +13492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        throw new SyntaxError('Wrong number of arguments');
 	    }
 	  };
-	  
+
 	  var _getsubset = function (matrix, idx) {
 	    // check idx
 	    if (!idx || idx.isIndex !== true) {
@@ -13512,7 +13512,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // vars
 	    var i, ii, k, kk;
-	    
+
 	    // validate if any of the ranges in the index is out of range
 	    var min = idx.min();
 	    var max = idx.max();
@@ -13520,24 +13520,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      validateIndex(min[i], matrix._size[i]);
 	      validateIndex(max[i], matrix._size[i]);
 	    }
-	    
+
 	    // matrix arrays
 	    var mvalues = matrix._values;
 	    var mindex = matrix._index;
 	    var mptr = matrix._ptr;
-	        
+
 	    // rows & columns dimensions for result matrix
 	    var rows = idx.dimension(0);
 	    var columns = idx.dimension(1);
-	    
+
 	    // workspace & permutation vector
 	    var w = [];
 	    var pv = [];
-	    
+
 	    // loop rows in resulting matrix
 	    rows.forEach(function (i, r) {
 	      // update permutation vector
-	      pv[i] = r[0];  
+	      pv[i] = r[0];
 	      // mark i in workspace
 	      w[i] = true;
 	    });
@@ -13546,7 +13546,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var values = mvalues ? [] : undefined;
 	    var index = [];
 	    var ptr = [];
-	        
+
 	    // loop columns in result matrix
 	    columns.forEach(function (j) {
 	      // update ptr
@@ -13567,7 +13567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    // update ptr
 	    ptr.push(index.length);
-	    
+
 	    // return matrix
 	    return new SparseMatrix({
 	      values: values,
@@ -13577,17 +13577,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: matrix._datatype
 	    });
 	  };
-	  
+
 	  var _setsubset = function (matrix, index, submatrix, defaultValue) {
 	    // check index
 	    if (!index || index.isIndex !== true) {
 	      throw new TypeError('Invalid index');
 	    }
-	    
+
 	    // get index size and check whether the index contains a single value
 	    var iSize = index.size(),
 	        isScalar = index.isScalar();
-	    
+
 	    // calculate the size of the submatrix, and convert it into an Array if needed
 	    var sSize;
 	    if (submatrix && submatrix.isMatrix === true) {
@@ -13600,7 +13600,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // get submatrix size (array, scalar)
 	      sSize = array.size(submatrix);
 	    }
-	    
+
 	    // check index is a scalar
 	    if (isScalar) {
 	      // verify submatrix is a scalar
@@ -13615,7 +13615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (iSize.length !== 1 && iSize.length !== 2) {
 	        throw new DimensionError(iSize.length, matrix._size.length, '<');
 	      }
-	      
+
 	      // check submatrix and index have the same dimensions
 	      if (sSize.length < iSize.length) {
 	        // calculate number of missing outer dimensions
@@ -13631,16 +13631,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // unsqueeze both outer and inner dimensions
 	        submatrix = array.unsqueeze(submatrix, iSize.length, outer, sSize);
 	      }
-	      
+
 	      // check whether the size of the submatrix matches the index size
 	      if (!object.deepEqual(iSize, sSize)) {
 	        throw new DimensionError(iSize, sSize, '>');
 	      }
-	      
+
 	      // offsets
 	      var x0 = index.min()[0];
-	      var y0 = index.min()[1];      
-	      
+	      var y0 = index.min()[1];
+
 	      // submatrix rows and columns
 	      var m = sSize[0];
 	      var n = sSize[1];
@@ -13691,7 +13691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return 0;
 	  };
-	  
+
 	  /**
 	   * Replace a single element in the matrix.
 	   * @memberof SparseMatrix
@@ -13711,7 +13711,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // check it is a pattern matrix
 	    if (!this._values)
 	      throw new Error('Cannot invoke set on a Pattern only matrix');
-	      
+
 	    // row and column
 	    var i = index[0];
 	    var j = index[1];
@@ -13719,7 +13719,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // rows & columns
 	    var rows = this._size[0];
 	    var columns = this._size[1];
-	    
+
 	    // equal signature to use
 	    var eq = equalScalar;
 	    // zero value
@@ -13766,7 +13766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return this;
 	  };
-	  
+
 	  var _getValueIndex = function(i, top, bottom, index) {
 	    // check row is on the bottom side
 	    if (bottom - top === 0)
@@ -13799,9 +13799,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (var x = j + 1; x < ptr.length; x++)
 	      ptr[x]++;
 	  };
-	  
+
 	  /**
-	   * Resize the matrix to the given size. Returns a copy of the matrix when 
+	   * Resize the matrix to the given size. Returns a copy of the matrix when
 	   * `copy=true`, otherwise return the matrix itself (resize in place).
 	   *
 	   * @memberof SparseMatrix
@@ -13813,7 +13813,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *
 	   * @return {Matrix}                 The resized matrix
 	   */
-	  SparseMatrix.prototype.resize = function (size, defaultValue, copy) {    
+	  SparseMatrix.prototype.resize = function (size, defaultValue, copy) {
 	    // validate arguments
 	    if (!isArray(size))
 	      throw new TypeError('Array expected');
@@ -13827,17 +13827,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            '(size: ' + string.format(size) + ')');
 	      }
 	    });
-	    
+
 	    // matrix to resize
 	    var m = copy ? this.clone() : this;
 	    // resize matrix
 	    return _resize(m, size[0], size[1], defaultValue);
 	  };
-	  
+
 	  var _resize = function (matrix, rows, columns, defaultValue) {
 	    // value to insert at the time of growing matrix
 	    var value = defaultValue || 0;
-	    
+
 	    // equal signature to use
 	    var eq = equalScalar;
 	    // zero value
@@ -13851,7 +13851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // convert value to the same datatype
 	      value = typed.convert(value, matrix._datatype);
 	    }
-	    
+
 	    // should we insert the value?
 	    var ins = !eq(value, zero);
 
@@ -13876,7 +13876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // update matrix._index
 	            matrix._index.push(i);
 	          }
-	        }        
+	        }
 	      }
 	      // store number of matrix._values in matrix._ptr
 	      matrix._ptr[columns] = matrix._values.length;
@@ -13953,7 +13953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return matrix
 	    return matrix;
 	  };
-	  
+
 	  /**
 	   * Create a clone of the matrix
 	   * @memberof SparseMatrix
@@ -13969,7 +13969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    return m;
 	  };
-	  
+
 	  /**
 	   * Retrieve the size of the matrix.
 	   * @memberof SparseMatrix
@@ -13978,7 +13978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SparseMatrix.prototype.size = function() {
 	    return this._size.slice(0); // copy the Array
 	  };
-	  
+
 	  /**
 	   * Create a new matrix with the results of the callback function executed on
 	   * each entry of the matrix.
@@ -14017,7 +14017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var values = [];
 	    var index = [];
 	    var ptr = [];
-	    
+
 	    // equal signature to use
 	    var eq = equalScalar;
 	    // zero value
@@ -14029,7 +14029,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // convert 0 to the same datatype
 	      zero = typed.convert(0, matrix._datatype);
 	    }
-	    
+
 	    // invoke callback
 	    var invoke = function (v, x, y) {
 	      // invoke callback
@@ -14084,7 +14084,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      size: [maxRow - minRow + 1, maxColumn - minColumn + 1]
 	    });
 	  };
-	  
+
 	  /**
 	   * Execute a callback function on each entry of the matrix.
 	   * @memberof SparseMatrix
@@ -14132,7 +14132,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  };
-	  
+
 	  /**
 	   * Create an Array with a copy of the data of the SparseMatrix
 	   * @memberof SparseMatrix
@@ -14150,8 +14150,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SparseMatrix.prototype.valueOf = function () {
 	    return _toArray(this._values, this._index, this._ptr, this._size, false);
 	  };
-	  
-	  var _toArray = function (values, index, ptr, size, copy) {    
+
+	  var _toArray = function (values, index, ptr, size, copy) {
 	    // rows and columns
 	    var rows = size[0];
 	    var columns = size[1];
@@ -14181,7 +14181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return a;
 	  };
-	  
+
 	  /**
 	   * Get a string representation of the matrix, with optional formatting options.
 	   * @memberof SparseMatrix
@@ -14214,7 +14214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return str;
 	  };
-	  
+
 	  /**
 	   * Get a string representation of the matrix
 	   * @memberof SparseMatrix
@@ -14223,7 +14223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SparseMatrix.prototype.toString = function () {
 	    return string.format(this.toArray());
 	  };
-	  
+
 	  /**
 	   * Get a JSON representation of the matrix
 	   * @memberof SparseMatrix
@@ -14266,14 +14266,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var kSuper = k > 0 ? k : 0;
 	    var kSub = k < 0 ? -k : 0;
-	    
+
 	    // rows & columns
 	    var rows = this._size[0];
 	    var columns = this._size[1];
-	    
+
 	    // number diagonal values
 	    var n = Math.min(rows - kSub, columns -  kSuper);
-	    
+
 	    // diagonal arrays
 	    var values = [];
 	    var index = [];
@@ -14310,7 +14310,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      size: [n, 1]
 	    });
 	  };
-	  
+
 	  /**
 	   * Generate a matrix from a JSON object
 	   * @memberof SparseMatrix
@@ -14339,7 +14339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      throw new TypeError('Array expected, size parameter');
 	    if (size.length !== 2)
 	      throw new Error('Only two dimensions matrix are supported');
-	    
+
 	    // map size & validate
 	    size = size.map(function (s) {
 	      // check it is a big number
@@ -14350,10 +14350,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // validate arguments
 	      if (!isNumber(s) || !isInteger(s) || s < 1) {
 	        throw new Error('Size values must be positive integers');
-	      } 
+	      }
 	      return s;
 	    });
-	    
+
 	    // validate k if any
 	    if (k) {
 	      // convert BigNumber to a number
@@ -14380,20 +14380,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // convert 0 to the same datatype
 	      zero = typed.convert(0, datatype);
 	    }
-	    
+
 	    var kSuper = k > 0 ? k : 0;
 	    var kSub = k < 0 ? -k : 0;
-	    
+
 	    // rows and columns
 	    var rows = size[0];
 	    var columns = size[1];
-	    
+
 	    // number of non-zero items
 	    var n = Math.min(rows - kSub, columns -  kSuper);
-	    
+
 	    // value extraction function
 	    var _value;
-	      
+
 	    // check value
 	    if (isArray(value)) {
 	      // validate array
@@ -14428,18 +14428,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return value;
 	      };
 	    }
-	    
+
 	    // create arrays
 	    var values = [];
 	    var index = [];
 	    var ptr = [];
-	    
+
 	    // loop items
 	    for (var j = 0; j < columns; j++) {
 	      // number of rows with value
 	      ptr.push(values.length);
 	      // diagonal index
-	      var i = j - kSuper;      
+	      var i = j - kSuper;
 	      // check we need to set diagonal value
 	      if (i >= 0 && i < n) {
 	        // get value @ i
@@ -14463,7 +14463,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      size: [rows, columns]
 	    });
 	  };
-	  
+
 	  /**
 	   * Swap rows i and j in Matrix.
 	   *
@@ -14485,13 +14485,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // validate index
 	    validateIndex(i, this._size[0]);
 	    validateIndex(j, this._size[0]);
-	    
+
 	    // swap rows
 	    SparseMatrix._swapRows(i, j, this._size[1], this._values, this._index, this._ptr);
 	    // return current instance
 	    return this;
 	  };
-	  
+
 	  /**
 	   * Loop rows with data in column j.
 	   *
@@ -14511,7 +14511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      callback(index[k], values[k]);
 	    }
 	  };
-	  
+
 	  /**
 	   * Swap rows x and y in Sparse Matrix data structures.
 	   *
@@ -14550,7 +14550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // insert value @ y
 	        index.splice(ky, 0, y);
 	        if (values)
-	          values.splice(ky, 0, vx);        
+	          values.splice(ky, 0, vx);
 	        // remove value @ x (adjust array index if needed)
 	        index.splice(ky <= kx ? kx + 1 : kx, 1);
 	        if (values)
@@ -14596,7 +14596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bigNearlyEqual = __webpack_require__(49);
 
 	function factory (type, config, load, typed) {
-	  
+
 	  /**
 	   * Test whether two values are equal.
 	   *
@@ -14638,7 +14638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return x === y;
 	    }
 	  });
-	  
+
 	  return equalScalar;
 	}
 
@@ -14703,18 +14703,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function factory (type, config, load) {
-	  
+
 	  var add = load(__webpack_require__(51));
 	  var equalScalar = load(__webpack_require__(48));
-	  
+
 	  /**
-	   * An ordered Sparse Accumulator is a representation for a sparse vector that includes a dense array 
+	   * An ordered Sparse Accumulator is a representation for a sparse vector that includes a dense array
 	   * of the vector elements and an ordered list of non-zero elements.
 	   */
 	  function Spa() {
 	    if (!(this instanceof Spa))
 	      throw new SyntaxError('Constructor must be called with the new operator');
-	    
+
 	    // allocate vector, TODO use typed arrays
 	    this._values = [];
 	    this._heap = new type.FibonacciHeap();
@@ -14745,14 +14745,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this._values[i].value = v;
 	    }
 	  };
-	  
+
 	  Spa.prototype.get = function (i) {
 	    var node = this._values[i];
 	    if (node)
 	      return node.value;
 	    return 0;
 	  };
-	  
+
 	  Spa.prototype.accumulate = function (i, v) {
 	    // node @ i
 	    var node = this._values[i];
@@ -14767,7 +14767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      node.value = add(node.value, v);
 	    }
 	  };
-	  
+
 	  Spa.prototype.forEach = function (from, to, callback) {
 	    // references
 	    var heap = this._heap;
@@ -14803,7 +14803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      values[node.key] = node;
 	    }
 	  };
-	  
+
 	  Spa.prototype.swap = function (i, j) {
 	    // node @ i and j
 	    var nodei = this._values[i];
@@ -14834,7 +14834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      nodej.value = v;
 	    }
 	  };
-	  
+
 	  return Spa;
 	}
 
@@ -14856,7 +14856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var matrix = load(__webpack_require__(52));
 	  var addScalar = load(__webpack_require__(53));
 	  var latex = __webpack_require__(32);
-	  
+
 	  var algorithm01 = load(__webpack_require__(54));
 	  var algorithm04 = load(__webpack_require__(55));
 	  var algorithm10 = load(__webpack_require__(56));
@@ -14901,7 +14901,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
-	      
+
 	      // process matrix storage
 	      switch (x.storage()) {
 	        case 'sparse':
@@ -14931,22 +14931,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return add(matrix(x), matrix(y)).valueOf();
 	    },
-	    
+
 	    'Array, Matrix': function (x, y) {
 	      // use matrix implementation
 	      return add(matrix(x), y);
 	    },
-	    
+
 	    'Matrix, Array': function (x, y) {
 	      // use matrix implementation
 	      return add(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, any': function (x, y) {
 	      // result
 	      var c;
@@ -14961,7 +14961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'any, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -14976,7 +14976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, any': function (x, y) {
 	      // use matrix implementation
 	      return algorithm14(matrix(x), y, addScalar, false).valueOf();
@@ -14991,7 +14991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  add.toTex = {
 	    2: '\\left(${args[0]}' + latex.operators['add'] + '${args[1]}\\right)'
 	  };
-	  
+
 	  return add;
 	}
 
@@ -15046,7 +15046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'string': function (format) {
 	      return _create([], format);
 	    },
-	    
+
 	    'string, string': function (format, datatype) {
 	      return _create([], format, datatype);
 	    },
@@ -15054,13 +15054,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array': function (data) {
 	      return _create(data);
 	    },
-	      
+
 	    'Matrix': function (data) {
 	      return _create(data, data.storage());
 	    },
-	    
+
 	    'Array | Matrix, string': _create,
-	    
+
 	    'Array | Matrix, string, string': _create
 	  });
 
@@ -15163,7 +15163,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix nonzero items and invokes the callback function f(Dij, Sij). 
+	   * Iterates over SparseMatrix nonzero items and invokes the callback function f(Dij, Sij).
 	   * Callback function invoked NNZ times (number of nonzero items in SparseMatrix).
 	   *
 	   *
@@ -15216,13 +15216,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // vars
 	    var i, j;
-	    
+
 	    // result (DenseMatrix)
 	    var cdata = [];
 	    // initialize c
 	    for (i = 0; i < rows; i++)
-	      cdata[i] = [];      
-	    
+	      cdata[i] = [];
+
 	    // workspace
 	    var x = [];
 	    // marks indicating we have a value in x for a given column
@@ -15262,7 +15262,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: dt
 	    });
 	  };
-	  
+
 	  return algorithm01;
 	}
 
@@ -15285,7 +15285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked MAX(NNZA, NNZB) times
 	   *
 	   *
@@ -15369,9 +15369,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var wa = [];
 	    var wb = [];
 
-	    // vars 
+	    // vars
 	    var i, j, k, k0, k1;
-	    
+
 	    // loop columns
 	    for (j = 0; j < columns; j++) {
 	      // update cptr
@@ -15403,7 +15403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // check for zero
 	            if (!eq(v, zero)) {
 	              // update workspace
-	              xa[i] = v;              
+	              xa[i] = v;
 	            }
 	            else {
 	              // remove mark (index will be removed later)
@@ -15455,7 +15455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return sparse matrix
 	    return c;
 	  };
-	  
+
 	  return algorithm04;
 	}
 
@@ -15474,12 +15474,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b). 
+	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b).
 	   * Callback function invoked NZ times (number of nonzero items in S).
 	   *
 	   *
 	   *          ┌  f(Sij, b)  ; S(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  b          ; otherwise
 	   *
 	   *
@@ -15596,7 +15596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over DenseMatrix items and invokes the callback function f(Aij..z, Bij..z). 
+	   * Iterates over DenseMatrix items and invokes the callback function f(Aij..z, Bij..z).
 	   * Callback function invoked MxN times.
 	   *
 	   * C(i,j,...z) = f(Aij..z, Bij..z)
@@ -15651,7 +15651,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // populate cdata, iterate through dimensions
 	    var cdata = csize.length > 0 ? _iterate(cf, 0, csize, csize[0], adata, bdata) : [];
-	    
+
 	    // c matrix
 	    return new DenseMatrix({
 	      data: cdata,
@@ -15659,7 +15659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: dt
 	    });
 	  };
-	  
+
 	  // recursive function
 	  var _iterate = function (f, level, s, n, av, bv) {
 	    // initialize array for this level
@@ -15681,7 +15681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return cv;
 	  };
-	  
+
 	  return algorithm13;
 	}
 
@@ -15702,7 +15702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over DenseMatrix items and invokes the callback function f(Aij..z, b). 
+	   * Iterates over DenseMatrix items and invokes the callback function f(Aij..z, b).
 	   * Callback function invoked MxN times.
 	   *
 	   * C(i,j,...z) = f(Aij..z, b)
@@ -15721,7 +15721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var adata = a._data;
 	    var asize = a._size;
 	    var adt = a._datatype;
-	    
+
 	    // datatype
 	    var dt;
 	    // callback signature to use
@@ -15736,7 +15736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // callback
 	      cf = typed.find(callback, [dt, dt]);
 	    }
-	    
+
 	    // populate cdata, iterate through dimensions
 	    var cdata = asize.length > 0 ? _iterate(cf, 0, asize, asize[0], adata, b, inverse) : [];
 
@@ -15747,7 +15747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: dt
 	    });
 	  };
-	  
+
 	  // recursive function
 	  var _iterate = function (f, level, s, n, av, bv, inverse) {
 	    // initialize array for this level
@@ -15784,12 +15784,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var smaller = load(__webpack_require__(60));
 	  var larger = load(__webpack_require__(64));
-	  
+
 	  var oneOverLogPhi = 1.0 / Math.log((1.0 + Math.sqrt(5.0)) / 2.0);
-	  
+
 	  /**
 	   * Fibonacci Heap implementation, used interally for Matrix math.
 	   * @class FibonacciHeap
@@ -15875,9 +15875,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  FibonacciHeap.prototype.isEmpty = function () {
 	    return !!this._minimum;
 	  };
-	  
+
 	  /**
-	   * Extracts the node with minimum key from heap. Amortized running 
+	   * Extracts the node with minimum key from heap. Amortized running
 	   * time: O(log n).
 	   * @memberof FibonacciHeap
 	   */
@@ -15931,7 +15931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return node
 	    return node;
 	  };
-	  
+
 	  /**
 	   * Removes a node from the heap given the reference to the node. The trees
 	   * in the heap will be consolidated, if necessary. This operation may fail
@@ -15945,10 +15945,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // remove the smallest
 	    this.extractMinimum();
 	  };
-	  
+
 	  /**
 	   * Decreases the key value for a heap node, given the new value to take on.
-	   * The structure of the heap may be changed and will not be consolidated. 
+	   * The structure of the heap may be changed and will not be consolidated.
 	   * Running time: O(1) amortized.
 	   * @memberof FibonacciHeap
 	   */
@@ -15969,7 +15969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return minimum
 	    return minimum;
 	  };
-	  
+
 	  /**
 	   * The reverse of the link operation: removes node from the child list of parent.
 	   * This method assumes that min is non-null. Running time: O(1).
@@ -15996,7 +15996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // set mark[node] to false
 	    node.mark = false;
 	  };
-	  
+
 	  /**
 	   * Performs a cascading cut operation. This cuts node from its parent and then
 	   * does the same for its parent, and so on up the tree.
@@ -16020,7 +16020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      _cascadingCut(parent);
 	    }
 	  };
-	  
+
 	  /**
 	   * Make the first node a child of the second one. Running time: O(1) actual.
 	   * @memberof FibonacciHeap
@@ -16047,7 +16047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // set mark[node] false
 	    node.mark = false;
 	  };
-	  
+
 	  var _findMinimumNode = function (minimum, size) {
 	    // to find trees of the same degree efficiently we use an array of length O(log n) in which we keep a pointer to one root of each degree
 	    var arraySize = Math.floor(Math.log(size) * oneOverLogPhi) + 1;
@@ -16123,7 +16123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return minimum;
 	  };
-	  
+
 	  return FibonacciHeap;
 	}
 
@@ -16440,7 +16440,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: dt
 	    });
 	  };
-	  
+
 	  return algorithm03;
 	}
 
@@ -16461,7 +16461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and SparseMatrix B items (zero and nonzero) and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and SparseMatrix B items (zero and nonzero) and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked MxN times.
 	   *
 	   * C(i,j) = f(Aij, Bij)
@@ -16513,7 +16513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // vars
 	    var i, j;
-	    
+
 	    // result arrays
 	    var cdata = [];
 	    // initialize c
@@ -16549,13 +16549,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var vb = wb[i] === mark ? xb[i] : zero;
 	        // invoke callback
 	        cdata[i][j] = cf(va, vb);
-	      }          
+	      }
 	    }
 
 	    // return sparse matrix
 	    return c;
 	  };
-	  
+
 	  var _scatter = function (m, j, w, x, mark) {
 	    // a arrays
 	    var values = m._values;
@@ -16570,7 +16570,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      x[i] = values[k];
 	    }
 	  };
-	  
+
 	  return algorithm07;
 	}
 
@@ -16589,12 +16589,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b). 
+	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b).
 	   * Callback function invoked MxN times.
 	   *
 	   *
 	   *          ┌  f(Sij, b)  ; S(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  f(0, b)    ; otherwise
 	   *
 	   *
@@ -16637,7 +16637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // callback
 	      cf = typed.find(callback, [dt, dt]);
 	    }
-	    
+
 	    // result arrays
 	    var cdata = [];
 	    // matrix
@@ -16686,7 +16686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return sparse matrix
 	    return c;
 	  };
-	  
+
 	  return algorithm12;
 	}
 
@@ -16704,7 +16704,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bigNearlyEqual = __webpack_require__(49);
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 
 	  var algorithm03 = load(__webpack_require__(61));
@@ -16973,7 +16973,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          });
 	        }
 	        return m;
-	        
+
 	        // intentional fall through
 	      case 2:
 	      case 3:
@@ -17119,7 +17119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isInteger = __webpack_require__(6).isInteger;
 
 	function factory (type) {
-	  
+
 	  /**
 	   * Create an index. An Index can store ranges and sets for multiple dimensions.
 	   * Matrix.get, Matrix.set, and math.subset accept an Index as input.
@@ -17831,7 +17831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    '': function () {
 	      return new SparseMatrix([]);
 	    },
-	    
+
 	    'string': function (datatype) {
 	      return new SparseMatrix([], datatype);
 	    },
@@ -17839,7 +17839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array | Matrix': function (data) {
 	      return new SparseMatrix(data);
 	    },
-	    
+
 	    'Array | Matrix, string': function (data, datatype) {
 	      return new SparseMatrix(data, datatype);
 	    }
@@ -18193,7 +18193,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          power: 0
 	        }
 	      ];
-	      this.dimensions = []; 
+	      this.dimensions = [];
 	      for(var i=0; i<BASE_DIMENSIONS.length; i++) {
 	        this.dimensions[i] = 0;
 	      }
@@ -18309,7 +18309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        revert(tentativeIndex);
 	        return number;
 	      }
-	      
+
 	      // We can now safely say that this is scientific notation.
 	      number = number + tentativeNumber;
 	      while (isDigit(c)) {
@@ -18339,7 +18339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if ((code >= 65 && code <= 90) ||
 	        (code >= 97 && code <= 122)) {
 	        return unitName || null;
-	    } 
+	    }
 	    else {
 	      return null;
 	    }
@@ -18515,7 +18515,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        };
 	      }
 	    }
-	    
+
 	    // Has the string been entirely consumed?
 	    skipWhitespace();
 	    if(c) {
@@ -18677,7 +18677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @private
 	   */
 	  function _findUnit(str) {
-	  
+
 	    // First, match units names exactly. For example, a user could define 'mm' as 10^-4 m, which is silly, but then we would want 'mm' to match the user-defined unit.
 	    if(UNITS.hasOwnProperty(str)) {
 	      var unit = UNITS[str];
@@ -18782,7 +18782,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  Unit.prototype.multiply = function (other) {
 	    var res = this.clone();
-	    
+
 	    for(var i = 0; i<BASE_DIMENSIONS.length; i++) {
 	      // Dimensions arrays may be of different lengths. Default to 0.
 	      res.dimensions[i] = (this.dimensions[i] || 0) + (other.dimensions[i] || 0);
@@ -18822,7 +18822,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  Unit.prototype.divide = function (other) {
 	    var res = this.clone();
-	    
+
 	    for(var i=0; i<BASE_DIMENSIONS.length; i++) {
 	      // Dimensions arrays may be of different lengths. Default to 0.
 	      res.dimensions[i] = (this.dimensions[i] || 0) - (other.dimensions[i] || 0);
@@ -18863,7 +18863,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  Unit.prototype.pow = function (p) {
 	    var res = this.clone();
-	    
+
 	    for(var i=0; i<BASE_DIMENSIONS.length; i++) {
 	      // Dimensions arrays may be of different lengths. Default to 0.
 	      res.dimensions[i] = (this.dimensions[i] || 0) * p;
@@ -18906,7 +18906,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return unit;
 	    }
 	  }
-	    
+
 
 	  /**
 	   * Calculate the absolute value of a unit
@@ -19209,7 +19209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      isImaginary = Math.abs(this.value.re) < 1e-14;
 	      isReal = Math.abs(this.value.im) < 1e-14;
 	    }
-	    
+
 	    for(var i in this.units) {
 	      if(this.units[i].unit) {
 	        if(this.units[i].unit.name === 'VA' && isImaginary) {
@@ -19238,7 +19238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var str = (this.value !== null) ? format(value, options || {}) : '';
 	    var unitStr = this.formatUnits();
 	    if(this.value && this.value.isComplex) {
-	      str = "(" + str + ")";    // Surround complex values with ( ) to enable better parsing 
+	      str = "(" + str + ")";    // Surround complex values with ( ) to enable better parsing
 	    }
 	    if(unitStr.length > 0 && str.length > 0) {
 	      str += " ";
@@ -19306,7 +19306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * Returns an array of units whose sum is equal to this unit
 	   * @memberof Unit
-	   * @param {Array} [parts] An array of strings or valueless units. 
+	   * @param {Array} [parts] An array of strings or valueless units.
 	   *
 	   *   Example:
 	   *
@@ -20321,7 +20321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: null, // will be filled in by calculateAngleValues()
 	      offset: 0
 	    },
-	    
+
 	    // Electric current
 	    A: {
 	      name: 'A',
@@ -20484,7 +20484,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: 4448.2216,
 	      offset: 0
 	    },
-		
+
 	    // Energy
 	    J: {
 	      name: 'J',
@@ -20568,7 +20568,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: Complex.I,
 	      offset: 0
 	    },
-	    
+
 	    VA: {
 	      name: 'VA',
 	      base: BASE_UNITS.POWER,
@@ -20832,7 +20832,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    sticks: 'stick',
 	    lb: 'lbm',
 	    lbs: 'lbm',
-		
+
 	    kips: 'kip',
 
 	    acres: 'acre',
@@ -20932,17 +20932,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // Base units
 	      NONE:                  {unit: UNIT_NONE, prefix: PREFIXES.NONE['']},
 	      LENGTH:                {unit: UNITS.m,   prefix: PREFIXES.SHORT['']},
-	      MASS:                  {unit: UNITS.g,   prefix: PREFIXES.SHORT['k']}, 
-	      TIME:                  {unit: UNITS.s,   prefix: PREFIXES.SHORT['']}, 
-	      CURRENT:               {unit: UNITS.A,   prefix: PREFIXES.SHORT['']}, 
-	      TEMPERATURE:           {unit: UNITS.K,   prefix: PREFIXES.SHORT['']}, 
-	      LUMINOUS_INTENSITY:    {unit: UNITS.cd,  prefix: PREFIXES.SHORT['']}, 
-	      AMOUNT_OF_SUBSTANCE:   {unit: UNITS.mol, prefix: PREFIXES.SHORT['']}, 
-	      ANGLE:                 {unit: UNITS.rad, prefix: PREFIXES.SHORT['']}, 
-	      BIT:                   {unit: UNITS.bit, prefix: PREFIXES.SHORT['']}, 
+	      MASS:                  {unit: UNITS.g,   prefix: PREFIXES.SHORT['k']},
+	      TIME:                  {unit: UNITS.s,   prefix: PREFIXES.SHORT['']},
+	      CURRENT:               {unit: UNITS.A,   prefix: PREFIXES.SHORT['']},
+	      TEMPERATURE:           {unit: UNITS.K,   prefix: PREFIXES.SHORT['']},
+	      LUMINOUS_INTENSITY:    {unit: UNITS.cd,  prefix: PREFIXES.SHORT['']},
+	      AMOUNT_OF_SUBSTANCE:   {unit: UNITS.mol, prefix: PREFIXES.SHORT['']},
+	      ANGLE:                 {unit: UNITS.rad, prefix: PREFIXES.SHORT['']},
+	      BIT:                   {unit: UNITS.bit, prefix: PREFIXES.SHORT['']},
 
 	      // Derived units
-	      FORCE:                 {unit: UNITS.N,   prefix: PREFIXES.SHORT['']}, 
+	      FORCE:                 {unit: UNITS.N,   prefix: PREFIXES.SHORT['']},
 	      ENERGY:                {unit: UNITS.J,   prefix: PREFIXES.SHORT['']},
 	      POWER:                 {unit: UNITS.W,   prefix: PREFIXES.SHORT['']},
 	      PRESSURE:              {unit: UNITS.Pa,  prefix: PREFIXES.SHORT['']},
@@ -20966,7 +20966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  UNIT_SYSTEMS.cgs.ENERGY = {unit: UNITS.erg, prefix: PREFIXES.NONE['']};
 	  // there are wholly 4 unique cgs systems for electricity and magnetism,
 	  // so let's not worry about it unless somebody complains
-	  
+
 	  UNIT_SYSTEMS.us = JSON.parse(JSON.stringify(UNIT_SYSTEMS.si));
 	  UNIT_SYSTEMS.us.LENGTH =      {unit: UNITS.ft,   prefix: PREFIXES.NONE['']};
 	  UNIT_SYSTEMS.us.MASS =        {unit: UNITS.lbm,  prefix: PREFIXES.NONE['']};
@@ -21053,7 +21053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  for (var key in UNITS) {
 	    var unit = UNITS[key];
 	    unit.dimensions = unit.base.dimensions;
-	  }    
+	  }
 
 	  // Create aliases
 	  for (var name in ALIASES) {
@@ -21073,7 +21073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function assertUnitNameIsValid(name) {
 	    for(var i=0; i<name.length; i++) {
 	      var c = name.charAt(i);
-	       
+
 	      var isValidAlpha = function (p) {
 	        return /^[a-zA-Z]$/.test(p);
 	      };
@@ -21094,7 +21094,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  /**
 	   * Wrapper around createUnitSingle.
-	   * Example: 
+	   * Example:
 	   *  createUnit({
 	   *    foo: { },
 	   *    bar: {
@@ -21103,7 +21103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *      offset: 200
 	   *    },
 	   *    baz: '4 bar'
-	   *  }, 
+	   *  },
 	   *  {
 	   *    override: true;
 	   *  });
@@ -21111,7 +21111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {object} options
 	   */
 	  Unit.createUnit = function(obj, options) {
-	    
+
 	    if(typeof(obj) !== 'object') {
 	      throw new TypeError("createUnit expects first parameter to be of type 'Object'");
 	    }
@@ -21143,7 +21143,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  /**
 	   * Create a user-defined unit and register it with the Unit type.
-	   * Example: 
+	   * Example:
 	   *  createUnitSingle('knot', '0.514444444 m/s')
 	   *  createUnitSingle('acre', new Unit(43560, 'ft^2'))
 	   *
@@ -21154,18 +21154,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *     aliases {Array} Array of strings. Example: ['knots', 'kt', 'kts']
 	   *     offset {Numeric} An offset to apply when converting from the unit. For example, the offset for celsius is 273.15 and the offset for farhenheit is 459.67. Default is 0.
 	   *
-	   * @return {Unit} 
+	   * @return {Unit}
 	   */
 	  Unit.createUnitSingle = function(name, obj, options) {
 
 	    if(typeof(obj) === 'undefined' || obj === null) {
 	      obj = {};
 	    }
-	    
+
 	    if(typeof(name) !== 'string') {
 	      throw new TypeError("createUnitSingle expects first parameter to be of type 'string'");
 	    }
-	   
+
 	    // Check collisions with existing units
 	    if(UNITS.hasOwnProperty(name)) {
 	      throw new Error('Cannot create unit "' + name + '": a unit with that name already exists');
@@ -21190,7 +21190,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    else if(typeof(obj) === 'object') {
 	      definition = obj.definition;
-	      prefixes = obj.prefixes; 
+	      prefixes = obj.prefixes;
 	      offset = obj.offset;
 	      aliases = obj.aliases;
 	    }
@@ -21221,7 +21221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    aliases = aliases || [];
 	    offset = offset || 0;
-	    if(prefixes && prefixes.toUpperCase) 
+	    if(prefixes && prefixes.toUpperCase)
 	      prefixes = PREFIXES[prefixes.toUpperCase()] || PREFIXES.NONE;
 	    else
 	      prefixes = PREFIXES.NONE;
@@ -21253,7 +21253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      newBaseUnit.dimensions[BASE_DIMENSIONS.length-1] = 1;
 	      newBaseUnit.key = baseName;
 	      BASE_UNITS[baseName] = newBaseUnit;
-	       
+
 	      newUnit = {
 	        name: name,
 	        value: 1,
@@ -21278,7 +21278,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        prefixes: prefixes,
 	        offset: offset,
 	      };
-	      
+
 	      // Create a new base if no matching base exists
 	      var anyMatch = false;
 	      for(var i in BASE_UNITS) {
@@ -21497,7 +21497,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return res;
 	    },
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // matrix sizes
 	      var xsize = x.size();
@@ -21539,7 +21539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return subtract(matrix(x), matrix(y)).valueOf();
@@ -21554,7 +21554,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use matrix implementation
 	      return subtract(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, any': function (x, y) {
 	      // result
 	      var c;
@@ -21695,16 +21695,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	function factory (type, config, load, typed) {
 
 	  var equalScalar = load(__webpack_require__(48));
-	  
+
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked MAX(NNZA, NNZB) times
 	   *
 	   *
 	   *          ┌  f(Aij, Bij)  ; A(i,j) !== 0 || B(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  0            ; otherwise
 	   *
 	   *
@@ -21785,7 +21785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // vars
 	    var i, j, k, k1;
-	    
+
 	    // loop columns
 	    for (j = 0; j < columns; j++) {
 	      // update cptr
@@ -21873,7 +21873,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function factory(type, config, load, typed) {
-	  
+
 	  /**
 	   * Multiply two scalar values, `x * y`.
 	   * This function is meant for internal use: it is used by the public function
@@ -22194,9 +22194,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isInteger = __webpack_require__(6).isInteger;
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
-	  
+
 	  /**
 	   * Create a 2-dimensional identity matrix with size m x n or n x n.
 	   * The matrix has ones on the diagonal and zeros elsewhere.
@@ -22239,7 +22239,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'number | BigNumber': function (rows) {
 	      return _eye(rows, rows, config.matrix === 'Matrix' ? 'default' : undefined);
 	    },
-	    
+
 	    'number | BigNumber, string': function (rows, format) {
 	      return _eye(rows, rows, format);
 	    },
@@ -22247,7 +22247,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'number | BigNumber, number | BigNumber': function (rows, cols) {
 	      return _eye(rows, cols, config.matrix === 'Matrix' ? 'default' : undefined);
 	    },
-	    
+
 	    'number | BigNumber, number | BigNumber, string': function (rows, cols, format) {
 	      return _eye(rows, cols, format);
 	    },
@@ -22255,7 +22255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array':  function (size) {
 	      return _eyeVector(size);
 	    },
-	    
+
 	    'Array, string':  function (size, format) {
 	      return _eyeVector(size, format);
 	    },
@@ -22263,7 +22263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Matrix': function (size) {
 	      return _eyeVector(size.valueOf(), size.storage());
 	    },
-	    
+
 	    'Matrix, string': function (size, format) {
 	      return _eyeVector(size.valueOf(), format);
 	    }
@@ -22307,11 +22307,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!isInteger(cols) || cols < 1) {
 	      throw new Error('Parameters in function eye must be positive integers');
 	    }
-	    
+
 	    var one = Big ? new type.BigNumber(1) : 1;
 	    var defaultValue = Big ? new Big(0) : 0;
 	    var size = [rows, cols];
-	    
+
 	    // check we need to return a matrix
 	    if (format) {
 	      // get matrix storage constructor
@@ -22319,7 +22319,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // create diagonal matrix (use optimized implementation for storage format)
 	      return F.diagonal(size, one, 0, defaultValue);
 	    }
-	    
+
 	    // create and resize array
 	    var res = array.resize([], size, defaultValue);
 	    // fill in ones on the diagonal
@@ -22355,7 +22355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var algorithm11 = load(__webpack_require__(85));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  var DenseMatrix = type.DenseMatrix;
 	  var SparseMatrix = type.SparseMatrix;
 
@@ -22443,7 +22443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Matrix, any': function (x, y) {
 	      // result
 	      var c;
-	      
+
 	      // process storage format
 	      switch (x.storage()) {
 	        case 'sparse':
@@ -22567,7 +22567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      af = typed.find(addScalar, [dt, dt]);
 	      mf = typed.find(multiplyScalar, [dt, dt]);
 	    }
-	    
+
 	    // result (do not initialize it with zero)
 	    var c = mf(adata[0], bdata[0]);
 	    // loop data
@@ -22638,7 +22638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // loop matrix columns
 	    for (var j = 0; j < bcolumns; j++) {
 	      // sum (do not initialize it with zero)
-	      var sum = mf(adata[0], bdata[0][j]);      
+	      var sum = mf(adata[0], bdata[0][j]);
 	      // loop vector
 	      for (var i = 1; i < alength; i++) {
 	        // multiply & accumulate
@@ -22711,8 +22711,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {Matrix} a            DenseMatrix  (MxN)
 	   * @param {Matrix} b            Dense Vector (N)
 	   *
-	   * @return {Matrix}             Dense Vector (M) 
-	   */ 
+	   * @return {Matrix}             Dense Vector (M)
+	   */
 	  var _multiplyDenseMatrixVector = function (a, b) {
 	    // a dense
 	    var adata = a._data;
@@ -22803,7 +22803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      af = typed.find(addScalar, [dt, dt]);
 	      mf = typed.find(multiplyScalar, [dt, dt]);
 	    }
-	    
+
 	    // result
 	    var c = [];
 
@@ -22859,7 +22859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // rows & columns
 	    var arows = asize[0];
 	    var bcolumns = bsize[1];
-	    
+
 	    // datatype
 	    var dt;
 	    // addScalar signature to use
@@ -22951,7 +22951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {Matrix} a            SparseMatrix    (MxN)
 	   * @param {Matrix} b            Dense Vector (N)
 	   *
-	   * @return {Matrix}             SparseMatrix    (M, 1) 
+	   * @return {Matrix}             SparseMatrix    (M, 1)
 	   */
 	  var _multiplySparseMatrixVector = function (a, b) {
 	    // a sparse
@@ -22972,7 +22972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var cvalues = [];
 	    var cindex = [];
 	    var cptr = [];
-	    
+
 	    // datatype
 	    var dt;
 	    // addScalar signature to use
@@ -23181,7 +23181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var bindex = b._index;
 	    var bptr = b._ptr;
 	    var bdt = b._datatype;
-	    
+
 	    // rows & columns
 	    var arows = a._size[0];
 	    var bcolumns = b._size[1];
@@ -23203,7 +23203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      af = typed.find(addScalar, [dt, dt]);
 	      mf = typed.find(multiplyScalar, [dt, dt]);
 	    }
-	    
+
 	    // result
 	    var cvalues = values ? [] : undefined;
 	    var cindex = [];
@@ -23311,12 +23311,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b). 
+	   * Iterates over SparseMatrix S nonzero items and invokes the callback function f(Sij, b).
 	   * Callback function invoked NZ times (number of nonzero items in S).
 	   *
 	   *
 	   *          ┌  f(Sij, b)  ; S(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  0          ; otherwise
 	   *
 	   *
@@ -23558,7 +23558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 	  var equalScalar = load(__webpack_require__(48));
 
@@ -23614,7 +23614,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {boolean | Array | Matrix} Returns true when the compared values are equal, else returns false
 	   */
 	  var equal = typed('equal', {
-	    
+
 	    'any, any': function (x, y) {
 	      // strict equality for null and undefined?
 	      if (x === null) { return y === null; }
@@ -23658,7 +23658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return equal(matrix(x), matrix(y)).valueOf();
@@ -23673,7 +23673,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use matrix implementation
 	      return equal(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, any': function (x, y) {
 	      // result
 	      var c;
@@ -24816,7 +24816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *     // Another shortcut:
 	   *     math.createUnit(string, unit : string, [object])
 	   *
-	   * Examples: 
+	   * Examples:
 	   *
 	   *     math.createUnit('foo');
 	   *     math.createUnit('knot', {definition: '0.514444444 m/s', aliases: ['knots', 'kt', 'kts]});
@@ -30285,7 +30285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      fn = operators[name];
 
 	      getTokenSkipNewline();
-	      
+
 	      if (name === 'in' && token === '') {
 	        // end of expression -> this is the unit 'in' ('inch')
 	        node = new OperatorNode('*', 'multiply', [node, new SymbolNode('in')], true);
@@ -32340,13 +32340,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	// (a+b)+c=a+(b+c)
 	// (a+b)-c=a+(b-c)
 	//
-	// postfix operators are left associative, prefix operators 
+	// postfix operators are left associative, prefix operators
 	// are right associative
 	//
 	//It's also possible to set the following properties:
 	// latexParens: if set to false, this node doesn't need to be enclosed
 	//              in parentheses when using LaTeX
-	// latexLeftParens: if set to false, this !OperatorNode's! 
+	// latexLeftParens: if set to false, this !OperatorNode's!
 	//                  left argument doesn't need to be enclosed
 	//                  in parentheses
 	// latexRightParens: the same for the right argument
@@ -33411,7 +33411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    // TODO: deprecated since v3, remove some day
-	    var deprecated = function () {
+	    var deprecated = function ()
 	      throw new Error('Property `IndexNode.object` is deprecated, use `IndexNode.fn` instead');
 	    };
 	    Object.defineProperty(this, 'object', { get: deprecated, set: deprecated });
@@ -35819,7 +35819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function factory (type, config, load, typed) {
 	  var matrix = load(__webpack_require__(52));
-	  
+
 	  /**
 	   * Filter the items in an array or one dimensional matrix.
 	   *
@@ -36747,7 +36747,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var algorithm11 = load(__webpack_require__(85));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Divide two values, `x / y`.
 	   * To divide matrices, `x` is multiplied with the inverse of `y`: `x * inv(y)`.
@@ -36805,7 +36805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, any': function (x, y) {
 	      // use matrix implementation
 	      return algorithm14(matrix(x), y, divideScalar, false).valueOf();
@@ -37271,7 +37271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function factory (type, config, load, typed) {
 	  var smaller = load(__webpack_require__(60));
-	  
+
 	  /**
 	   * Compute the maximum value of a matrix or a  list of values.
 	   * In case of a multi dimensional array, the maximum of the flattened array
@@ -37900,11 +37900,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var larger = load(__webpack_require__(64));
 	  var equalScalar = load(__webpack_require__(48));
 	  var unaryMinus = load(__webpack_require__(78));
-	  
+
 	  var SparseMatrix = type.SparseMatrix;
 	  var DenseMatrix = type.DenseMatrix;
 	  var Spa = type.Spa;
-	  
+
 	  /**
 	   * Calculate the Matrix LU decomposition with partial pivoting. Matrix `A` is decomposed in two matrices (`L`, `U`) and a
 	   * row permutation vector `p` where `A[p,:] = L * U`
@@ -37936,7 +37936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'DenseMatrix': function (m) {
 	      return _denseLUP(m);
 	    },
-	    
+
 	    'SparseMatrix': function (m) {
 	      return _sparseLUP(m);
 	    },
@@ -37971,10 +37971,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var usize = [n, columns];
 	    // vars
 	    var i, j, k;
-	    // permutation vector    
+	    // permutation vector
 	    var p = [];
 	    for (i = 0; i < rows; i++)
-	      p[i] = i;    
+	      p[i] = i;
 	    // loop columns
 	    for (j = 0; j < columns; j++) {
 	      // skip first column in upper triangular matrix
@@ -37992,7 +37992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	          data[i][j] = subtract(data[i][j], s);
 	        }
-	      }      
+	      }
 	      // row with larger value in cvector, row >= j
 	      var pi = j;
 	      var pabsv = 0;
@@ -38102,16 +38102,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    for (i = 0, n = p.length; i < n; i++)
 	      pv[p[i]] = i;
 	    // return matrices
-	    return { 
-	      L: l, 
-	      U: u, 
-	      p: pv, 
+	    return {
+	      L: l,
+	      U: u,
+	      p: pv,
 	      toString: function () {
 	        return 'L: ' + this.L.toString() + '\nU: ' + this.U.toString() + '\nP: ' + this.p;
 	      }
 	    };
 	  };
-	  
+
 	  var _sparseLUP = function (m) {
 	    // rows & columns
 	    var rows = m._size[0];
@@ -38142,7 +38142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      pv_oc[i] = i;
 	    }
 	    // swap indices in permutation vectors (condition x < y)!
-	    var swapIndeces = function (x, y) {      
+	    var swapIndeces = function (x, y) {
 	      // find pv indeces getting data from x and y
 	      var kx = pv_oc[x];
 	      var ky = pv_oc[y];
@@ -38156,7 +38156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // loop columns
 	    for (j = 0; j < columns; j++) {
 	      // sparse accumulator
-	      var spa = new Spa();            
+	      var spa = new Spa();
 	      // check lower triangular matrix has a value @ column j
 	      if (j < rows) {
 	        // update ptr
@@ -38189,12 +38189,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	              spa.accumulate(i, unaryMinus(multiplyScalar(vik, vkj)));
 	            }
 	          });
-	        });        
+	        });
 	      }
 	      // row with larger value in spa, row >= j
 	      var pi = j;
 	      var vjj = spa.get(j);
-	      var pabsv = abs(vjj);      
+	      var pabsv = abs(vjj);
 	      // loop values in spa (order by row, below diagonal)
 	      spa.forEach(j + 1, rows - 1, function (x, v) {
 	        // absolute value
@@ -38251,7 +38251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        index: lindex,
 	        ptr: lptr,
 	        size: lsize
-	      }), 
+	      }),
 	      U: new SparseMatrix({
 	        values: uvalues,
 	        index: uindex,
@@ -38264,7 +38264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    };
 	  };
-	  
+		
 	  return lup;
 	}
 
@@ -38281,7 +38281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var util = __webpack_require__(39);
 
 	var number = util.number,
-	    
+
 	    isInteger = number.isInteger;
 
 	function factory (type, config, load, typed) {
@@ -38306,7 +38306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {Number}       order          The Symbolic Ordering and Analysis order:
 	   *                                       0 - Natural ordering, no permutation vector q is returned
 	   *                                       1 - Matrix must be square, symbolic ordering and analisis is performed on M = A + A'
-	   *                                       2 - Symbolic ordering and analisis is performed on M = A' * A. Dense columns from A' are dropped, A recreated from A'. 
+	   *                                       2 - Symbolic ordering and analisis is performed on M = A' * A. Dense columns from A' are dropped, A recreated from A'.
 	   *                                           This is appropriatefor LU factorization of unsymmetric matrices.
 	   *                                       3 - Symbolic ordering and analisis is performed on M = A' * A. This is best used for LU factorization is matrix M has no dense rows.
 	   *                                           A dense row is a row with more than 10*sqr(columns) entries.
@@ -38323,13 +38323,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // verify threshold
 	      if (threshold < 0 || threshold > 1)
 	        throw new Error('Partial pivoting threshold must be a number from 0 to 1');
-	      
+
 	      // perform symbolic ordering and analysis
 	      var s = cs_sqr(order, a, false);
-	      
+
 	      // perform lu decomposition
 	      var f = cs_lu(a, s, threshold);
-	      
+
 	      // return decomposition
 	      return {
 	        L: f.L,
@@ -38385,11 +38385,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // vars
 	    var k;
 	    // symbolic analysis result
-	    var s = {};    
+	    var s = {};
 	    // fill-reducing ordering
 	    s.q = cs_amd(order, a);
 	    // validate results
-	    if (order && !s.q) 
+	    if (order && !s.q)
 	      return null;
 	    // QR symbolic analysis
 	    if (qr) {
@@ -38404,7 +38404,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // check we have everything needed to calculate number of nonzero elements
 	      if (c && s.parent && s.cp && _vcount(c, s)) {
 	        // calculate number of nonzero elements
-	        for (s.unz = 0, k = 0; k < n; k++) 
+	        for (s.unz = 0, k = 0; k < n; k++)
 	          s.unz += s.cp[k];
 	      }
 	    }
@@ -38416,7 +38416,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return result S
 	    return s;
 	  };
-	  
+
 	  /**
 	   * Compute nnz(V) = s.lnz, s.pinv, s.leftmost, s.m2 from A and s.parent
 	   */
@@ -38451,9 +38451,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      w[nque + k] = 0;
 	    }
 	    // initialize row arrays
-	    for (i = 0; i < m; i++) 
+	    for (i = 0; i < m; i++)
 	      leftmost[i] = -1;
-	    // loop columns backwards    
+	    // loop columns backwards
 	    for (k = n - 1; k >= 0; k--) {
 	      // values & index for column k
 	      for (p0 = aptr[k], p1 = aptr[k + 1], p = p0; p < p1; p++) {
@@ -38467,10 +38467,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      pinv[i] = -1;
 	      k = leftmost[i];
 	      // check row i is empty
-	      if (k == -1) 
+	      if (k == -1)
 	        continue;
 	      // first row in queue k
-	      if (w[nque + k]++ === 0) 
+	      if (w[nque + k]++ === 0)
 	        w[tail + k] = i;
 	      // put i at head of queue k
 	      w[next + i] = w[head + k];
@@ -38485,19 +38485,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // count V(k,k) as nonzero
 	      s.lnz++;
 	      // add a fictitious row
-	      if (i < 0) 
+	      if (i < 0)
 	        i = s.m2++;
 	      // associate row i with V(:,k)
 	      pinv[i] = k;
 	      // skip if V(k+1:m,k) is empty
-	      if (--nque[k] <= 0) 
+	      if (--nque[k] <= 0)
 	        continue;
 	      // nque[k] is nnz (V(k+1:m,k))
 	      s.lnz += w[nque + k];
 	      // move all rows to parent of k
 	      var pa = parent[k];
 	      if (pa != -1) {
-	        if (w[nque + pa] === 0) 
+	        if (w[nque + pa] === 0)
 	          w[tail + pa] = w[tail + k];
 	        w[next + w[tail + k]] = w[head + pa];
 	        w[head + pa] = w[next + i];
@@ -38505,7 +38505,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	    for (i = 0; i < m; i++) {
-	      if (pinv[i] < 0) 
+	      if (pinv[i] < 0)
 	        pinv[i] = k++;
 	    }
 	    return true;
@@ -38530,13 +38530,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var cs_flip = load(__webpack_require__(341));
 	  var cs_fkeep = load(__webpack_require__(342));
 	  var cs_tdfs = load(__webpack_require__(343));
-	  
+
 	  var add       = load(__webpack_require__(51));
 	  var multiply  = load(__webpack_require__(84));
 	  var transpose = load(__webpack_require__(344));
 
 	  /**
-	   * Approximate minimum degree ordering. The minimum degree algorithm is a widely used 
+	   * Approximate minimum degree ordering. The minimum degree algorithm is a widely used
 	   * heuristic for finding a permutation P so that P*A*P' has fewer nonzeros in its factorization
 	   * than A. It is a gready method that selects the sparsest pivot row and column during the course
 	   * of a right looking sparse Cholesky factorization.
@@ -38556,7 +38556,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var asize = a._size;
 	    // rows and columns
 	    var m = asize[0];
-	    var n = asize[1];    
+	    var n = asize[1];
 	    // initialize vars
 	    var lemax = 0;
 	    // dense threshold
@@ -38572,10 +38572,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // number of nonzero elements in C
 	    var cnz = cptr[n];
-	    
+
 	    // allocate result (n+1)
 	    var P = [];
-	    
+
 	    // create workspace (8 * (n + 1))
 	    var W = [];
 	    var len = 0; // first n + 1 entries
@@ -38585,30 +38585,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var elen = 4 * (n + 1);  // next n + 1 entries
 	    var degree = 5 * (n + 1);  // next n + 1 entries
 	    var w = 6 * (n + 1);  // next n + 1 entries
-	    var hhead = 7 * (n + 1);  // last n + 1 entries    
+	    var hhead = 7 * (n + 1);  // last n + 1 entries
 
 	    // use P as workspace for last
 	    var last = P;
-	    
+
 	    // initialize quotient graph
 	    var mark = _initializeQuotientGraph(n, cptr, W, len, head, last, next, hhead, nv, w, elen, degree);
-	    
+
 	    // initialize degree lists
 	    var nel = _initializeDegreeLists(n, cptr, W, degree, elen, w, dense, nv, head, last, next);
-	    
+
 	    // minimum degree node
 	    var mindeg = 0;
-	    
+
 	    // vars
 	    var i, j, k, k1, k2, e, pj, ln, nvi, pk, eln, p1, p2, pn, h, d;
-	    
+
 	    // while (selecting pivots) do
 	    while (nel < n) {
 	      // select node of minimum approximate degree. amd() is now ready to start eliminating the graph. It first
 	      // finds a node k of minimum degree and removes it from its degree list. The variable nel keeps track of thow
 	      // many nodes have been eliminated.
-	      for (k = -1; mindeg < n && (k = W[head + mindeg]) == -1; mindeg++);      
-	      if (W[next + k] != -1) 
+	      for (k = -1; mindeg < n && (k = W[head + mindeg]) == -1; mindeg++);
+	      if (W[next + k] != -1)
 	        last[W[next + k]] = -1;
 	      // remove k from degree list
 	      W[head + mindeg] = W[next + k];
@@ -38619,7 +38619,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // W[nv + k] nodes of A eliminated
 	      nel += nvk;
 
-	      // Construct a new element. The new element Lk is constructed in place if |Ek| = 0. nv[i] is 
+	      // Construct a new element. The new element Lk is constructed in place if |Ek| = 0. nv[i] is
 	      // negated for all nodes i in Lk to flag them as members of this set. Each node i is removed from the
 	      // degree lists. All elements e in Ek are absorved into element k.
 	      var dk = 0;
@@ -38648,7 +38648,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (k2 = 1; k2 <= ln; k2++) {
 	          i = cindex[pj++];
 	          // check  node i dead, or seen
-	          if ((nvi = W[nv + i]) <= 0) 
+	          if ((nvi = W[nv + i]) <= 0)
 	            continue;
 	          // W[degree + Lk] += size of node i
 	          dk += nvi;
@@ -38656,10 +38656,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          W[nv + i] = -nvi;
 	          // place i in Lk
 	          cindex[pk2++] = i;
-	          if (W[next + i] != -1) 
+	          if (W[next + i] != -1)
 	            last[W[next + i]] = last[i];
 	          // check we need to remove i from degree list
-	          if (last[i] != -1) 
+	          if (last[i] != -1)
 	            W[next + last[i]] = W[next + i];
 	          else
 	            W[head + W[degree + i]] = W[next + i];
@@ -38672,7 +38672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 	      // cindex[cnz...nzmax] is free
-	      if (elenk !== 0) 
+	      if (elenk !== 0)
 	        cnz = pk2;
 	      // external degree of k - |Lk\i|
 	      W[degree + k] = dk;
@@ -38681,17 +38681,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      W[len + k] = pk2 - pk1;
 	      // k is now an element
 	      W[elen + k] = -2;
-	            
+
 	      // Find set differences. The scan1 function now computes the set differences |Le \ Lk| for all elements e. At the start of the
 	      // scan, no entry in the w array is greater than or equal to mark.
-	      
+
 	      // clear w if necessary
 	      mark = _wclear(mark, lemax, W, w, n);
 	      // scan 1: find |Le\Lk|
 	      for (pk = pk1; pk < pk2; pk++) {
 	        i = cindex[pk];
 	        // check if W[elen + i] empty, skip it
-	        if ((eln = W[elen + i]) <= 0) 
+	        if ((eln = W[elen + i]) <= 0)
 	          continue;
 	        // W[nv + i] was negated
 	        nvi = -W[nv + i];
@@ -38709,11 +38709,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	      }
-	      
+
 	      // degree update
 	      // The second pass computes the approximate degree di, prunes the sets Ei and Ai, and computes a hash
 	      // function h(i) for all nodes in Lk.
-	      
+
 	      // scan2: degree update
 	      for (pk = pk1; pk < pk2; pk++) {
 	        // consider node i in Lk
@@ -38753,7 +38753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          j = cindex[p];
 	          // check node j dead or in Lk
 	          var nvj = W[nv + j];
-	          if (nvj <= 0) 
+	          if (nvj <= 0)
 	            continue;
 	          // degree(i) += |j|
 	          d += nvj;
@@ -38801,13 +38801,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      lemax = Math.max(lemax, dk);
 	      // clear w
 	      mark = _wclear(mark + lemax, lemax, W, w, n);
-	      
+
 	      // Supernode detection. Supernode detection relies on the hash function h(i) computed for each node i.
 	      // If two nodes have identical adjacency lists, their hash functions wil be identical.
 	      for (pk = pk1; pk < pk2; pk++) {
 	        i = cindex[pk];
 	        // check i is dead, skip it
-	        if (W[nv + i] >= 0) 
+	        if (W[nv + i] >= 0)
 	          continue;
 	        // scan hash bucket of node i
 	        h = last[i];
@@ -38817,7 +38817,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        for (; i != -1 && W[next + i] != -1; i = W[next + i], mark++) {
 	          ln = W[len + i];
 	          eln = W[elen + i];
-	          for (p = cptr[i] + 1; p <= cptr[i] + ln - 1; p++) 
+	          for (p = cptr[i] + 1; p <= cptr[i] + ln - 1; p++)
 	            W[w + cindex[p]] = mark;
 	          var jlast = i;
 	          // compare i with all j
@@ -38825,7 +38825,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var ok = W[len + j] === ln && W[elen + j] === eln;
 	            for (p = cptr[j] + 1; ok && p <= cptr[j] + ln - 1; p++) {
 	              // compare i and j
-	              if (W[w + cindex[p]] != mark) 
+	              if (W[w + cindex[p]] != mark)
 	                ok = 0;
 	            }
 	            // check i and j are identical
@@ -38848,20 +38848,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	      }
-	      
+
 	      // Finalize new element. The elimination of node k is nearly complete. All nodes i in Lk are scanned one last time.
 	      // Node i is removed from Lk if it is dead. The flagged status of nv[i] is cleared.
 	      for (p = pk1, pk = pk1; pk < pk2; pk++) {
 	        i = cindex[pk];
 	        // check  i is dead, skip it
-	        if ((nvi = -W[nv + i]) <= 0) 
+	        if ((nvi = -W[nv + i]) <= 0)
 	          continue;
 	        // restore W[nv + i]
 	        W[nv + i] = nvi;
 	        // compute external degree(i)
 	        d = W[degree + i] + dk - nvi;
 	        d = Math.min(d, n - nel - nvi);
-	        if (W[head + d] != -1) 
+	        if (W[head + d] != -1)
 	          last[W[head + d]] = i;
 	        // put i back in degree list
 	        W[next + i] = W[head + d];
@@ -38887,16 +38887,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	        cnz = p;
 	      }
 	    }
-	    
-	    // Postordering. The elimination is complete, but no permutation has been computed. All that is left 
+
+	    // Postordering. The elimination is complete, but no permutation has been computed. All that is left
 	    // of the graph is the assembly tree (ptr) and a set of dead nodes and elements (i is a dead node if
 	    // nv[i] is zero and a dead element if nv[i] > 0). It is from this information only that the final permutation
 	    // is computed. The tree is restored by unflipping all of ptr.
-	    
+
 	    // fix assembly tree
-	    for (i = 0; i < n; i++) 
+	    for (i = 0; i < n; i++)
 	      cptr[i] = cs_flip(cptr[i]);
-	    for (j = 0; j <= n; j++) 
+	    for (j = 0; j <= n; j++)
 	      W[head + j] = -1;
 	    // place unordered nodes in lists
 	    for (j = n; j >= 0; j--) {
@@ -38920,7 +38920,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    // postorder the assembly tree
 	    for (k = 0, i = 0; i <= n; i++) {
-	      if (cptr[i] == -1) 
+	      if (cptr[i] == -1)
 	        k = cs_tdfs(i, k, W, head, next, P, w);
 	    }
 	    // remove last item in array
@@ -38928,7 +38928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return P
 	    return P;
 	  };
-	  
+
 	  /**
 	   * Creates the matrix that will be used by the approximate minimum degree ordering algorithm. The function accepts the matrix M as input and returns a permutation
 	   * vector P. The amd algorithm operates on a symmetrix matrix, so one of three symmetric matrices is formed.
@@ -38943,7 +38943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Order: 2
 	   *   Dense columns from M' are dropped, M recreated from M'. This is appropriatefor LU factorization of unsymmetric matrices.
 	   *   P = M' * M
-	   * 
+	   *
 	   * Order: 3
 	   *   This is best used for QR factorization or LU factorization is matrix M has no dense rows. A dense row is a row with more than 10*sqr(columns) entries.
 	   *   P = M' * M
@@ -38957,7 +38957,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // C = A + A'
 	      return add(a, at);
 	    }
-	    
+
 	    // check order = 2, drop dense columns from M'
 	    if (order == 2) {
 	      // transpose arrays
@@ -38972,10 +38972,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // new column j starts here
 	        tptr[j] = p2;
 	        // skip dense col j
-	        if (tptr[j + 1] - p > dense) 
+	        if (tptr[j + 1] - p > dense)
 	          continue;
 	        // map rows in column j of A
-	        for (var p1 = tptr[j + 1]; p < p1; p++) 
+	        for (var p1 = tptr[j + 1]; p < p1; p++)
 	          tindex[p2++] = tindex[p];
 	      }
 	      // finalize AT
@@ -38985,7 +38985,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use A' * A
 	      return multiply(at, a);
 	    }
-	    
+
 	    // use A' * A, square or rectangular matrix
 	    return multiply(at, a);
 	  };
@@ -39000,7 +39000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  var _initializeQuotientGraph = function (n, cptr, W, len, head, last, next, hhead, nv, w, elen, degree) {
 	    // Initialize quotient graph
-	    for (var k = 0; k < n; k++) 
+	    for (var k = 0; k < n; k++)
 	      W[len + k] = cptr[k + 1] - cptr[k];
 	    W[len + n] = 0;
 	    // initialize workspace
@@ -39033,7 +39033,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  /**
-	   * Initialize degree lists. Each node is placed in its degree lists. Nodes of zero degree are eliminated immediately. Nodes with 
+	   * Initialize degree lists. Each node is placed in its degree lists. Nodes of zero degree are eliminated immediately. Nodes with
 	   * degree >= dense are alsol eliminated and merged into a placeholder node n, a dead element. Thes nodes will appera last in the
 	   * output permutation p.
 	   */
@@ -39085,11 +39085,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // at this point, W [0..n-1] < mark holds
 	    return mark;
 	  };
-	  
-	  var _diag = function (i, j) { 
+
+	  var _diag = function (i, j) {
 	    return i != j;
 	  };
-	  
+
 	  return cs_amd;
 	}
 
@@ -39171,7 +39171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // keep A(i,j)
 	          aindex[nz] = aindex[p];
 	          // check we need to process values (pattern only)
-	          if (avalues) 
+	          if (avalues)
 	            avalues[nz] = avalues[p];
 	          // increment nonzero items
 	          nz++;
@@ -39184,11 +39184,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    aindex.splice(nz, aindex.length - nz);
 	    // check we need to process values (pattern only)
 	    if (avalues)
-	      avalues.splice(nz, avalues.length - nz);    
+	      avalues.splice(nz, avalues.length - nz);
 	    // return number of nonzero items
 	    return (nz);
 	  };
-	  
+
 	  return cs_fkeep;
 	}
 
@@ -39209,7 +39209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Depth-first search and postorder of a tree rooted at node j
 	   *
 	   * @param {Number}  j               The tree node
-	   * @param {Number}  k               
+	   * @param {Number}  k
 	   * @param {Array}   w               The workspace array
 	   * @param {Number}  head            The index offset within the workspace for the head array
 	   * @param {Number}  next            The index offset within the workspace for the next array
@@ -39223,7 +39223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var top = 0;
 	    // place j on the stack
 	    w[stack] = j;
-	    // while (stack is not empty) 
+	    // while (stack is not empty)
 	    while (top >= 0) {
 	      // p = top of stack
 	      var p = w[stack + top];
@@ -39305,7 +39305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      // result
 	      var c;
-	      
+
 	      // process dimensions
 	      switch (size.length) {
 	        case 1:
@@ -39334,7 +39334,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              break;
 	          }
 	          break;
-	          
+
 	        default:
 	          // multi dimensional
 	          throw new RangeError('Matrix must be a vector or two dimensional (size: ' + format(this._size) + ')');
@@ -39475,7 +39475,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var cptr = []; // (n + 1);
 	    // initialize vars
 	    var nz = 0;
-	    // loop columns    
+	    // loop columns
 	    for (var k = 0; k < n; k++) {
 	      // column k of C is column q[k] of A
 	      cptr[k] = nz;
@@ -39488,7 +39488,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // index
 	        cindex[nz] = r;
 	        // check we need to populate values
-	        if (cvalues) 
+	        if (cvalues)
 	          cvalues[nz] = avalues[t];
 	        // increment number of nonzero elements
 	        nz++;
@@ -39523,7 +39523,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function factory () {
 
 	  /**
-	   * Computes the elimination tree of Matrix A (using triu(A)) or the 
+	   * Computes the elimination tree of Matrix A (using triu(A)) or the
 	   * elimination tree of A'A without forming A'A.
 	   *
 	   * @param {Matrix}  a               The A Matrix
@@ -39542,21 +39542,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // rows & columns
 	    var m = asize[0];
 	    var n = asize[1];
-	    
+
 	    // allocate result
 	    var parent = []; // (n)
-	    
+
 	    // allocate workspace
 	    var w = []; // (n + (ata ? m : 0))
 	    var ancestor = 0; // first n entries in w
 	    var prev = n; // last m entries (ata = true)
-	    
+
 	    var i, inext;
-	    
+
 	    // check we are calculating A'A
 	    if (ata) {
 	      // initialize workspace
-	      for (i = 0; i < m; i++) 
+	      for (i = 0; i < m; i++)
 	        w[prev + i] = -1;
 	    }
 	    // loop columns
@@ -39571,17 +39571,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var r = aindex[p];
 	        // node
 	        i = ata ? (w[prev + r]) : r;
-	        // traverse from i to k 
+	        // traverse from i to k
 	        for (; i != -1 && i < k; i = inext) {
 	          // inext = ancestor of i
 	          inext = w[ancestor + i];
 	          // path compression
 	          w[ancestor + i] = k;
 	          // check no anc., parent is k
-	          if (inext == -1) 
+	          if (inext == -1)
 	            parent[i] = k;
 	        }
-	        if (ata) 
+	        if (ata)
 	          w[prev + r] = k;
 	      }
 	    }
@@ -39616,17 +39616,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  var cs_post = function (parent, n) {
 	    // check inputs
-	    if (!parent) 
+	    if (!parent)
 	      return null;
-	    // vars 
+	    // vars
 	    var k = 0;
 	    var j;
 	    // allocate result
 	    var post = []; // (n);
 	    // workspace, head: first n entries, next: next n entries, stack: last n entries
 	    var w = []; // (3 * n);
-	    var head = 0; 
-	    var next = n; 
+	    var head = 0;
+	    var next = n;
 	    var stack = 2 * n;
 	    // initialize workspace
 	    for (j = 0; j < n; j++) {
@@ -39636,7 +39636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // traverse nodes in reverse order
 	    for (j = n-1; j >= 0; j--) {
 	      // check j is a root
-	      if (parent[j] == -1) 
+	      if (parent[j] == -1)
 	        continue;
 	      // add j to list of its parent
 	      w[next + j] = w[head + parent[j]];
@@ -39645,7 +39645,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // loop nodes
 	    for (j = 0; j < n; j++) {
 	      // skip j if it is not a root
-	      if (parent[j] != -1) 
+	      if (parent[j] != -1)
 	        continue;
 	      // depth-first search
 	      k = cs_tdfs(j, k, w, head, next, post, stack);
@@ -39670,7 +39670,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function factory (type, config, load) {
 
 	  var transpose = load(__webpack_require__(344));
-	  
+
 	  var cs_leaf = load(__webpack_require__(349));
 
 	  /**
@@ -39687,16 +39687,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  var cs_counts = function (a, parent, post, ata) {
 	    // check inputs
-	    if (!a || !parent || !post) 
+	    if (!a || !parent || !post)
 	      return null;
 	    // a matrix arrays
 	    var asize = a._size;
 	    // rows and columns
 	    var m = asize[0];
-	    var n = asize[1];   
+	    var n = asize[1];
 	    // variables
 	    var i, j, k,  J,  p, p0, p1;
-	    
+
 	    // workspace size
 	    var s = 4 * n + (ata ? (n + m + 1) : 0);
 	    // allocate workspace
@@ -39708,12 +39708,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var head = 4 * n; // next n + 1 entries (used when ata is true)
 	    var next = 5 * n + 1; // last entries in workspace
 	    // clear workspace w[0..s-1]
-	    for (k = 0; k < s; k++) 
+	    for (k = 0; k < s; k++)
 	      w[k] = -1;
-	    
+
 	    // allocate result
 	    var colcount = []; // (n);
-	    
+
 	    // AT = A'
 	    var at = transpose(a);
 	    // at arrays
@@ -39725,56 +39725,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	      j = post[k];
 	      // colcount[j]=1 if j is a leaf
 	      colcount[j] = (w[first + j] == -1) ? 1 : 0;
-	      for (; j != -1 && w[first + j] == -1; j = parent[j]) 
+	      for (; j != -1 && w[first + j] == -1; j = parent[j])
 	        w[first + j] = k;
 	    }
 
 	    // initialize ata if needed
 	    if (ata) {
 	      // invert post
-	      for (k = 0; k < n; k++) 
+	      for (k = 0; k < n; k++)
 	        w[post[k]] = k;
 	      // loop rows (columns in AT)
 	      for (i = 0; i < m; i++) {
 	        // values in column i of AT
-	        for (k = n, p0 = tptr[i], p1 = tptr[i + 1], p = p0; p < p1; p++) 
+	        for (k = n, p0 = tptr[i], p1 = tptr[i + 1], p = p0; p < p1; p++)
 	          k = Math.min(k, w[tindex[p]]);
 	        // place row i in linked list k
 	        w[next + i] = w[head + k];
 	        w[head + k] = i;
 	      }
 	    }
-	    
+
 	    // each node in its own set
-	    for (i = 0; i < n; i++) 
+	    for (i = 0; i < n; i++)
 	      w[ancestor + i] = i;
-	    
+
 	    for (k = 0; k < n; k++) {
 	      // j is the kth node in postordered etree
 	      j = post[k];
 	      // check j is not a root
-	      if (parent[j] != -1) 
+	      if (parent[j] != -1)
 	        colcount[parent[j]]--;
-	      
+
 	      // J=j for LL'=A case
 	      for (J = (ata ? w[head + k] : j); J != -1; J = (ata ? w[next + J] : -1)) {
 	        for (p = tptr[J]; p < tptr[J+1]; p++) {
 	          i = tindex[p];
 	          var r = cs_leaf(i, j, w, first, maxfirst, prevleaf, ancestor);
 	          // check A(i,j) is in skeleton
-	          if (r.jleaf >= 1) 
+	          if (r.jleaf >= 1)
 	            colcount[j]++;
 	          // check account for overlap in q
-	          if (r.jleaf == 2) 
+	          if (r.jleaf == 2)
 	            colcount[r.q]--;
 	        }
 	      }
-	      if (parent[j] != -1) 
+	      if (parent[j] != -1)
 	        w[ancestor + j] = parent[j];
 	    }
 	    // sum up colcount's of each child
 	    for (j = 0; j < n; j++) {
-	      if (parent[j] != -1) 
+	      if (parent[j] != -1)
 	        colcount[parent[j]] += colcount[j];
 	    }
 	    return colcount;
@@ -39813,22 +39813,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Reference: http://faculty.cse.tamu.edu/davis/publications.html
 	   */
 	  var cs_leaf = function (i, j, w, first, maxfirst, prevleaf, ancestor) {
-	    
+
 	    var s, sparent, jprev;
-	    
+
 	    // our result
 	    var jleaf = 0;
 	    var q;
-	    
+
 	    // check j is a leaf
-	    if (i <= j || w[first + j] <= w[maxfirst + i]) 
+	    if (i <= j || w[first + j] <= w[maxfirst + i])
 	      return (-1);
 	    // update max first[j] seen so far
 	    w[maxfirst + i] = w[first + j];
 	    // jprev = previous leaf of ith subtree
 	    jprev = w[prevleaf + i];
 	    w[prevleaf + i] = j;
-	    
+
 	    // check j is first or subsequent leaf
 	    if (jprev === -1) {
 	      // 1st leaf, q = root of ith subtree
@@ -39844,7 +39844,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // path compression
 	        sparent = w[ancestor + s];
 	        w[ancestor + s] = q;
-	      }      
+	      }
 	    }
 	    return {
 	      jleaf: jleaf,
@@ -39871,22 +39871,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var abs = load(__webpack_require__(86));
 	  var divideScalar = load(__webpack_require__(81));
 	  var multiply = load(__webpack_require__(84));
-	  
+
 	  var larger = load(__webpack_require__(64));
 	  var largerEq = load(__webpack_require__(351));
-	  
+
 	  var cs_spsolve = load(__webpack_require__(352));
 
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
 	   * Computes the numeric LU factorization of the sparse matrix A. Implements a Left-looking LU factorization
-	   * algorithm that computes L and U one column at a tume. At the kth step, it access columns 1 to k-1 of L 
+	   * algorithm that computes L and U one column at a tume. At the kth step, it access columns 1 to k-1 of L
 	   * and column k of A. Given the fill-reducing column ordering q (see parameter s) computes L, U and pinv so
 	   * L * U = A(p, q), where p is the inverse of pinv.
 	   *
 	   * @param {Matrix}  m               The A Matrix to factorize
-	   * @param {Object}  s               The symbolic analysis from cs_sqr(). Provides the fill-reducing 
+	   * @param {Object}  s               The symbolic analysis from cs_sqr(). Provides the fill-reducing
 	   *                                  column ordering q
 	   * @param {Number}  tol             Partial pivoting threshold (1 for partial pivoting)
 	   *
@@ -39936,7 +39936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	    // inverse of permutation vector
 	    var pinv = []; // (n);
-	    // vars 
+	    // vars
 	    var i, p;
 	    // allocate arrays
 	    var x = []; // (n);
@@ -39971,7 +39971,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        i = xi[p];
 	        // check row i is not yet pivotal
 	        if (pinv[i] < 0) {
-	          // absolute value of x[i]          
+	          // absolute value of x[i]
 	          var xabs = abs(x[i]);
 	          // check absoulte value is greater than pivot value
 	          if (larger(xabs, a)) {
@@ -39987,7 +39987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	      }
 	      // validate we found a valid pivot
-	      if (ipiv == -1 || a <= 0) 
+	      if (ipiv == -1 || a <= 0)
 	        return null;
 	      // update actual pivot column, give preference to diagonal value
 	      if (pinv[col] < 0 && largerEq(abs(x[col]), multiply(a, tol)))
@@ -40002,7 +40002,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // first entry in L(:,k) is L(k,k) = 1
 	      lindex[lnz] = ipiv;
 	      lvalues[lnz++] = 1;
-	      // L(k+1:n,k) = x / pivot      
+	      // L(k+1:n,k) = x / pivot
 	      for (p = top; p < n; p++) {
 	        // row
 	        i = xi[p];
@@ -40021,13 +40021,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lptr[n] = lnz;
 	    uptr[n] = unz;
 	    // fix row indices of L for final pinv
-	    for (p = 0; p < lnz; p++) 
+	    for (p = 0; p < lnz; p++)
 	      lindex[p] = pinv[lindex[p]];
 	    // trim arrays
 	    lvalues.splice(lnz, lvalues.length - lnz);
 	    lindex.splice(lnz, lindex.length - lnz);
 	    uvalues.splice(unz, uvalues.length - unz);
-	    uindex.splice(unz, uindex.length - unz);    
+	    uindex.splice(unz, uindex.length - unz);
 	    // return LU factor
 	    return {
 	      L: L,
@@ -40054,7 +40054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var bigNearlyEqual = __webpack_require__(49);
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 
 	  var algorithm03 = load(__webpack_require__(61));
@@ -40242,7 +40242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * The function cs_spsolve() computes the solution to G * x = bk, where bk is the
 	   * kth column of B. When lo is true, the function assumes G = L is lower triangular with the
-	   * diagonal entry as the first entry in each column. When lo is true, the function assumes G = U 
+	   * diagonal entry as the first entry in each column. When lo is true, the function assumes G = U
 	   * is upper triangular with the diagonal entry as the last entry in each column.
 	   *
 	   * @param {Matrix}  g               The G matrix
@@ -40275,10 +40275,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // xi[top..n-1] = cs_reach(B(:,k))
 	    var top = cs_reach(g, b, k, xi, pinv);
 	    // clear x
-	    for (p = top; p < n; p++) 
+	    for (p = top; p < n; p++)
 	      x[xi[p]] = 0;
 	    // scatter b
-	    for (p0 = bptr[k], p1 = bptr[k + 1], p = p0; p < p1; p++) 
+	    for (p0 = bptr[k], p1 = bptr[k + 1], p = p0; p < p1; p++)
 	      x[bindex[p]] = bvalues[p];
 	    // loop columns
 	    for (var px = top; px < n; px++) {
@@ -40308,7 +40308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return top of stack
 	    return top;
 	  };
-	  
+
 	  return cs_spsolve;
 	}
 
@@ -40330,7 +40330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var cs_mark = load(__webpack_require__(356));
 
 	  /**
-	   * The cs_reach function computes X = Reach(B), where B is the nonzero pattern of the n-by-1 
+	   * The cs_reach function computes X = Reach(B), where B is the nonzero pattern of the n-by-1
 	   * sparse column of vector b. The function returns the set of nodes reachable from any node in B. The
 	   * nonzero pattern xi of the solution x to the sparse linear system Lx=b is given by X=Reach(B).
 	   *
@@ -40445,7 +40445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // consider neighbor node i
 	        i = index[p];
 	        // check we have visited node i, skip it
-	        if (cs_marked(ptr, i)) 
+	        if (cs_marked(ptr, i))
 	          continue;
 	        // pause depth-first search of node j, update stack (last n entries in xi)
 	        xi[n + head] = p;
@@ -40464,7 +40464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        xi[--top] = j;
 	      }
 	    }
-	    return top;    
+	    return top;
 	  };
 
 	  return cs_dfs;
@@ -40544,7 +40544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function factory (type, config, load) {
 
 	  var cs_flip = load(__webpack_require__(341));
-	  
+
 	  /**
 	   * Flips the value if it is negative of returns the same value otherwise.
 	   *
@@ -40583,7 +40583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var DenseMatrix = type.DenseMatrix;
 
-	  /** 
+	  /**
 	   * Solves the linear equation system by forwards substitution. Matrix must be a lower triangular matrix.
 	   *
 	   * `L * x = b`
@@ -40613,12 +40613,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // process matrix
 	      return _sparseForwardSubstitution(m, b);
 	    },
-	    
+
 	    'DenseMatrix, Array | Matrix': function (m, b) {
 	      // process matrix
 	      return _denseForwardSubstitution(m, b);
 	    },
-	    
+
 	    'Array, Array | Matrix': function (a, b) {
 	      // create dense matrix from array
 	      var m = matrix(a);
@@ -40772,7 +40772,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isArray = Array.isArray;
 
 	function factory (type) {
-	  
+
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
@@ -40792,9 +40792,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      throw new RangeError('Matrix must be two dimensional (size: ' + string.format(size) + ')');
 	    // rows & columns
 	    var rows = size[0];
-	    var columns = size[1];    
+	    var columns = size[1];
 	    // validate rows & columns
-	    if (rows !== columns) 
+	    if (rows !== columns)
 	      throw new RangeError('Matrix must be square (size: ' + string.format(size) + ')');
 	    // vars
 	    var data, i, bdata;
@@ -40864,7 +40864,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // row
 	          i = index[k];
 	          // add to data
-	          data[i][0] = values[k]; 
+	          data[i][0] = values[k];
 	        }
 	        // return Dense Matrix
 	        return new DenseMatrix({
@@ -40884,7 +40884,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (asize.length === 1) {
 	        // check vector length
 	        if (asize[0] !== rows)
-	          throw new RangeError('Dimension mismatch. Matrix columns must match vector length.');        
+	          throw new RangeError('Dimension mismatch. Matrix columns must match vector length.');
 	        // create data array
 	        data = [];
 	        // loop b
@@ -40916,10 +40916,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	      }
 	      // throw error
-	      throw new RangeError('Dimension mismatch. Matrix columns must match vector length.');      
+	      throw new RangeError('Dimension mismatch. Matrix columns must match vector length.');
 	    }
 	  };
-	  
+
 	  return solveValidation;
 	}
 
@@ -40934,7 +40934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isArray = Array.isArray;
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 	  var lup = load(__webpack_require__(337));
 	  var slu = load(__webpack_require__(338));
@@ -40979,7 +40979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {DenseMatrix | Array}           Column vector with the solution to the linear system A * x = b
 	   */
 	  var lusolve = typed('lusolve', {
-	    
+
 	    'Array, Array | Matrix': function (a, b) {
 	      // convert a to matrix
 	      a = matrix(a);
@@ -40990,21 +40990,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // convert result to array
 	      return x.valueOf();
 	    },
-	    
+
 	    'DenseMatrix, Array | Matrix': function (a, b) {
 	      // matrix lup decomposition
 	      var d = lup(a);
 	      // solve
 	      return _lusolve(d.L, d.U, d.p, null, b);
 	    },
-	    
+
 	    'SparseMatrix, Array | Matrix': function (a, b) {
 	      // matrix lup decomposition
 	      var d = lup(a);
 	      // solve
 	      return _lusolve(d.L, d.U, d.p, null, b);
 	    },
-	    
+
 	    'SparseMatrix, Array | Matrix, number, number': function (a, b, order, threshold) {
 	      // matrix lu decomposition
 	      var d = slu(a, order, threshold);
@@ -41017,7 +41017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _lusolve(d.L, d.U, d.p, d.q, b);
 	    }
 	  });
-	  
+
 	  var _toMatrix = function (a) {
 	    // check it is a matrix
 	    if (a && a.isMatrix === true)
@@ -41028,7 +41028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // throw
 	    throw new TypeError('Invalid Matrix LU decomposition');
 	  };
-	  
+
 	  var _lusolve = function (l, u, p, q, b) {
 	    // verify L, U, P
 	    l = _toMatrix(l);
@@ -41073,7 +41073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {Array}            The output vector x = P'b
 	   */
 	  var cs_ipvec = function (p, b, n) {
-	    // vars 
+	    // vars
 	    var k;
 	    var n = b.length;
 	    var x = [];
@@ -41118,7 +41118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var equalScalar = load(__webpack_require__(48));
 
 	  var solveValidation = load(__webpack_require__(359));
-	  
+
 	  var DenseMatrix = type.DenseMatrix;
 
 	  /**
@@ -41146,7 +41146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {DenseMatrix | Array}  A column vector with the linear system solution (x)
 	   */
 	  var usolve = typed('usolve', {
-	    
+
 	    'SparseMatrix, Array | Matrix': function (m, b) {
 	      // process matrix
 	      return _sparseBackwardSubstitution(m, b);
@@ -41195,7 +41195,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          throw new Error('Linear system cannot be solved since matrix is singular');
 	        }
 	        // calculate xj
-	        xj = divideScalar(bj, vjj);        
+	        xj = divideScalar(bj, vjj);
 	        // loop rows
 	        for (var i = j - 1; i >= 0; i--) {
 	          // update copy of b
@@ -41215,7 +41215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      size: [rows, 1]
 	    });
 	  };
-	  
+
 	  var _sparseBackwardSubstitution = function (m, b) {
 	    // validate matrix and vector, return copy of column vector b
 	    b = solveValidation(m, b, true);
@@ -41289,7 +41289,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      size: [rows, 1]
 	    });
 	  };
-	  
+
 	  return usolve;
 	}
 
@@ -41743,7 +41743,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var matrix = load(__webpack_require__(52));
 	  var divideScalar = load(__webpack_require__(81));
 	  var latex = __webpack_require__(32);
-	  
+
 	  var algorithm02 = load(__webpack_require__(369));
 	  var algorithm03 = load(__webpack_require__(61));
 	  var algorithm07 = load(__webpack_require__(62));
@@ -41779,9 +41779,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number | BigNumber | Fraction | Complex | Unit | Array | Matrix}                    Quotient, `x ./ y`
 	   */
 	  var dotDivide = typed('dotDivide', {
-	    
+
 	    'any, any': divideScalar,
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -41875,7 +41875,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dotDivide.toTex = {
 	    2: '\\left(${args[0]}' + latex.operators['dotDivide'] + '${args[1]}\\right)'
 	  };
-	  
+
 	  return dotDivide;
 	}
 
@@ -41898,7 +41898,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix nonzero items and invokes the callback function f(Dij, Sij). 
+	   * Iterates over SparseMatrix nonzero items and invokes the callback function f(Dij, Sij).
 	   * Callback function invoked NNZ times (number of nonzero items in SparseMatrix).
 	   *
 	   *
@@ -41943,7 +41943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // rows & columns
 	    var rows = asize[0];
 	    var columns = asize[1];
-	    
+
 	    // datatype
 	    var dt;
 	    // equal signature to use
@@ -42000,7 +42000,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      datatype: dt
 	    });
 	  };
-	  
+
 	  return algorithm02;
 	}
 
@@ -42053,9 +42053,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number | BigNumber | Fraction | Complex | Unit | Array | Matrix}                    Multiplication of `x` and `y`
 	   */
 	  var dotMultiply = typed('dotMultiply', {
-	    
+
 	    'any, any': multiplyScalar,
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -42089,12 +42089,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return dotMultiply(matrix(x), matrix(y)).valueOf();
 	    },
-	    
+
 	    'Array, Matrix': function (x, y) {
 	      // use matrix implementation
 	      return dotMultiply(matrix(x), y);
@@ -42149,7 +42149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dotMultiply.toTex = {
 	    2: '\\left(${args[0]}' + latex.operators['dotMultiply'] + '${args[1]}\\right)'
 	  };
-	  
+
 	  return dotMultiply;
 	}
 
@@ -42172,12 +42172,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked NZA times, number of nonzero elements in A.
 	   *
 	   *
 	   *          ┌  f(Aij, Bij)  ; A(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  0            ; otherwise
 	   *
 	   *
@@ -42256,7 +42256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    // vars
 	    var i, j, k, k0, k1;
-	    
+
 	    // loop columns
 	    for (j = 0; j < columns; j++) {
 	      // update cptr
@@ -42355,9 +42355,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number | BigNumber | Complex | Unit | Array | Matrix}                     The value of `x` to the power `y`
 	   */
 	  var dotPow = typed('dotPow', {
-	    
+
 	    'any, any': pow,
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -42451,7 +42451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dotPow.toTex = {
 	    2: '\\left(${args[0]}' + latex.operators['dotPow'] + '${args[1]}\\right)'
 	  };
-	  
+
 	  return dotPow;
 	}
 
@@ -42689,7 +42689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use matrix implementation
 	      return gcd(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, number | BigNumber': function (x, y) {
 	      // result
 	      var c;
@@ -43048,7 +43048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var isInteger = __webpack_require__(6).isInteger;
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 
 	  var algorithm02 = load(__webpack_require__(369));
@@ -43275,12 +43275,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked (Anz U Bnz) times, where Anz and Bnz are the nonzero elements in both matrices.
 	   *
 	   *
 	   *          ┌  f(Aij, Bij)  ; A(i,j) !== 0 && B(i,j) !== 0
-	   * C(i,j) = ┤  
+	   * C(i,j) = ┤
 	   *          └  0            ; otherwise
 	   *
 	   *
@@ -43420,7 +43420,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // return sparse matrix
 	    return c;
 	  };
-	  
+
 	  return algorithm06;
 	}
 
@@ -43692,7 +43692,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm12 = load(__webpack_require__(63));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Calculates the modulus, the remainder of an integer division.
 	   *
@@ -43773,7 +43773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return mod(matrix(x), matrix(y)).valueOf();
@@ -43871,7 +43871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	'use strict';
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var abs         = load(__webpack_require__(86));
 	  var add         = load(__webpack_require__(51));
 	  var pow         = load(__webpack_require__(82));
@@ -43934,7 +43934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // norm(x) = abs(x)
 	      return x.abs();
 	    },
-	    
+
 	    'boolean | null' : function (x) {
 	      // norm(x) = abs(x)
 	      return Math.abs(x);
@@ -43943,7 +43943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array': function (x) {
 	      return _norm(matrix(x), 2);
 	    },
-	    
+
 	    'Matrix': function (x) {
 	      return _norm(x, 2);
 	    },
@@ -43956,7 +43956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array, number | BigNumber | string': function (x, p) {
 	      return _norm(matrix(x), p);
 	    },
-	    
+
 	    'Matrix, number | BigNumber | string': function (x, p) {
 	      return _norm(x, p);
 	    }
@@ -43972,7 +43972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function _norm (x, p) {
 	    // size
 	    var sizeX = x.size();
-	    
+
 	    // check if it is a vector
 	    if (sizeX.length == 1) {
 	      // check p
@@ -44095,7 +44095,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var format = __webpack_require__(23).format;
 
 	function factory (type, config, load, typed) {
-	  
+
 	  var matrix = load(__webpack_require__(52));
 	  var add = load(__webpack_require__(51));
 
@@ -44127,7 +44127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number} The trace of `x`
 	   */
 	  var trace = typed('trace', {
-	    
+
 	    'Array': function (x) {
 	      // use dense matrix implementation
 	      return trace(matrix(x));
@@ -44147,15 +44147,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'any': clone
 	  });
-	  
+
 	  var _denseTrace = function (m) {
 	    // matrix size & data
 	    var size = m._size;
 	    var data = m._data;
-	    
+
 	    // process dimensions
 	    switch (size.length) {
 	      case 1:
@@ -44178,13 +44178,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // return trace
 	          return sum;
 	        }
-	        throw new RangeError('Matrix must be square (size: ' + format(size) + ')');        
+	        throw new RangeError('Matrix must be square (size: ' + format(size) + ')');
 	      default:
 	        // multi dimensional
 	        throw new RangeError('Matrix must be two dimensional (size: ' + format(size) + ')');
 	    }
 	  };
-	  
+
 	  var _sparseTrace = function (m) {
 	    // matrix arrays
 	    var values = m._values;
@@ -44226,11 +44226,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // return trace
 	      return sum;
 	    }
-	    throw new RangeError('Matrix must be square (size: ' + format(size) + ')');   
+	    throw new RangeError('Matrix must be square (size: ' + format(size) + ')');
 	  };
 
 	  trace.toTex = {1: '\\mathrm{tr}\\left(${args[0]}\\right)'};
-	  
+
 	  return trace;
 	}
 
@@ -44285,7 +44285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number | Complex | Array | Matrix} Returns the nth root of `a`
 	   */
 	  var nthRoot = typed('nthRoot', {
-	    
+
 	    'number': function (x) {
 	      return _nthRoot(x, 2);
 	    },
@@ -44296,14 +44296,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    'Complex' : function(x) {
 	      return _nthComplexRoot(x, 2);
-	    }, 
+	    },
 	    'Complex, number' : _nthComplexRoot,
 	    'BigNumber, BigNumber': _bigNthRoot,
 
 	    'Array | Matrix': function (x) {
 	      return nthRoot(x, 2);
 	    },
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -44366,7 +44366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use matrix implementation
 	      return nthRoot(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, number | BigNumber': function (x, y) {
 	      // result
 	      var c;
@@ -44528,7 +44528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _nthComplexRoot(a, root) {
 	  if (root < 0) throw new Error('Root must be greater than zero');
 	  if (root === 0) throw new Error('Root must be non-zero');
-	  if (root % 1 !== 0) throw new Error('Root must be an integer');  
+	  if (root % 1 !== 0) throw new Error('Root must be an integer');
 	  var arg = a.arg();
 	  var abs = a.abs();
 	  var roots = [];
@@ -44563,7 +44563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm11 = load(__webpack_require__(85));
 	  var algorithm12 = load(__webpack_require__(63));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Round a value towards the nearest integer.
 	   * For matrices, the function is evaluated element wise.
@@ -44612,7 +44612,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    'Complex, number': function (x, n) {
 	      if (n % 1) {throw new TypeError(NO_INT);}
-	      
+
 	      return x.round(n);
 	    },
 
@@ -45272,7 +45272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm11 = load(__webpack_require__(85));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Bitwise AND two values, `x & y`.
 	   * For matrices, the function is evaluated element wise.
@@ -45340,7 +45340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	      return c;
 	    },
-	    
+
 	    'Array, Array': function (x, y) {
 	      // use matrix implementation
 	      return bitAnd(matrix(x), matrix(y)).valueOf();
@@ -45355,7 +45355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // use matrix implementation
 	      return bitAnd(x, matrix(y));
 	    },
-	    
+
 	    'Matrix, any': function (x, y) {
 	      // result
 	      var c;
@@ -45720,7 +45720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm10 = load(__webpack_require__(56));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Bitwise OR two values, `x | y`.
 	   * For matrices, the function is evaluated element wise.
@@ -46184,7 +46184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {number | BigNumber | Array | Matrix} `x` shifted left `y` times
 	   */
 	  var leftShift = typed('leftShift', {
-	    
+
 	    'number, number': function (x, y) {
 	      if (!isInteger(x) || !isInteger(y)) {
 	        throw new Error('Integers expected in function leftShift');
@@ -46308,7 +46308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 405 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Bitwise left shift
 	 *
@@ -46366,7 +46366,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var SparseMatrix = type.SparseMatrix;
 
 	  /**
-	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij). 
+	   * Iterates over SparseMatrix A and SparseMatrix B nonzero items and invokes the callback function f(Aij, Bij).
 	   * Callback function invoked MAX(NNZA, NNZB) times
 	   *
 	   *
@@ -46501,7 +46501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          // remove value @ i, do not increment pointer
 	          cindex.splice(k, 1);
 	        }
-	      }      
+	      }
 	    }
 	    // update cptr
 	    cptr[columns] = cindex.length;
@@ -46528,7 +46528,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function factory (type, config, load, typed) {
 	  var latex = __webpack_require__(32);
-	  
+
 	  var matrix = load(__webpack_require__(52));
 	  var equalScalar = load(__webpack_require__(48));
 	  var zeros = load(__webpack_require__(389));
@@ -46760,7 +46760,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm11 = load(__webpack_require__(85));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Bitwise right logical shift of value x by y number of bits, `x >>> y`.
 	   * For matrices, the function is evaluated element wise.
@@ -47585,7 +47585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (!isInteger(n) || isNegative(n)) {
 	        throw new TypeError('Non-negative integer value expected in function catalan');
 	      }
-	       
+
 	      return divide(combinations(multiply(n,2), n), add(n,1));
 
 	    }
@@ -47974,7 +47974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return null;
 	    }
 	    var t = (d2[0]*o1[1] - d2[1]*o1[0] - d2[0]*o2[1] + d2[1]*o2[0]) / det;
-	    return add(multiply(d1, t), o1); 
+	    return add(multiply(d1, t), o1);
 	  }
 
 	  function _intersect3d(x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4){
@@ -48402,7 +48402,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Unit, Unit': function (x, y) {
 	      return and(x.value, y.value);
 	    },
-	    
+
 	    'Matrix, Matrix': function (x, y) {
 	      // result
 	      var c;
@@ -48675,7 +48675,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm12 = load(__webpack_require__(63));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Logical `or`. Test if at least one value is defined with a nonzero/nonempty value.
 	   * For matrices, the function is evaluated element wise.
@@ -48839,7 +48839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm12 = load(__webpack_require__(63));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Logical `xor`. Test whether one and only one value is defined with a nonzero/nonempty value.
 	   * For matrices, the function is evaluated element wise.
@@ -48869,7 +48869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   *            Returns true when one and only one input is defined with a nonzero/nonempty value.
 	   */
 	  var xor = typed('xor', {
-	 
+
 	    'number, number': function (x, y) {
 	      return !!(!!x ^ !!y);
 	    },
@@ -49122,7 +49122,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function factory (type, config, load, typed) {
 
 	  var matrix = load(__webpack_require__(52));
-	  
+
 	  /**
 	   * Create a diagonal matrix or retrieve the diagonal of a matrix
 	   *
@@ -49170,7 +49170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    'Array, number': function (x, k) {
 	      return _diag(x, k, array.size(x), null);
 	    },
-	    
+
 	    'Array, BigNumber': function (x, k) {
 	      return _diag(x, k.toNumber(), array.size(x), null);
 	    },
@@ -49229,7 +49229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!isInteger(k)) {
 	      throw new TypeError ('Second parameter in function diag must be an integer');
 	    }
-	    
+
 	    var kSuper = k > 0 ? k : 0;
 	    var kSub = k < 0 ? -k : 0;
 
@@ -49242,7 +49242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    throw new RangeError('Matrix for function diag must be 2 dimensional');
 	  }
-	  
+
 	  function _createDiagonalMatrix(x, k, format, l, kSub, kSuper) {
 	    // matrix size
 	    var ms = [l + kSub, l + kSuper];
@@ -49253,7 +49253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // check we need to return a matrix
 	    return format !== null ? m : m.valueOf();
 	  }
-	  
+
 	  function _getDiagonal(x, k, format, s, kSub, kSuper) {
 	    // check x is a Matrix
 	    if (x && x.isMatrix === true) {
@@ -49335,7 +49335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    'Array, Array': _dot
 	  });
-	  
+
 	  dot.toTex = {2: '\\left(${args[0]}\\cdot${args[1]}\\right)'};
 
 	  return dot;
@@ -49721,7 +49721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var algorithm12 = load(__webpack_require__(63));
 	  var algorithm13 = load(__webpack_require__(57));
 	  var algorithm14 = load(__webpack_require__(58));
-	  
+
 	  /**
 	   * Compare two values. Returns 1 when x > y, -1 when x < y, and 0 when x == y.
 	   *
@@ -49950,18 +49950,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return (value && value.isBigNumber === true) ? value.toNumber() : value;
 	      });
 	    }
-	    
+
 	    // check x is a Matrix
 	    if (x && x.isMatrix === true) {
 	      // use optimized matrix implementation, return copy
 	      return x.resize(size, defaultValue, true);
 	    }
-	    
+
 	    if (typeof x === 'string') {
 	      // resize string
 	      return _resizeString(x, size, defaultValue);
 	    }
-	    
+
 	    // check result should be a matrix
 	    var asMatrix = Array.isArray(x) ? false : (config.matrix !== 'Array');
 
@@ -50364,15 +50364,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (plength > 1) {
 	            throw new Error('first object must be one dimensional');
 	        }
-	        
+
 	        if (qlength > 1) {
 	            throw new Error('second object must be one dimensional');
 	        }
-	        
+
 	        if(plength !== qlength){
 	            throw new Error("Length of two vectors must be equal");
 	        }
-	        
+
 	        //Before calculation, apply normalization
 	        var sumq = sum(q);
 	        if (sumq === 0) {
@@ -50401,7 +50401,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.name = 'kldivergence';
 	exports.factory = factory;
-	 
+
 
 
 /***/ },
@@ -51358,7 +51358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @return {boolean | Array | Matrix} Returns true when the compared values are unequal, else returns false
 	   */
 	  var unequal = typed('unequal', {
-	    
+
 	    'any, any': function (x, y) {
 	      // strict equality for null and undefined?
 	      if (x === null) { return y !== null; }
@@ -51683,12 +51683,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  var mode = typed('mode', {
 	    'Array | Matrix' : _mode,
-	    
+
 	    '...': function (args) {
 	      return _mode(args);
 	    }
 	  });
-	  
+
 	  return mode;
 
 	  /**
@@ -51703,7 +51703,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (num == 0) {
 	      throw new Error('Cannot calculate mode of an empty array');
 	    }
-	    
+
 	    var count = {},
 	        mode = [],
 	        max = 0;
@@ -51720,7 +51720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        mode = [values[i]];
 	      }
 	    }
-	    return mode; 
+	    return mode;
 	  };
 	}
 
@@ -51964,7 +51964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  /**
 	   * Calculate the prob order quantile of an n-dimensional array.
-	   * 
+	   *
 	   * @param {Array} array
 	   * @param {Number, BigNumber} prob
 	   * @param {Boolean} sorted
@@ -52134,7 +52134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _std(args);
 	    }
 	  });
-	  
+
 	  std.toTex = undefined; // use default template
 
 	  return std;
@@ -54406,7 +54406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (x == 2){
 	        return true;
 	      }
-	      if (x % 2 == 0){ 
+	      if (x % 2 == 0){
 	        return false;
 	      }
 	      for (var i = 3; i * i <= x; i += 2){

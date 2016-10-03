@@ -37,7 +37,7 @@
 
 		// Figure out what the size of the chart will be.
 		// If the canvas has a specified width and height, we use those else
-		// we look to see if the canvas node has a CSS width and height. 
+		// we look to see if the canvas node has a CSS width and height.
 		// If there is still no height, fill the parent container
 		this.width = context.canvas.width || parseInt(Chart.helpers.getStyle(context.canvas, 'width')) || Chart.helpers.getMaximumWidth(context.canvas);
 		this.height = context.canvas.height || parseInt(Chart.helpers.getStyle(context.canvas, 'height')) || Chart.helpers.getMaximumHeight(context.canvas);
@@ -761,7 +761,7 @@
 			}
 
 			// Scale mouse coordinates into canvas coordinates
-			// by following the pattern laid out by 'jerryj' in the comments of 
+			// by following the pattern laid out by 'jerryj' in the comments of
 			// http://www.html5canvastutorials.com/advanced/html5-canvas-mouse-coordinates/
 
 			// We divide by the current device pixel ratio, because the canvas is scaled up by that amount in each direction. However
@@ -1087,7 +1087,7 @@
 		easing: "", // the easing to use for this animation
 		render: null, // render function used by the animation service
 
-		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
+		onAnimationProgress: null, // user specified callback to fire on each step of the animation
 		onAnimationComplete: null, // user specified callback to fire when the animation finishes
 	});
 
@@ -1293,7 +1293,7 @@
 			}
 		},
 		buildScales: function buildScales() {
-			// Map of scale ID to scale object so we can lookup later 
+			// Map of scale ID to scale object so we can lookup later
 			this.scales = {};
 
 			// Build the x axes
@@ -1682,7 +1682,7 @@
 
 					this.stop();
 
-					// We only need to render at this point. Updating will cause scales to be recomputed generating flicker & using more 
+					// We only need to render at this point. Updating will cause scales to be recomputed generating flicker & using more
 					// memory than necessary.
 					this.render(this.options.hover.animationDuration, true);
 				}
@@ -1969,7 +1969,7 @@
 					var lastLabelWidth = this.ctx.measureText(this.ticks[this.ticks.length - 1]).width;
 
 					// Ensure that our ticks are always inside the canvas. When rotated, ticks are right aligned which means that the right padding is dominated
-					// by the font height 
+					// by the font height
 					var cosRotation = Math.cos(helpers.toRadians(this.labelRotation));
 					var sinRotation = Math.sin(helpers.toRadians(this.labelRotation));
 					this.paddingLeft = this.labelRotation !== 0 ? (cosRotation * firstLabelWidth) + 3 : firstLabelWidth / 2 + 3; // add 3 px to move away from canvas edges
@@ -2041,7 +2041,7 @@
 		// Used to get data value locations.  Value can either be an index or a numerical value
 		getPixelForValue: helpers.noop,
 
-		// Used for tick location, should 
+		// Used for tick location, should
 		getPixelForTick: function(index, includeOffset) {
 			if (this.isHorizontal()) {
 				var innerWidth = this.width - (this.paddingLeft + this.paddingRight);
@@ -2267,7 +2267,7 @@
 
 	// The scale service is used to resize charts along with all of their axes. We make this as
 	// a service where scales are registered with their respective charts so that changing the
-	// scales does not require 
+	// scales does not require
 	Chart.scaleService = {
 		// Scale registration object. Extensions can register new scale types (such as log or DB scales) and then
 		// use the new chart options to grab the correct scale
@@ -2314,7 +2314,7 @@
 
 				// Essentially we now have any number of scales on each of the 4 sides.
 				// Our canvas looks like the following.
-				// The areas L1 and L2 are the left axes. R1 is the right axis, T1 is the top axis and 
+				// The areas L1 and L2 are the left axes. R1 is the right axis, T1 is the top axis and
 				// B1 is the bottom axis
 				// |------------------------------------------------------|
 				// |          |             T1                      |     |
@@ -2329,11 +2329,11 @@
 				// |------------------------------------------------------|
 
 				// What we do to find the best sizing, we do the following
-				// 1. Determine the minimum size of the chart area. 
+				// 1. Determine the minimum size of the chart area.
 				// 2. Split the remaining width equally between each vertical axis
 				// 3. Split the remaining height equally between each horizontal axis
 				// 4. Give each scale the maximum size it can be. The scale will return it's minimum size
-				// 5. Adjust the sizes of each axis based on it's minimum reported size. 
+				// 5. Adjust the sizes of each axis based on it's minimum reported size.
 				// 6. Refit each axis
 				// 7. Position each axis in the final location
 				// 8. Tell the chart the final location of the chart area
@@ -2534,7 +2534,7 @@
 					maxChartWidth = newMaxChartWidth;
 				}
 
-				// Step 7 
+				// Step 7
 				// Position the scales
 				var left = xPadding;
 				var top = yPadding;
@@ -2557,7 +2557,7 @@
 					scaleInstance.top = top;
 					scaleInstance.bottom = top + scaleInstance.height;
 
-					// Move to next point 
+					// Move to next point
 					top = scaleInstance.bottom;
 				};
 
@@ -2585,7 +2585,7 @@
 					scaleInstance.top = chartInstance.chartArea.top;
 					scaleInstance.right = chartInstance.chartArea.right;
 					scaleInstance.bottom = chartInstance.chartArea.bottom;
-					
+
 					scaleInstance.update(maxChartWidth, maxChartHeight);
 				});
 			}
@@ -2717,7 +2717,7 @@
 			});
 		},
 
-		// Get the title 
+		// Get the title
 		getTitle: function() {
 			var beforeTitle = this._options.tooltips.callbacks.beforeTitle.apply(this, arguments),
 				title = this._options.tooltips.callbacks.title.apply(this, arguments),
@@ -4818,7 +4818,7 @@
 
 			// Figure out what the max number of ticks we can support it is based on the size of
 			// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on 
+			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
 			// the graph
 
 			var maxTicks;
@@ -4830,10 +4830,10 @@
 				maxTicks = Math.min(11, Math.ceil(this.height / (2 * this.options.ticks.fontSize)));
 			}
 
-			// Make sure we always have at least 2 ticks 
+			// Make sure we always have at least 2 ticks
 			maxTicks = Math.max(2, maxTicks);
 
-			// To get a "nice" value for the tick spacing, we will use the appropriately named 
+			// To get a "nice" value for the tick spacing, we will use the appropriately named
 			// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
 			// for details.
 
@@ -4894,7 +4894,7 @@
 
 		// Utils
 		getPixelForValue: function(value, index, datasetIndex, includeOffset) {
-			// This must be called after fit has been run so that 
+			// This must be called after fit has been run so that
 			//      this.left, this.top, this.right, and this.bottom have been defined
 			var rightValue = this.getRightValue(value);
 			var pixel;
@@ -5017,7 +5017,7 @@
 
 			// Figure out what the max number of ticks we can support it is based on the size of
 			// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on 
+			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
 			// the graph
 
 			var minExponent = Math.floor(helpers.log10(this.min));
@@ -5193,12 +5193,12 @@
 
 			// Figure out what the max number of ticks we can support it is based on the size of
 			// the axis area. For now, we say that the minimum tick spacing in pixels must be 50
-			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on 
+			// We also limit the maximum number of ticks to 11 which gives a nice 10 squares on
 			// the graph
 			var maxTicks = Math.min(11, Math.ceil(this.drawingArea / (1.5 * this.options.ticks.fontSize)));
-			maxTicks = Math.max(2, maxTicks); // Make sure we always have at least 2 ticks 
+			maxTicks = Math.max(2, maxTicks); // Make sure we always have at least 2 ticks
 
-			// To get a "nice" value for the tick spacing, we will use the appropriately named 
+			// To get a "nice" value for the tick spacing, we will use the appropriately named
 			// "nice number" algorithm. See http://stackoverflow.com/questions/8506881/nice-label-algorithm-for-charts-with-minimum-ticks
 			// for details.
 
@@ -5574,7 +5574,7 @@
 
 		buildLabelMoments: function() {
 			// Only parse these once. If the dataset does not have data as x,y pairs, we will use
-			// these 
+			// these
 			var scaleLabelMoments = [];
 			if (this.data.labels && this.data.labels.length > 0) {
 				helpers.each(this.data.labels, function(label, index) {
@@ -5803,7 +5803,7 @@
 				return (betweenAngles && withinRadius);
 			} else {
 				return false;
-			}			
+			}
 		},
 		tooltipPosition: function() {
 			var vm = this._view;
@@ -6297,7 +6297,7 @@
 
 		return new Chart(context, config);
 	};
-	
+
 }).call(this);
 
 (function() {
@@ -6312,7 +6312,7 @@
 
 		return new Chart(context, config);
 	};
-	
+
 }).call(this);
 
 (function() {
@@ -6333,7 +6333,7 @@
 
 		return new Chart(context, config);
 	};
-	
+
 }).call(this);
 
 (function() {
@@ -6353,7 +6353,7 @@
 
 		return new Chart(context, config);
 	};
-	
+
 }).call(this);
 
 (function() {
@@ -6393,5 +6393,5 @@
 		config.type = 'line';
 		return new Chart(context, config);
 	};
-	
+
 }).call(this);

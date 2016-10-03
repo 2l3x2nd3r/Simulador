@@ -47,6 +47,8 @@ $("#slider").slider({
   slide: function( event, ui ) { highlight(ui.value); },
 });
 
+
+
 // var lineChartData = {
 //     labels: ["January", "February", "March", "April", "May", "June", "July"],
 //     datasets: [
