@@ -1,22 +1,22 @@
 angular.module("simu",[])
 .controller("SimuCtrl",["$scope",function ($scope) {
 	$scope.input={};
+	$scope.input.i15 = 0;
+	$scope.input.i16=0;
 	$scope.input.sc1 = {
 		val : 0,
-		min : 0,
-		max : 30,
+  	min : 0,
 		step : 0.5
 	}
 	$scope.input.sc2 = {
 		val : 0,
-		min : 0,
-		max : 30,
+   	min : 0,
 		step : 0.5
 	}
 	$scope.input.sc3 = {
 		val : 0,
 		min : 0,
-		max : 30,
+
 		step : 0.5
 	}
 	$scope.output = {
