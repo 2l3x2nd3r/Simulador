@@ -47,6 +47,7 @@ function xw_xfer(data, cb) {
       case 'ready': break;
       case 'e': console.error(e.data.d); break;
       default: xx=ab2str(e.data).replace(/\n/g,"\\n").replace(/\r/g,"\\r"); console.log("done");  break;
+
     }
   };
   if(rABS) {
@@ -98,6 +99,7 @@ function to_formulae(workbook) {
       result.push("SHEET: " + sheetName);
       result.push("");
       result.push(formulae.join("\n"));
+
     }
   });
   return result.join("\n");
@@ -157,23 +159,37 @@ Chart.types.Line.extend({
     name: "LineAlt",
     highlightPoints: function(datasetIndex, pointIndexArray){
         var activePoints = [];
+        //var activePoints_2 = [];
         var points = this.datasets[datasetIndex].points;
         for(i in pointIndexArray){
         	if(points[pointIndexArray[i]]){
           	activePoints.push(points[pointIndexArray[i]]);
           }
+          //mostrar siguiente punto seleccionado
+          // if(points[pointIndexArray[i]+1]){
+          // 	activePoints_2.push(points[pointIndexArray[i]+1]);
+          // }
         }
+        //mostrar puntos activos en input
+        $("#if_a").val(activePoints[0].value)
+        $("#if_b").val(activePoints[0].label)
+        // var  a =  document.getElementById('if_a').value;
+        // var  b =  document.getElementById('if_b').value;
+        // var  c = a * b;
+        // $('#delta').val(c);
+        change_values()
         this.showTooltip(activePoints);
     }
 });
+
 function initChart_custom(data) {
   var data_new = data.split(/\n/)
   var c_1 = []
   var c_2 = []
   data_new.forEach(function(data_f){
     data_c = data_f.split(",");
-    c_1.push(data_c[0]);
-    c_2.push(data_c[1]);
+    c_1.push(data_c[1]);
+    c_2.push(data_c[0]);
   })
   c_1 = c_1.slice(1,c_1.length-1)
   c_2 = c_2.slice(1,c_2.length-1)
@@ -196,6 +212,7 @@ function initChart_custom(data) {
   $("#slider").slider({
     max: lineChartData.datasets[0].data.length-1,
     slide: function( event, ui ) { highlight(ui.value); },
+
   });
 }
 

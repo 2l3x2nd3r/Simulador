@@ -46,7 +46,7 @@
 										<label>V<span class="pre">nom</span> (V)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i2" name="">
+										<input type="number" ng-model="input.i2" name="" id="Vnom">
 									</div>
 								</div>
 							</div>
@@ -67,7 +67,7 @@
 										<label>R<span class="pre">A</span> (Ω)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i4" name="">
+										<input type="number"  name="" value="0012" id="RA">
 									</div>
 								</div>
 							</div>
@@ -77,7 +77,8 @@
 										<label>X<span class="pre">s</span> (Ω)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i5" name="" >
+										<input type="number" value="0133" name="" id="XS">
+										<!-- <input type="number" ng-model="input.i5" name="" > -->
 									</div>
 								</div>
 							</div>
@@ -131,22 +132,13 @@
 								<option value="csv" selected> CSV</option>
 								</select><br />
 								<p><input type="file" name="xlfile" id="xlf" /> </p>
-								<pre id="out" style="display:none;"></pre>
-								<!-- <input type="submit" value="Cargar curva de magnetización" name="submit"> -->
-								<!-- </form> -->
-								<!-- <button class="btn btn-default btn-block">Cargar curva de <br> magnetización</button>-->
+						 		<pre id="out" style="display:none;"></pre>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 								<canvas id="canvas" height="300" width="350"></canvas>
-								<div id="slider"></div>
-
-								<br />
-								<script src="xlsx.js"></script>
-								<script type="text/javascript" src="exmaples.js"></script>
-						
-
+							 	<div id="slider"></div>
 								<br />
 								<script src="xlsx.js"></script>
 								<script type="text/javascript" src="exmaples.js"></script>
@@ -157,14 +149,17 @@
 								<div id="slider"></div> -->
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<!-- <input type="range" id="scroll_1" ng-model="input.sc1.val" min="{{input.sc1.min}}" max="{{input.sc1.max}}" step="{{input.sc1.step}}"> -->
+
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 										<label>IF (A)</label>
+
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+											<input type="number" id="if_a">
+											<input type="number" id="if_b">
 										<!-- <input type="number" value="{{input.sc1.val}}" disabled > -->
 									</div>
 								</div>
@@ -391,7 +386,8 @@
 												<label>𝛿 (°)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o5}}" name="" disabled>
+												<input type="number"  name="" disabled id="delta">
+													<!-- <input type="number" value="{{output.o5}}" name="" disabled id="delta"> -->
 											</div>
 										</div>
 									</div>
@@ -478,10 +474,9 @@
 
 <script type="text/javascript" src="js/app.js"></script>
 <script src="jquery/jquery-ui.min.js"> </script>
-<<<<<<< HEAD
+
 <script src=js/funciones.js></script>
-=======
->>>>>>> 57efa48c38d27f630a6cff9e49957754bb6b069e
+
 <!-- <script type="text/javascript" src="js/exmaple.js"></script> -->
 <!-- <script type="text/javascript" src="js/Chart.js"></script> -->
 
