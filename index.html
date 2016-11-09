@@ -43,22 +43,24 @@
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>V<span class="pre">nom</span> (V)</label>
+										<label>No. Polos</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i2" name="">
+										<input type="number"  name="" value="4" id="polos">
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>No. Polos</label>
+									<label>V<span class="pre">nom</span> (V)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  name="" value="4" id="polos">
+										<input type="number" ng-model="input.i2" name="" id="Vnom">
 										<!-- <input type="number" ng-model="input.i3" name="" value="4"> -->
 									</div>
+
+
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
@@ -67,38 +69,57 @@
 										<label>R<span class="pre">A</span> (Ω)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i4" name="">
+										<input type="number"  name="" value="0012" id="RA">
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>X<span class="pre">s</span> (Ω)</label>
+										<label>Conexión</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i5" name="" >
+
+										<input type="number" value="" name="" id="Conexion">
+										<!-- <input type="number" ng-model="input.i5" name="" > -->
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>fp<span class="pre">nom</span></label>
+											<label>X<span class="pre">s</span> (Ω)</label>
+
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+										<input type="number" value="0133" name="" id="XS">
+
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+											<label>fp<span class="pre">nom</span></label>
+
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 										<input type="number" ng-model="input.i6" name="" >
+
+										<!-- <input type="number" ng-model="input.i7" name="" > -->
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>Sp (W/Hz)</label>
+											<label>Sp (W/Hz)</label>
+
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 										<input type="number"  name="" value="195.000" id="sp">
-										<!-- <input type="number" ng-model="input.i7" name="" > -->
+
+										<!-- <input type="number" ng-model="input.i8" name="" > -->
 									</div>
 								</div>
 							</div>
@@ -109,44 +130,30 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 										<input type="number"  name="" value="60" id="fnom">
-										<!-- <input type="number" ng-model="input.i8" name="" > -->
+										<!-- <input type="number" ng-model="input.i9" name="" > -->
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>eef (pu)</label>
+										<label>eff(pu)</label>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" ng-model="input.i9" name="" >
+										<input type="text" value="" name="" id="conexion">
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 margin-v">
-								<!-- <form action="" method="post" enctype="multipart/form-data"> -->
-								<!-- <input type="file" id="cargar" /> -->
-
 								<select name="format" style="display:none;" >
 								<option value="csv" selected> CSV</option>
 								</select><br />
 								<p><input type="file" name="xlfile" id="xlf" /> </p>
-								<pre id="out" style="display:none;"></pre>
-								<!-- <input type="submit" value="Cargar curva de magnetización" name="submit"> -->
-								<!-- </form> -->
-								<!-- <button class="btn btn-default btn-block">Cargar curva de <br> magnetización</button>-->
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+						 		<pre id="out" style="display:none;"></pre>
+								</div>
+								<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 								<canvas id="canvas" height="300" width="350"></canvas>
-								<div id="slider"></div>
-
-								<br />
-								<script src="xlsx.js"></script>
-								<script type="text/javascript" src="exmaples.js"></script>
-						
-
+							 	<div id="slider"></div>
 								<br />
 								<script src="xlsx.js"></script>
 								<script type="text/javascript" src="exmaples.js"></script>
@@ -157,14 +164,17 @@
 								<div id="slider"></div> -->
 							</div>
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<!-- <input type="range" id="scroll_1" ng-model="input.sc1.val" min="{{input.sc1.min}}" max="{{input.sc1.max}}" step="{{input.sc1.step}}"> -->
+
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
 										<label>IF (A)</label>
+
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+											<input type="number" id="if_a">
+											<input type="number" id="if_b" value="1.5">
 										<!-- <input type="number" value="{{input.sc1.val}}" disabled > -->
 									</div>
 								</div>
@@ -226,7 +236,7 @@
 												<label>n<span class="pre">vacio</span> (rpm)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-													<input type="number"  name="" value="1.830" id="nvacio">
+													<input type="number"  name="" value="1830" id="nvacio">
 												<!-- <input type="number" ng-model="input.i12" name="" > -->
 											</div>
 										</div>
@@ -391,7 +401,8 @@
 												<label>𝛿 (°)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o5}}" name="" disabled>
+												<input type="number"  name="" disabled id="delta">
+													<!-- <input type="number" value="{{output.o5}}" name="" disabled id="delta"> -->
 											</div>
 										</div>
 									</div>
@@ -411,81 +422,76 @@
 					</div>
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
-							<div class="container-div-custom blue-light">
-								<h4>Red</h4>
+							<div class="container-div-custom blue-light  style="width="350">
 								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-												<label>P <sub>red</sub>(w)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o7}}" name="" disabled>
-											</div>
-										</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+										<button class="btn btn-default btn-block">Ejecutar Cálculos</button>
 									</div>
-            						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-											<label>P <sub>red</sub>(W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o8}}" name="" disabled>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-												<label>S <sub>red</sub>(VA)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o9}}" name="" disabled>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-												<label><sup>f</sup>P<sub>red</sub></label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o10}}" name="" disabled>
-											</div>
-										</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+										<img src="img/img02.png" style="height: 284px; width:180px;"/>
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 border-div">
 					<div class="container-div-custom blue-light">
+						<h4>Red</h4>
 						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<button class="btn btn-default btn-block">Ejecutar Cálculos</button>
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<img src="img/img02.png" style="height: 100%; max-width:100%;"/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<label>P <sub>red</sub>(w)</label>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+										<input type="number" value="{{output.o7}}" name="" disabled>
+									</div>
+								</div>
+					 	</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+									<label>P <sub>red</sub>(W)</label>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+										<input type="number" value="{{output.o8}}" name="" disabled>
+									</div>
+								</div>
+					 	</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<label>S <sub>red</sub>(VA)</label>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+										<input type="number" value="{{output.o9}}" name="" disabled>
+									</div>
+								</div>
+						 </div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+								<div class="row">
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<label><sup>f</sup>P<sub>red</sub></label>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+										<input type="number" value="{{output.o10}}" name="" disabled>
+									</div>
+								</div>
+					 	</div>
+						 	</div>
+				 	</div>
+			 </div>
+	 	</div>
+		 </div>
+	 	</div>
+ 	</div>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script src="jquery/jquery-ui.min.js"> </script>
+	<script type="text/javascript" src="exmaples.js"></script>
+	<script src=js/funciones.js></script>
 
-<script type="text/javascript" src="js/app.js"></script>
-<script src="jquery/jquery-ui.min.js"> </script>
-<<<<<<< HEAD
-<script src=js/funciones.js></script>
-=======
->>>>>>> 57efa48c38d27f630a6cff9e49957754bb6b069e
-<!-- <script type="text/javascript" src="js/exmaple.js"></script> -->
-<!-- <script type="text/javascript" src="js/Chart.js"></script> -->
-
-
-
-</body>
-</html>
+ <!-- <script type="text/javascript" src="js/Chart.js"></script> -->
+ </body>
+ </html>

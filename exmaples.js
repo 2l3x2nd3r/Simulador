@@ -47,6 +47,7 @@ function xw_xfer(data, cb) {
       case 'ready': break;
       case 'e': console.error(e.data.d); break;
       default: xx=ab2str(e.data).replace(/\n/g,"\\n").replace(/\r/g,"\\r"); console.log("done");  break;
+
     }
   };
   if(rABS) {
@@ -98,6 +99,7 @@ function to_formulae(workbook) {
       result.push("SHEET: " + sheetName);
       result.push("");
       result.push(formulae.join("\n"));
+
     }
   });
   return result.join("\n");
@@ -157,23 +159,39 @@ Chart.types.Line.extend({
     name: "LineAlt",
     highlightPoints: function(datasetIndex, pointIndexArray){
         var activePoints = [];
+        // var activePoints_2 = [];
         var points = this.datasets[datasetIndex].points;
         for(i in pointIndexArray){
         	if(points[pointIndexArray[i]]){
           	activePoints.push(points[pointIndexArray[i]]);
           }
-        }
+          //mostrar siguiente punto seleccionado
+          // if(points[pointIndexArray[i]+1]){
+          // 	activePoints_2.push(points[pointIndexArray[i]+1]);
+          // }
+         }
+        //mostrar puntos activos en input
+        $("#if_a").val(activePoints[0].value)
+        $("#if_b").val(activePoints[0].label)
+
+        change_values()
         this.showTooltip(activePoints);
-    }
+        }
+
 });
+var result1 = null
+var result2 = null
+var result3 = null
+var result4 = null
+var result5 = null
 function initChart_custom(data) {
   var data_new = data.split(/\n/)
   var c_1 = []
   var c_2 = []
   data_new.forEach(function(data_f){
     data_c = data_f.split(",");
-    c_1.push(data_c[0]);
-    c_2.push(data_c[1]);
+    c_1.push(data_c[1]);
+    c_2.push(data_c[0]);
   })
   c_1 = c_1.slice(1,c_1.length-1)
   c_2 = c_2.slice(1,c_2.length-1)
@@ -187,6 +205,40 @@ function initChart_custom(data) {
       }],
           "labels": c_2,
   };
+
+//mostrar interseccion de valor (x)
+
+    var a = c_2
+    var elem_want= parseFloat(document.getElementById('if_b').value);
+    var element_find = {}
+    a.find(function(element,index){
+      element = parseFloat(element)
+      if (index<a.length-1){
+        if (element<=elem_want && a[index+1]>=elem_want){
+          element_find = {
+            e_i: element,
+            index_i: index,
+            e_f: a[index+1],
+            index_f: index+1
+          }
+          return true;
+        }
+      }
+    })
+    // alert("elemento 1 c_1 inferior: "+ c_1[element_find.index_i]+"elemento 1 c_2 inferior: "+ c_2[element_find.index_i] +
+    // "\n" + "elemento 2 c_1 superior: "+ c_1[element_find.index_f]+"elemento 2 c_2 superior: "+ c_2[element_find.index_f])
+
+
+
+      result1=(c_1[element_find.index_f] - c_1[element_find.index_i]);
+      result2=(c_2[element_find.index_f] - c_2[element_find.index_i]);
+      result3=(result1/result2);
+      result4=(result3*result2);
+      result5= ((c_1[element_find.index_f]) * (result4));
+      //alert(result5.toFixed(3));
+
+
+
 
   var options = {showTooltips: true};
   var myLine = new Chart(document.getElementById("canvas").getContext("2d")).LineAlt(lineChartData, options);
