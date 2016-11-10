@@ -6,10 +6,16 @@ function constructor()
 }
 function unoydos()
 {
+<<<<<<< HEAD
   $('#ejercicios').on('change','#pcarga,#qcarga,#vcarga,#polos,#sp,#fnom,#nvacio,#RA,#X,S,#Vnom,#Conexion', change_values)
 }
 function change_values(){
 
+=======
+  $('#ejercicios').on('change','#pcarga,#qcarga,#vcarga,#polos,#sp,#fnom,#nvacio,#RA,#X,S,#Vnom', change_values)
+}
+function change_values(){
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
    var num1=parseInt($('#pcarga').val());
    var num2=parseInt($('#qcarga').val());
    var num3=parseInt($('#vcarga').val());
@@ -41,6 +47,10 @@ function change_values(){
   var r5=num1/resul;
   $('#total1').val(r5);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
 //salida 3
   var p=parseInt($('#polos').val());
   var s=parseFloat($('#sp').val());
@@ -53,12 +63,19 @@ function change_values(){
   $('#pgen').val(fsc2);
 
   //salida 7
+<<<<<<< HEAD
 
   var ra=parseInt($('#RA').val());
   var xs=parseInt($('#XS').val());
 //   arcotangente(1)
   var raxs=Math.atan(ra/xs);
 
+=======
+  var ra=parseInt($('#RA').val());
+  var xs=parseInt($('#XS').val());
+//   arcotangente
+  var raxs=Math.atan(ra/xs);
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
 //  potencia
   var ra1=Math.pow(ra,2);
   var ra2=Math.pow(xs,2);
@@ -70,6 +87,7 @@ function change_values(){
 
   var  a =  document.getElementById('if_a').value;
   var  b =  document.getElementById('if_b').value;
+<<<<<<< HEAD
   var  c =  3 * a * b;
   //division VF/EA
   $('#delta').val(c);
@@ -87,6 +105,21 @@ function change_values(){
     alert(result5)
 
 
+=======
+  var  c = 3 * a * b;
+  //division VF/EA
+  $('#delta').val(c);
+
+  var vnom=parseInt($('#Vnom').val());
+    if(vnom==220) {
+      // alert(vnom);
+  var vnom=220;	}
+      else {
+  var vnom=vnom*Math.sqrt(3);
+        // alert(vnom);
+    }
+};
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
 
 
 };

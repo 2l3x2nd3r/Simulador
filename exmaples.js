@@ -159,7 +159,11 @@ Chart.types.Line.extend({
     name: "LineAlt",
     highlightPoints: function(datasetIndex, pointIndexArray){
         var activePoints = [];
+<<<<<<< HEAD
         // var activePoints_2 = [];
+=======
+        //var activePoints_2 = [];
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
         var points = this.datasets[datasetIndex].points;
         for(i in pointIndexArray){
         	if(points[pointIndexArray[i]]){
@@ -169,21 +173,36 @@ Chart.types.Line.extend({
           // if(points[pointIndexArray[i]+1]){
           // 	activePoints_2.push(points[pointIndexArray[i]+1]);
           // }
+<<<<<<< HEAD
          }
         //mostrar puntos activos en input
         $("#if_a").val(activePoints[0].value)
         $("#if_b").val(activePoints[0].label)
 
+=======
+        }
+        //mostrar puntos activos en input
+        $("#if_a").val(activePoints[0].value)
+        $("#if_b").val(activePoints[0].label)
+        // var  a =  document.getElementById('if_a').value;
+        // var  b =  document.getElementById('if_b').value;
+        // var  c = a * b;
+        // $('#delta').val(c);
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
         change_values()
         this.showTooltip(activePoints);
         }
 
 });
+<<<<<<< HEAD
 var result1 = null
 var result2 = null
 var result3 = null
 var result4 = null
 var result5 = null
+=======
+
+>>>>>>> 34476833ea14b7256fa5a4067b654032094b76db
 function initChart_custom(data) {
   var data_new = data.split(/\n/)
   var c_1 = []
@@ -248,6 +267,7 @@ function initChart_custom(data) {
   $("#slider").slider({
     max: lineChartData.datasets[0].data.length-1,
     slide: function( event, ui ) { highlight(ui.value); },
+
   });
 }
 
