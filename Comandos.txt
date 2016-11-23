@@ -7,11 +7,14 @@ git push -u origin development
 ------------------------------------
 comandos para subir repo
 ------------------------------------
+git pull origin development
 git add --all
 git commit -m "Simulador"
-git push -u origin development
+git push origin development
 
 
 ------------------------------------
 Comandos para iniciar server node.js
 ------------------------------------
+
+http-server
