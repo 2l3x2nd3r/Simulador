@@ -151,10 +151,6 @@ function handleFile(e) {
 
 if(xlf.addEventListener) xlf.addEventListener('change', handleFile, false);
 
-
-
-
-
 Chart.types.Line.extend({
     name: "LineAlt",
     highlightPoints: function(datasetIndex, pointIndexArray){
@@ -228,17 +224,12 @@ function initChart_custom(data) {
     // alert("elemento 1 c_1 inferior: "+ c_1[element_find.index_i]+"elemento 1 c_2 inferior: "+ c_2[element_find.index_i] +
     // "\n" + "elemento 2 c_1 superior: "+ c_1[element_find.index_f]+"elemento 2 c_2 superior: "+ c_2[element_find.index_f])
 
-
-
       result1=(c_1[element_find.index_f] - c_1[element_find.index_i]);
       result2=(c_2[element_find.index_f] - c_2[element_find.index_i]);
       result3=(result1/result2);
       result4=(result3*result2);
       result5= ((c_1[element_find.index_f]) * (result4));
       //alert(result5.toFixed(3));
-
-
-
 
   var options = {showTooltips: true};
   var myLine = new Chart(document.getElementById("canvas").getContext("2d")).LineAlt(lineChartData, options);
@@ -251,10 +242,77 @@ function initChart_custom(data) {
   });
 }
 
+Chart.types.Radar.extend({
+    name: "RadarAlt",
+    initialize: function (data) {
+        Chart.types.Radar.prototype.initialize.apply(this, arguments);
+
+        var originalScaleDraw = this.scale.draw;
+        var ctx = this.chart.ctx;
+        this.scale.draw = function () {
+            var lineWidth = this.lineWidth;
+            // this bypasses the line drawing in originalScaleDraw
+            this.lineWidth = lineWidth;
+
+            originalScaleDraw.apply(this, arguments);
+
+            ctx.lineWidth = this.lineWidth;
+            var scale = this;
+            // now we draw
+            Chart.helpers.each(scale.yLabels, function (label, index) {
+                // color of each radial line - you could replace this by an array lookup (if you limit your scaleSteps)
+                ctx.strokeStyle = "hsl(" + index / scale.yLabels.length * 360 + ", 80%, 70%)";
+
+                // copy of the chart.js code
+                ctx.beginPath();
+                for (var i = 0; i < scale.valuesCount; i++) {
+                    pointPosition = scale.getPointPosition(i, scale.calculateCenterOffset(scale.min + (index * scale.stepValue)));
+                    if (i === 0) {
+                        ctx.moveTo(pointPosition.x, pointPosition.y);
+                    } else {
+                        ctx.lineTo(pointPosition.x, pointPosition.y);
+                    }
+                }
+                ctx.closePath();
+                ctx.stroke();
+            });
+        }
+    }
+});
 
 
 
+var data = {
+    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(187,151,205,0.2)",
+            strokeColor:"rgb(247, 247, 247)",
+            pointColor: "rgba(187,151,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(187,151,205,1)",
+            data: [65, 59, 60, 41, 56, 55, 40]
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "rgba(151,187,205,1)",
+            pointColor: "rgba(151,187,205,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 46, 27, 20]
+        }
+    ]
+};
 
+
+var ctx = document.getElementById("myChart").getContext("2d");
+var myRadarChart = new Chart(ctx).RadarAlt(data, {
+    scaleLineWidth: 10
+});
 
 // var lineChartData = {
 //     labels: ["January", "February", "March", "April", "May", "June", "July"],
