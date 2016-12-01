@@ -1,8 +1,7 @@
 $(document).on('ready',constructor);
 function constructor()
 {
-  unoydos();
-
+   unoydos();
 }
 function unoydos()
 {
@@ -14,18 +13,18 @@ function change_values(){
    var qcarga=parseFloat($('#qcarga').val());
    var vcarga=parseFloat($('#vcarga').val());
 
-  if (isNaN(pcarga))
-    {
-      pcarga=0;
-    }
-   if (isNaN(qcarga))
-    {
-      qcarga=0;
-    }
-  if (isNaN(vcarga))
-    {
-      vcarga=0;
-    }
+  // if (isNaN(pcarga))
+  //   {
+  //     pcarga=0;
+  //   }
+  //  if (isNaN(qcarga))
+  //   {
+  //     qcarga=0;
+  //   }
+  // if (isNaN(vcarga))
+  //   {
+  //     vcarga=0;
+  //   }
   //PASO 1
   var pot=(Math.pow(pcarga,2));
   var pot1=(Math.pow(qcarga,2));
@@ -113,7 +112,6 @@ function change_values(){
       //salida 8
       var acos = Math.acos(pote3*180/Math.PI);
       $('#teta').val(acos);
-
 
       //salida 9
        var sn = $('#pred').val(document.getElementById('pcarga').value-(fsc2));
