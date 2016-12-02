@@ -32,7 +32,7 @@
 												<label>S<span class="pre">nom</span> (VA)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  value="400.000">
+												<input class="input_always" type="number" id="snom">
 											</div>
 										</div>
 									</div>
@@ -42,7 +42,7 @@
 												<label>No. Polos</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  name="" value="4" id="polos">
+												<input class="input_always" type="number" id="polos">
 											</div>
 										</div>
 									</div>
@@ -52,7 +52,7 @@
 											<label>V<span class="pre">nom</span> (V)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" id="Vnom" value="220">
+												<input class="input_always" type="number" id="Vnom" >
 											</div>
 										</div>
 									</div>
@@ -62,7 +62,7 @@
 												<label>R<span class="pre">A</span> (Ω)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  name="" value="0.012" id="RA">
+												<input class="input_always" type="number"  id="RA">
 											</div>
 										</div>
 									</div>
@@ -72,7 +72,7 @@
 												<label>Conexión</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="" name="" id="Conexion">
+												<input class="input_always" type="number" id="Conexion">
 											</div>
 										</div>
 									</div>
@@ -82,7 +82,7 @@
 													<label>X<span class="pre">s</span> (Ω)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="0.133" name="" id="XS">
+												<input class="input_always" type="number" id="XS">
 											</div>
 										</div>
 									</div>
@@ -92,7 +92,7 @@
 													<label>fp<span class="pre">nom</span></label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="0.8" name="" >
+												<input class="input_always" type="number" name="" >
 											</div>
 										</div>
 									</div>
@@ -102,7 +102,7 @@
 													<label>Sp (W/Hz)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  name="" value="195.000" id="sp">
+												<input class="input_always" type="number"  id="sp">
 											</div>
 										</div>
 									</div>
@@ -112,7 +112,7 @@
 												<label>f<span class="pre">nom</span> (Hz)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  name="" value="60" id="fnom">
+												<input class="input_always" type="number"  id="fnom">
 											</div>
 										</div>
 									</div>
@@ -122,7 +122,7 @@
 												<label>eff(pu)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="0.8" name="" id="conexion">
+												<input class="input_always" type="number" id="conexion">
 											</div>
 										</div>
 									</div>
@@ -133,7 +133,7 @@
 										<canvas id="canvas" height="300" width="350"></canvas>
 									</div>
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<input type="range" id="if_a_slide">
+										<input type="range" id="if_a_slide" oninput="if_a_slide(this.value)">
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 										<div class="row">
@@ -141,7 +141,7 @@
 												<label>IF (A)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" id="if_a">
+												<input class="input_always" type="number" id="if_a">
 											</div>
 										</div>
 									</div>
@@ -190,7 +190,7 @@
 														<label>P<span class="pre">motor</span> (W)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" id="pmotor">
+														<input class="input_always" type="number" id="pmotor">
 													</div>
 												</div>
 											</div>
@@ -200,7 +200,7 @@
 														<label>n<span class="pre">vacio</span> (rpm)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-															<input type="number"  id="nvacio">
+															<input class="input_always" type="number"  id="nvacio">
 													</div>
 												</div>
 											</div>
@@ -220,7 +220,7 @@
 														<label>V<span class="pre">carga</span> (V)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" name="" id="vcarga">
+														<input class="input_always" type="number" name="" id="vcarga">
 													</div>
 												</div>
 											</div>
@@ -230,7 +230,7 @@
 														<label>f<span class="pre">carga</span> (Hz)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" name="" id="fcarga">
+														<input class="input_always" type="number" name="" id="fcarga">
 													</div>
 												</div>
 											</div>
@@ -250,10 +250,10 @@
 														<label>P<span class="pre">carga</span> (W)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" id="pcarga">
+														<input class="input_always" type="number" id="pcarga">
 													</div>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-														<input type="range" id="pcarga_range">
+														<input type="range" id="pcarga_range" oninput="pcarga_range(this.value)">
 													</div>
 												</div>
 											</div>
@@ -273,10 +273,10 @@
 														<label>Q<span class="pre">carga</span> (VAR)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" id="qcarga">
+														<input class="input_always" type="number" id="qcarga">
 													</div>
 													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-														<input type="range" id="qcarga_range">
+														<input type="range" id="qcarga_range" oninput="qcarga_range(this.value)">
 													</div>
 												</div>
 											</div>
@@ -286,7 +286,7 @@
 														<label>I (A)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" id="i_a">
+														<input class="input_always" type="number" id="i_a">
 													</div>
 												</div>
 											</div>
@@ -296,7 +296,7 @@
 														<label>fp</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" id="fp">
+														<input class="input_always" type="number" id="fp">
 													</div>
 												</div>
 											</div>
@@ -307,7 +307,7 @@
 						</div>
 					</div>
 				</div>
-			<!-- ################################## -->
+<!-- ########################################################################################################### -->
 				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5 blue-dark-1">
 					<h3 class="white">Salidas</h3>
 					<div class="row">
@@ -323,7 +323,7 @@
 														<label>P<sub>gen</sub>(W)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="pgen">
+														<input class="disabled_always" type="number" disabled id="pgen">
 													</div>
 												</div>
 											</div>
@@ -333,7 +333,7 @@
 														<label>Q<sub>gen</sub>(W)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="qgen">
+														<input class="disabled_always" type="number" disabled id="qgen">
 													</div>
 												</div>
 											</div>
@@ -343,7 +343,7 @@
 														<label>f<sub>P</sub> nom</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="fpnom">
+														<input class="disabled_always" type="number" disabled id="fpnom">
 													</div>
 												</div>
 											</div>
@@ -353,7 +353,7 @@
 														<label>I<sub>A</sub> (A)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="ia">
+														<input class="disabled_always" type="number" disabled id="ia">
 													</div>
 												</div>
 											</div>
@@ -363,7 +363,7 @@
 														<label>𝛿 (°)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-															<input type="number" disabled id="delta">
+															<input class="disabled_always" type="number" disabled id="delta">
 													</div>
 												</div>
 											</div>
@@ -373,7 +373,7 @@
 														<label>𝜃 (°)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="teta">
+														<input class="disabled_always" type="number" disabled id="teta">
 													</div>
 												</div>
 											</div>
@@ -394,7 +394,7 @@
 														<label>P <sub>red</sub>(w)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="pred">
+														<input class="disabled_always" type="number" disabled id="pred">
 													</div>
 												</div>
 											</div>
@@ -404,7 +404,7 @@
 														<label>P <sub>red</sub>(W)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="pred2">
+														<input class="disabled_always" type="number" disabled id="pred2">
 													</div>
 												</div>
 											</div>
@@ -414,7 +414,7 @@
 														<label>S <sub>red</sub>(VA)</label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="sred">
+														<input class="disabled_always" type="number" disabled id="sred">
 													</div>
 												</div>
 											</div>
@@ -424,7 +424,7 @@
 														<label><sup>f</sup>P<sub>red</sub></label>
 													</div>
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input type="number" disabled id="fpred">
+														<input class="disabled_always" type="number" disabled id="fpred">
 													</div>
 												</div>
 											</div>
@@ -439,6 +439,7 @@
 		</div>
 		<script type="text/javascript" src="js/my_libs/chart_init.js"></script>
 		<script type="text/javascript" src="js/my_libs/exmaples.js"></script>
+		<script type="text/javascript" src="js/my_libs/find_element.js"></script>
 		<script type="text/javascript" src="js/my_libs/funciones.js"></script>
 	</body>
 </html>

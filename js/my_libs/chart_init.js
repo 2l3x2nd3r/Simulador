@@ -31,5 +31,5 @@ chart_simu.initChart_custom= function(data) {
     chart_simu.highlight = function(index) {
         myLine.highlightPoints(0, [index]);
     }
-    initAngular()
+    constructor()
 }
