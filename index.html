@@ -1,501 +1,445 @@
 <!DOCTYPE html>
 <html ng-app="simu">
-<head>
-	<title>SIMULADOR DE DIAGRAMAS FASORIALES PARA MÁQUINAS SÍNCRONAS</title>
-	<meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css"  href="jquery/jquery-ui.min.css">
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-	 <script src="http://www.chartjs.org/assets/Chart.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-
-
-<!-- <script type="text/javascript" src="js/grafico.js"></script> -->
-
-</head>
-<body class="blue-dark" ng-controller="SimuCtrl as control">
-<div class="container" id="ejercicios">
-	<div class="row">
-		<h1 class="white center-text">Diagrama fasorial Maquinas Sincronas</h1>
-		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7 blue-dark-1">
+	<head>
+		<title>SIMULADOR DE DIAGRAMAS FASORIALES PARA MÁQUINAS SÍNCRONAS</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css"  href="jquery/jquery-ui.min.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="http://www.chartjs.org/assets/Chart.js"></script>
+		
+		<script src="xlsx.js"></script>
+	</head>
+	<body class="blue-dark" ng-controller="SimuCtrl as control">
+		<div class="container" id="ejercicios">
 			<div class="row">
-			 	<h3 class="white margin-l">Entradas</h3>
-				<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 border-div">
-				 	<div class="container-div-custom blue-light">
-						<h4>Parámetros del generador</h4>
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>S<span class="pre">nom</span> (VA)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  value="400.000">
-										<!-- <input type="number" ng-model="input.i1" value="400.000"> -->
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>No. Polos</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  name="" value="4" id="polos">
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-									<label>V<span class="pre">nom</span> (V)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" name="" id="Vnom" value="220">
-										<!-- <input type="number" ng-model="input.i3" name="" value="4"> -->
-									</div>
-
-
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>R<span class="pre">A</span> (Ω)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  name="" value="0.012" id="RA">
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>Conexión</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-
-										<input type="number" value="" name="" id="Conexion">
-										<!-- <input type="number" ng-model="input.i5" name="" > -->
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-											<label>X<span class="pre">s</span> (Ω)</label>
-
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="0.133" name="" id="XS">
-
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-											<label>fp<span class="pre">nom</span></label>
-
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="0.8" name="" >
-										<!-- <input type="number" ng-model="input.i6" name="" > -->
-
-										<!-- <input type="number" ng-model="input.i7" name="" > -->
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-											<label>Sp (W/Hz)</label>
-
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  name="" value="195.000" id="sp">
-
-										<!-- <input type="number" ng-model="input.i8" name="" > -->
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>f<span class="pre">nom</span> (Hz)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number"  name="" value="60" id="fnom">
-										<!-- <input type="number" ng-model="input.i9" name="" > -->
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>eff(pu)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="0.8" name="" id="conexion">
-									</div>
-								</div>
-							</div>
-								<select name="format" style="display:none;" >
-								<option value="csv" selected> CSV</option>
-								</select><br />
-								<p><input type="file" name="xlfile" id="xlf" /> </p>
-						 		<pre id="out" style="display:none;"></pre>
-								</div>
-								<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-								<canvas id="canvas" height="300" width="350"></canvas>
-							 	<div id="slider"></div>
-								<br />
-								<script src="xlsx.js"></script>
-								<script type="text/javascript" src="exmaples.js"></script>
-								<!-- <div id="canvas-holder">
-									<canvas id="chart-area4" width="600" height="300"></canvas>
-							 </div> -->
-							<!-- <canvas id="canvas" height="300" width="350"></canvas>
-								<div id="slider"></div> -->
-							</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<label>IF (A)</label>
-
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-											<input type="number" id="if_a">
-											<input type="number" id="if_b" value="0.30">
-										<!-- <input type="number" value="{{input.sc1.val}}" disabled > -->
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 border-div">
+				<h1 class="white center-text">Diagrama fasorial Maquinas Sincronas</h1>
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7 blue-dark-1">
 					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-							<div class="container-div-custom blue-light">
-								<h4>Operación del generador</h4>
+					 	<h3 class="white margin-l">Entradas</h3>
+						<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 border-div">
+						 	<div class="container-div-custom blue-light">
+								<h4>Parámetros del generador</h4>
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-
-												<label>Con bus inf.</label>
+												<label>S<span class="pre">nom</span> (VA)</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="radio" ng-model="input.i10" value="1" id="radio1" >
+												<input type="number"  value="400.000">
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>Solo</label>
+												<label>No. Polos</label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="radio" ng-model="input.i10" value="2" id="radio2">
+												<input type="number"  name="" value="4" id="polos">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+											<label>V<span class="pre">nom</span> (V)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" name="" id="Vnom" value="220">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<label>R<span class="pre">A</span> (Ω)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number"  name="" value="0.012" id="RA">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<label>Conexión</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="" name="" id="Conexion">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<label>X<span class="pre">s</span> (Ω)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="0.133" name="" id="XS">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<label>fp<span class="pre">nom</span></label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="0.8" name="" >
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<label>Sp (W/Hz)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number"  name="" value="195.000" id="sp">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<label>f<span class="pre">nom</span> (Hz)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number"  name="" value="60" id="fnom">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<label>eff(pu)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" value="0.8" name="" id="conexion">
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+										<input class="btn btn-default btn-block" type="file" name="xlfile" id="xlf" accept="application/vnd.ms-excel" style="width: 100%;" />
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+										<canvas id="canvas" height="300" width="350"></canvas>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+										<input type="range" id="if_a_slide">
+									</div>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<label>IF (A)</label>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+												<input type="number" id="if_a">
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
-
-							<div class="container-div-custom blue-light">
-								<h4>Motor primario</h4>
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>P<span class="pre">motor</span> (W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="320.000" name="" >
-												<!-- <input type="number" ng-model="input.i11" name="" > -->
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>n<span class="pre">vacio</span> (rpm)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-													<input type="number"  name="" value="1.830" id="nvacio">
-												<!-- <input type="number" ng-model="input.i12" name="" > -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div border-div-top-no">
-
-							<div class="container-div-custom blue-light">
-								<h4>Carga  </h4>
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row" >
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>V<span class="pre">carga</span> (V)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" ng-model="input.i13" name="" id="vcarga">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>f<span class="pre">carga</span> (Hz)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" ng-model="input.i14" name="" >
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>P<span class="pre">max</span> (W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" ng-model="input.i15" name="" >
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>P<span class="pre">carga</span> (W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" value="{{input.sc2.val}}" disabled id="pcarga">
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-												<input type="range" ng-model="input.sc2.val" min="{{input.sc2.min}}" max="{{input.i15}}" step="{{input.sc2.step}}">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>Q<span class="pre">max</span> (VAR)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" ng-model="input.i16" name="" >
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>Q<span class="pre">carga</span> (VAR)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" value="{{input.sc3.val}}" disabled id="qcarga">
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-												<input type="range" ng-model="input.sc3.val" min="{{input.sc3.min}}" max="{{input.i16}}" step="{{input.sc3.step}}">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>I (A)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" value="{{input.i17}}" disabled id="total">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>fp</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" name="" value="{{input.i18}}" disabled id="total1">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	<!-- ################################## -->
-		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5 blue-dark-1">
-			<h3 class="white">Salidas</h3>
-			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="container-div-custom blue-light">
-							<h4>Generador</h4>
-								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>P<sub>gen</sub>(W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-													<input type="number" name="" disabled id="pgen">
-												<!-- <input type="number" value="{{output.o1}}" name="" disabled id="pgen"> -->
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>Q<sub>gen</sub>(W)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number"  name="" disabled id="qgen">
-												<!-- <input type="number" value="{{output.o2}}" name="" disabled> -->
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>f<sub>P</sub> nom</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o3}}" name="" disabled id="fpnom">
-												<!-- <input type="number" value="{{output.o3}}" name="" disabled> -->
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>I<sub>A</sub> (A)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o4}}" name="" disabled id="ia">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>𝛿 (°)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-													<input type="number" value="{{output.o5}}" name="" disabled id="delta">
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<div class="row">
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<label>𝜃 (°)</label>
-											</div>
-											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input type="number" value="{{output.o6}}" name="" disabled id="teta">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
-							<div class="container-div-custom blue-light2  style="width="350">
-								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<button class="btn btn-default btn-block">Ejecutar Cálculos</button>
-									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-											<canvas id="myChart" height="300" width="350"></canvas>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 border-div">
-					<div class="container-div-custom blue-light">
-						<h4>Red</h4>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<label>P <sub>red</sub>(w)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="{{output.o7}}" name="" disabled id="pred">
-									</div>
-								</div>
-					 	</div>
+						<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 border-div">
+							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-									<label>P <sub>red</sub>(W)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="{{output.o8}}" name="" disabled id="pred2">
-									</div>
-								</div>
-					 	</div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<label>S <sub>red</sub>(VA)</label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="{{output.o9}}" name="" disabled id="sred">
-									</div>
-								</div>
-						 </div>
-							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-										<label><sup>f</sup>P<sub>red</sub></label>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-										<input type="number" value="{{output.o10}}" name="" disabled id="fpred">
+									<div class="container-div-custom blue-light">
+										<h4>Operación del generador</h4>
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>Con bus inf.</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="radio" name="opg" value="true" id="radio1" checked>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>Solo</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="radio" name="opg" value="false" id="radio2">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-					 	</div>
-						 	</div>
-				 	</div>
-			 </div>
-	 	</div>
-		 </div>
-	 	</div>
- 	</div>
-	<script type="text/javascript" src="js/app.js"></script>
-	<script src="jquery/jquery-ui.min.js"> </script>
-	<script type="text/javascript" src="exmaples.js"></script>
-	<script src=js/funciones.js></script>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
 
- <!-- <script type="text/javascript" src="js/Chart.js"></script> -->
- </body>
- </html>
+									<div class="container-div-custom blue-light">
+										<h4>Motor primario</h4>
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>P<span class="pre">motor</span> (W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="pmotor">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>n<span class="pre">vacio</span> (rpm)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+															<input type="number"  id="nvacio">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div border-div-top-no">
+
+									<div class="container-div-custom blue-light">
+										<h4>Carga  </h4>
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row" >
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>V<span class="pre">carga</span> (V)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" name="" id="vcarga">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>f<span class="pre">carga</span> (Hz)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" name="" id="fcarga">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>P<span class="pre">max</span> (W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" name="" id="pmax">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>P<span class="pre">carga</span> (W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="pcarga">
+													</div>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+														<input type="range" id="pcarga_range">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>Q<span class="pre">max</span> (VAR)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="qmax" >
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>Q<span class="pre">carga</span> (VAR)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="qcarga">
+													</div>
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+														<input type="range" id="qcarga_range">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>I (A)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="i_a">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>fp</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" id="fp">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			<!-- ################################## -->
+				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5 blue-dark-1">
+					<h3 class="white">Salidas</h3>
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="container-div-custom blue-light">
+										<h4>Generador</h4>
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>P<sub>gen</sub>(W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="pgen">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>Q<sub>gen</sub>(W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="qgen">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>f<sub>P</sub> nom</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="fpnom">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>I<sub>A</sub> (A)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="ia">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>𝛿 (°)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+															<input type="number" disabled id="delta">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>𝜃 (°)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="teta">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="container-div-custom blue-light">
+										<h4>Red</h4>
+										<div class="row">
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+														<label>P <sub>red</sub>(w)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="pred">
+													</div>
+												</div>
+											</div>
+										 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+														<label>P <sub>red</sub>(W)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="pred2">
+													</div>
+												</div>
+											</div>
+										 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+														<label>S <sub>red</sub>(VA)</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="sred">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
+														<label><sup>f</sup>P<sub>red</sub></label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input type="number" disabled id="fpred">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		 	</div>
+		</div>
+		<script type="text/javascript" src="js/my_libs/chart_init.js"></script>
+		<script type="text/javascript" src="exmaples.js"></script>
+		<script src=js/funciones.js></script>
+	</body>
+</html>
