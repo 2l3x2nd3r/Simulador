@@ -18,7 +18,7 @@ function find_element(data,value){
         })
         // alert("elemento 1 data.c_1 inferior: "+ data.c_1[element_find.index_i]+"elemento 1 data.c_2 inferior: "+ data.c_2[element_find.index_i] +
         // "\n" + "elemento 2 data.c_1 superior: "+ data.c_1[element_find.index_f]+"elemento 2 data.c_2 superior: "+ data.c_2[element_find.index_f])
-
+    chart_simu.highlight([element_find.index_i, element_find.index_f])
     var result1 = (data.c_2[element_find.index_f] - data.c_2[element_find.index_i]);
     var result2 = (data.c_1[element_find.index_f] - data.c_1[element_find.index_i]);
     var result3 = (result1 / result2);

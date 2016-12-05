@@ -66,11 +66,13 @@ function qcarga_range(value) {
 
 function change_values(){
   var ok = $('.input_always').toArray().every(function (input) {
-    if (!$(input).val())
+    if ($(input).val())
+      return true
+    else
       return false
   })
+  var ea_find = find_element(values_xls,$("#if_a").val())
   if(ok){
-    var result5 = find_element(values_xls,$("#if_a").val())
     var pcarga=parseFloat($('#pcarga').val());
     var qcarga=parseFloat($('#qcarga').val());
     var vcarga=parseFloat($('#vcarga').val());
@@ -84,11 +86,11 @@ function change_values(){
    //PASO 2
     var r3=(Math.sqrt(3));
     var r4=resul/(r3*vcarga);
-    $('#total').val(r4);
+    $('#i_a').val(r4);
 
     //PASO 3
     var r5=pcarga/resul;
-    $('#total1').val(r5);
+    $('#fp').val(r5);
 
   //salida 3
     var polos=parseFloat($('#polos').val());
@@ -98,88 +100,85 @@ function change_values(){
 
     var fsc=(polos * nvacio) / 120;
     var fsc1=(fsc-fnom);
-    var fsc2= sp * fsc1;
-    $('#pgen').val(fsc2);
+    var pgen= sp * fsc1;
+    $('#pgen').val(pgen);
 
     //salida 7
     var ra=parseFloat($('#RA').val());
     var xs=parseFloat($('#XS').val());
-  // parentesis(1)
-    var raxs=Math.atan(ra/xs);
-
-  //  potencia
+    var rad = 180/(Math.PI) //180/pi()
+    //  potencia
     var ra1=Math.pow(ra,2);
     var ra2=Math.pow(xs,2);
-
-  //  suma de potencias
+    //  suma de potencias
     var ra3=ra1+ra2;
-  //  raiz
-    var raizt=Math.sqrt(ra3);
+    //  raiz
+    var raizt=Math.sqrt(ra3); // raiz de la suma de potencias
 
-    var  con =  document.getElementById('Conexion').value;
     var  vn  =  document.getElementById('Vnom').value;
+    var Vf=parseFloat(vn);
 
+    if(!document.getElementById('Conexion').checked)
+      Vf=parseFloat(vn) * Math.sqrt(3);
+    
+    var prt3 = 3 * ea_find * Vf;
+    var prt31= (pgen/prt3);
+    var prt32= raizt * prt31 // primera parte de la suma RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7)
 
-    if(con==220 && vn==220) {
-      var conex=220;
-  	}else {
-      var conex=document.getElementById('Conexion').value * Math.sqrt(3);
-    }
+    
+    var raxs=Math.atan(xs/ra);
+    
+    var raxs2 = Math.cos(raxs* -1) / ea_find;
 
-    //parentesis (2)
-    var raxs1= (raxs/conex);
-    var raxs2 = Math.cos(raxs1);
+    var raxs3 = Vf * raxs2 // segunda parte de la suma Q7*COS(-ATAN(H8/G8))/Q6
 
-    //parentesis (3)
-    var prt3 = 3 * (conex * result5);
-    var prt31= (fsc2/prt3);
-    var prt32=(prt31 + conex);
-
-    //parentesis (4)
-    var raizt1=Math.acos(raizt);
-    var rad= (180/(Math.PI))*(raizt1);
+    var raizt1=Math.acos(prt32 + raxs3); // arcoseno grande ACOS(RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7) + Q7*COS(-ATAN(H8/G8))/Q6)
 
     //ope salida 7
-    var ope= (rad * prt32 * raxs2) + (conex  + raxs);
+    var ope= rad * ( (raizt1 * -1) + raxs)
     $('#delta').val(ope.toFixed(3));
 
     //salida N°4
-    //parentesis
-    var sen = (3*conex*conex)*(Math.sin(raxs/raizt1));
-    var sen1 = 3*result5*conex * Math.sin(ope * Math.PI/180 ) - (raxs + sen);
-    $('#qgen').val(sen1);
+    var sen1 = -3 * ea_find * Vf * Math.sin(((ope * Math.PI)/180 )- Math.atan(xs/ra)) //1ra suma del parentesis -3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))
+    var sen2 = (3*Vf*Vf)*(Math.sin((raxs * -1))) // 2da suma del parentesis grande 3*Q7*Q7*SENO(-ATAN(H8/G8))
+    var qgen = (sen1 + sen2) / raizt // operacion (-3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))+3*Q7*Q7*SENO(-ATAN(H8/G8)))/RAIZ(G8^2+H8^2)
+    $('#qgen').val(qgen);
 
     //salida 5
-    var pote  = Math.pow(ope,2);
-    var pote1 = Math.pow(sen1,2);
-    var pote3 = fsc2/(Math.sqrt(pote+pote1));
-    $('#fpnom').val(pote3);
+    var pote  = Math.pow(pgen,2);
+    var pote1 = Math.pow(qgen,2);
+    var fpgen = pgen/(Math.sqrt(pote+pote1));
+    $('#fpnom').val(fpgen);
 
     //salida 6
-    var sal = Math.sqrt(Math.pow(fsc2,2)+Math.pow(sen1,2)/Math.sqrt(3)*document.getElementById('Vnom').value);
+    var sal = Math.sqrt((Math.pow(pgen,2)+Math.pow(qgen,2)))/(Math.sqrt(3)*parseFloat(vn));
     $('#ia').val(sal);
 
     //salida 8
-    var acos = Math.acos(pote3*180/Math.PI);
+    var acos = Math.acos(fpgen)*rad;
     $('#teta').val(acos);
 
     //salida 9
-     var sn = $('#pred').val(document.getElementById('pcarga').value-(fsc2));
+    var sn = pcarga-pgen
+    $('#pred').val(sn);
 
     //salida 10
-     var sd = $('#pred2').val(document.getElementById('qcarga').value-(sen1));
+    var sd = qcarga-qgen
+    $('#pred2').val(sd);
 
     //salida 11
-    var sd1 =(Math.pow(sn.val(),2))+(Math.pow(sd.val(),2));
-    $('#sred').val(Math.sqrt(sd1));
+    var sd1 =(Math.pow(sn,2)+(Math.pow(sd,2)));
+    var sred = Math.sqrt(sd1)
+    $('#sred').val(sred);
 
     //salida 12
-    $('#fpred').val(sn.val()/sd1);
+    var fpred = sn/sred
+    $('#fpred').val(fpred);
 
     //salida soledad 1
-    var sol = result5*Math.cos(ope*Math.PI/180);
+    var sol = ea_find*Math.cos(ope*Math.PI/180);
     //salida soledad2
-    var sol1= result5*Math.sin(ope*Math.PI/180);
+    var sol1= ea_find*Math.sin(ope*Math.PI/180);
 
 
     //salida 14 1
@@ -195,7 +194,7 @@ function change_values(){
     console.log(s151);
 
     //salida 16 1
-    var s16 = conex;
+    var s16 = Vf;
     //salida16 2
     var s161=0;
   }

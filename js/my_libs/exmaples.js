@@ -172,19 +172,16 @@ Chart.types.Line.extend({
     name: "LineAlt",
     highlightPoints: function(datasetIndex, pointIndexArray) {
         var activePoints = [];
-        // var activePoints_2 = [];
         var points = this.datasets[datasetIndex].points;
         for (i in pointIndexArray) {
             if (points[pointIndexArray[i]]) {
                 activePoints.push(points[pointIndexArray[i]]);
             }
         }
-        // //mostrar puntos activos en input
-        // $("#if_a").val(activePoints[0].value)
-        // $("#if_b").val(activePoints[0].label)
-
-        // change_values()
         this.showTooltip(activePoints);
+    },
+    movePointWant : function(x,y){
+        
     }
 });
 

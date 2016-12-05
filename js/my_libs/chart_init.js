@@ -25,11 +25,16 @@ chart_simu.initChart_custom= function(data) {
         "labels": c_1,
     };
     var options = {
-        showTooltips: true
+        showTooltips: true,
+        hover: {
+            onHover: function () {
+                // body...
+            }
+        }
     };
     chart_simu.myLine = new Chart(document.getElementById("canvas").getContext("2d")).LineAlt(lineChartData, options);
-    chart_simu.highlight = function(index) {
-        myLine.highlightPoints(0, [index]);
+    chart_simu.highlight = function(points) {
+        chart_simu.myLine.highlightPoints(0, points);
     }
     constructor()
 }
