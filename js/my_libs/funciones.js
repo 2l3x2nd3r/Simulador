@@ -196,27 +196,37 @@ function change_values(){
     //salida 12
     $('#fpred').val(fpred);
 
-    //salida soledad 1
-    var sol = ea_find*Math.cos(ope*Math.PI/180);
-    //salida soledad2
-    var sol1= ea_find*Math.sin(ope*Math.PI/180);
-
-
+    if(op){
+    //salida 13 1
+      var s13 = ea_find*Math.cos(ope*Math.PI/180);
+    //salida 13 2
+      var s131= ea_find*Math.sin(ope*Math.PI/180);
+    }else{
+    //salida 13 1
+      var s13 = ea_find*Math.cos(acos*Math.PI/180);
+    //salida 13 2
+      var s131= ea_find*Math.sin(acos*Math.PI/180);
+    }
+    $('#s13').val(s13)
+    $('#s131').val(s131)
     //salida 14 1
-    var s14= sal*document.getElementById('RA').value*(Math.cos(-acos*Math.PI/180));
+    var s14= sal*ra*(Math.cos(-acos*Math.PI/180));
+    $('#s14').val(s14)
     //salida 14 2
-    var s142= sal*document.getElementById('RA').value*(Math.PI/180);
-
+    var s141= sal*ra*(Math.sin(-acos*(Math.PI/180)));
+    $('#s141').val(s141)
     //salida 15 1
-    var s15= sal*document.getElementById('XS').value*Math.cos(Math.PI/2-acos*Math.PI/180);
-    console.log(s15);
+    var s15= sal*xs*Math.cos(Math.PI/2-acos*Math.PI/180);
+    $('#s15').val(s15)
     //salida 15 2
-    var s151= sal*document.getElementById('XS').value*Math.sin(Math.PI/2-acos*Math.PI/180);
-    console.log(s151);
-
+    var s151= sal*xs*Math.sin(Math.PI/2-acos*Math.PI/180);
+    $('#s151').val(s151)
     //salida 16 1
     var s16 = Vf;
+    $('#s16').val(s16)
     //salida16 2
     var s161=0;
+    $('#s161').val(s161)
+
   }
 };
