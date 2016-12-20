@@ -12,6 +12,12 @@ $(document).on('ready',function(){
     $("#qcarga_range").val($(this).val())
   })
   $("input[name=opg]").change(function(){
+    var op = JSON.parse($("input[name=opg]:checked").val())
+    if(!op){
+      $('#outred').hide()
+    }else{
+      $('#outred').show()
+    }
     change_values()
   })
 });
@@ -74,6 +80,7 @@ function change_values(){
   })
   var ea_find = find_element(values_xls,$("#if_a").val())
   if(ok){
+    $('#s_g').show()
     var pcarga=parseFloat($('#pcarga').val());
     var qcarga=parseFloat($('#qcarga').val());
     var vcarga=parseFloat($('#vcarga').val());
@@ -122,17 +129,28 @@ function change_values(){
     var raizt=Math.sqrt(ra3); // raiz de la suma de potencias
 
     var  vn  =  document.getElementById('Vnom').value;
-    var Vf=parseFloat(vn);
-
-    if(!document.getElementById('Conexion').checked){
-      Vf=parseFloat(vn) / Math.sqrt(3);
-    }else{
-      if(!op){
-        var A = 1
-        var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
-        var C = (ra3 * rpot) / 9
-        Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
+    var Vf = 0
+    var Vt = null
+    if(!op){
+      var A = 1
+      var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
+      var C = (ra3 * rpot) / 9
+      Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
+      if(!document.getElementById('Conexion').checked){
+        Vt= Vf*Math.sqrt(3);
+      }else{
+        Vt = Vf
       }
+      $('#vt').val(Vt.toFixed(3));
+      $('#vt_div').show()
+      
+    }else{
+      if(!document.getElementById('Conexion').checked){
+        Vf=parseFloat(vn) / Math.sqrt(3);
+      }else{
+        Vf=parseFloat(vn);
+      }
+      $('#vt_div').hide()
     }
     var prt3 = 3 * ea_find * Vf;
     var prt31= (pgen/prt3);
@@ -207,26 +225,39 @@ function change_values(){
     //salida 13 2
       var s131= ea_find*Math.sin(acos*Math.PI/180);
     }
-    $('#s13').val(s13)
-    $('#s131').val(s131)
-    //salida 14 1
-    var s14= sal*ra*(Math.cos(-acos*Math.PI/180));
-    $('#s14').val(s14)
-    //salida 14 2
-    var s141= sal*ra*(Math.sin(-acos*(Math.PI/180)));
-    $('#s141').val(s141)
-    //salida 15 1
-    var s15= sal*xs*Math.cos(Math.PI/2-acos*Math.PI/180);
-    $('#s15').val(s15)
-    //salida 15 2
-    var s151= sal*xs*Math.sin(Math.PI/2-acos*Math.PI/180);
-    $('#s151').val(s151)
+    $('#s_13').attr('x2', s13)
+    $('#s_13').attr('y2', s131)
+    
     //salida 16 1
     var s16 = Vf;
-    $('#s16').val(s16)
     //salida16 2
     var s161=0;
-    $('#s161').val(s161)
+    
+    $('#s_16').attr('x2', s16)
+    $('#s_16').attr('y2', s161)
+
+
+    //salida 14 1
+    var s14= sal*ra*(Math.cos(-acos*Math.PI/180));
+    //salida 14 2
+    var s141= sal*ra*(Math.sin(-acos*(Math.PI/180)));
+    
+    $('#s_14').attr('x1', s16)
+    $('#s_14').attr('y1', s161)
+    $('#s_14').attr('x2', s16 + s14)
+    $('#s_14').attr('y2', s141)
+
+    //salida 15 1
+    var s15= sal*xs*Math.cos(Math.PI/2-acos*Math.PI/180);
+    //salida 15 2
+    var s151= sal*xs*Math.sin(Math.PI/2-acos*Math.PI/180);
+    
+    $('#s_15').attr('x1', s16 + s14)
+    $('#s_15').attr('y1', s141)
+    $('#s_15').attr('x2', s16 + s14 + s15)
+    $('#s_15').attr('y2', s141 + s151 )
+
+    
 
   }
 };

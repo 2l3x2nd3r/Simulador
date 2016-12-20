@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" type="text/css"  href="jquery/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css"  href="css/jquery-ui.min.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"></script>
 		<script type="text/javascript" src="js/xlsx.js"></script>
@@ -21,7 +21,7 @@
 				<h1 class="white center-text">Diagrama fasorial Maquinas Sincronas</h1>
 				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-7 blue-dark-1">
 					<div class="row">
-					 	<h3 class="white margin-l">Entradas</h3>
+					 	<h3 class="margin-vi white margin-l">Entradas</h3>
 						<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 border-div">
 						 	<div class="container-div-custom blue-light">
 								<h4>Parámetros del generador</h4>
@@ -130,7 +130,7 @@
 										<input class="btn btn-default btn-block" type="file" name="xlfile" id="xlf" accept="application/vnd.ms-excel" style="width: 100%; margin: 0 auto; text-align: center;" />
 									</div>
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
-										<canvas id="canvas" height="300" width="350"></canvas>
+										<canvas id="canvas" height="252" width="350"></canvas>
 									</div>
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 										<input type="range" id="if_a_slide" oninput="if_a_slide(this.value)">
@@ -186,20 +186,20 @@
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>P<span class="pre">motor</span> (W)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input class="input_always" type="number" id="pmotor">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>n<span class="pre">vacio</span> (rpm)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 															<input class="input_always" type="number"  id="nvacio">
 													</div>
 												</div>
@@ -216,66 +216,66 @@
 										<div class="row">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row" >
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>V<span class="pre">carga</span> (V)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input class="input_always" type="number" name="" id="vcarga">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>f<span class="pre">carga</span> (Hz)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input class="input_always" type="number" name="" id="fcarga">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>P<span class="pre">max</span> (W)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input type="number" name="" id="pmax">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>P<span class="pre">carga</span> (W)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input class="input_always" type="number" id="pcarga">
 													</div>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v margin-vi">
 														<input type="range" id="pcarga_range" oninput="pcarga_range(this.value)">
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>Q<span class="pre">max</span> (VAR)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input type="number" id="qmax" >
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
 												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<label>Q<span class="pre">carga</span> (VAR)</label>
 													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-h">
 														<input class="input_always" type="number" id="qcarga">
 													</div>
-													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
+													<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v margin-vi">
 														<input type="range" id="qcarga_range" oninput="qcarga_range(this.value)">
 													</div>
 												</div>
@@ -309,14 +309,16 @@
 				</div>
 <!-- ########################################################################################################### -->
 				<div class="col-xs-12 col-sm-12 col-md-4 col-lg-5 blue-dark-1">
-					<h3 class="white">Salidas</h3>
+					<h3 class="margin-vi white">Salidas</h3>
 					<div class="row">
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="container-div-custom blue-light">
 										<h4>Generador</h4>
 										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 												<div class="row">
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
@@ -347,6 +349,10 @@
 													</div>
 												</div>
 											</div>
+											</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v">
 												<div class="row">
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
@@ -377,17 +383,31 @@
 													</div>
 												</div>
 											</div>
+											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-v" id="vt_div">
+												<div class="row">
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<label>VT</label>
+													</div>
+													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
+														<input class="disabled_always" type="number" disabled id="vt">
+													</div>
+												</div>
+											</div>
+											</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div" id="outred">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="container-div-custom blue-light">
 										<h4>Red</h4>
 										<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="row">
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
@@ -408,6 +428,10 @@
 													</div>
 												</div>
 											</div>
+											</div>
+											</div>
+											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+											<div class="row">
 										 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="row">
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
@@ -428,17 +452,19 @@
 													</div>
 												</div>
 											</div>
+											</div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 border-div">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 									<div class="container-div-custom blue-light">
 										<h4>Salidas Grafica</h4>
-										<div class="row">
+										<!-- <div class="row">
 											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 												<div class="row">
 													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
@@ -519,7 +545,28 @@
 													</div>
 												</div>
 											</div>
-										</div>
+										</div> -->
+										<svg id="s_g" style="width: 100%; height: auto; display: none">
+										  <defs>
+										    <marker id="arrow_13" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+										      <path d="M0,0 L0,6 L9,3 z" fill="#C73300" />
+										    </marker>
+										    <marker id="arrow_14" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+										      <path d="M0,0 L0,6 L9,3 z" fill="#C76F00" />
+										    </marker>
+										    <marker id="arrow_15" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+										      <path d="M0,0 L0,6 L9,3 z" fill="#C79300" />
+										    </marker>
+										    <marker id="arrow_16" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+										      <path d="M0,0 L0,6 L9,3 z" fill="#054F7F" />
+										    </marker>
+										  </defs>
+
+										  <line id="s_13" x1="0" y1="0" x2="0" y2="0" stroke="#C73300" stroke-width="2.5" marker-end="url(#arrow_13)" />
+										  <line id="s_14" x1="0" y1="0" x2="0" y2="0" stroke="#C76F00" stroke-width="2.5" marker-end="url(#arrow_14)" />
+										  <line id="s_15" x1="0" y1="0" x2="0" y2="0" stroke="#C79300" stroke-width="2.5" marker-end="url(#arrow_15)" />
+										  <line id="s_16" x1="0" y1="0" x2="0" y2="0" stroke="#054F7F" stroke-width="2.5" marker-end="url(#arrow_16)" />
+										</svg>
 									</div>
 								</div>
 							</div>

@@ -124,3 +124,9 @@ h4{
 img{
 	float: left;
 }
+#vt_div{
+	display: none;
+}
+.margin-vi{
+	margin-bottom: 0
+}
