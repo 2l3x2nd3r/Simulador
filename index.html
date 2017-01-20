@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html ng-app="simu">
+<html>
 	<head>
 		<title>SIMULADOR DE DIAGRAMAS FASORIALES PARA MÁQUINAS SÍNCRONAS</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-		
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		
+
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css"  href="css/jquery-ui.min.css">
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"></script>
 		<script type="text/javascript" src="js/xlsx.js"></script>
+		<script type="text/javascript" src="js/fooplot.js"></script>
+		<script type="text/JavaScript" src="js/jsDraw2D.js"></script>
+
 	</head>
-	<body class="blue-dark" ng-controller="SimuCtrl as control">
+	<body class="blue-dark">
 		<div class="container" id="ejercicios">
 			<div class="row">
 				<h1 class="white center-text">Diagrama fasorial Maquinas Sincronas</h1>
@@ -92,7 +95,7 @@
 													<label>fp<span class="pre">nom</span></label>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-												<input class="input_always" type="number" name="" >
+												<input class="input_always" type="number" id="fpn" >
 											</div>
 										</div>
 									</div>
@@ -461,123 +464,58 @@
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
 							<div class="row">
-								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-									<div class="container-div-custom blue-light">
-										<h4>Salidas Grafica</h4>
-										<!-- <div class="row">
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 13 x</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s13">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 13 y</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s131">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 14 x</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s14">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 14 y</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s141">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 15 x</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s15">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 15 y</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s151">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 16 x</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s16">
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-												<div class="row">
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-v">
-														<label>Salida 16 y</label>
-													</div>
-													<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 margin-h">
-														<input class="disabled_always" type="number" disabled id="s161">
-													</div>
-												</div>
-											</div>
-										</div> -->
-										<svg id="s_g" style="width: 100%; height: auto; display: none">
-										  <defs>
-										    <marker id="arrow_13" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-										      <path d="M0,0 L0,6 L9,3 z" fill="#C73300" />
-										    </marker>
-										    <marker id="arrow_14" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-										      <path d="M0,0 L0,6 L9,3 z" fill="#C76F00" />
-										    </marker>
-										    <marker id="arrow_15" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-										      <path d="M0,0 L0,6 L9,3 z" fill="#C79300" />
-										    </marker>
-										    <marker id="arrow_16" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
-										      <path d="M0,0 L0,6 L9,3 z" fill="#054F7F" />
-										    </marker>
-										  </defs>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 288px;">
 
-										  <line id="s_13" x1="0" y1="0" x2="0" y2="0" stroke="#C73300" stroke-width="2.5" marker-end="url(#arrow_13)" />
-										  <line id="s_14" x1="0" y1="0" x2="0" y2="0" stroke="#C76F00" stroke-width="2.5" marker-end="url(#arrow_14)" />
-										  <line id="s_15" x1="0" y1="0" x2="0" y2="0" stroke="#C79300" stroke-width="2.5" marker-end="url(#arrow_15)" />
-										  <line id="s_16" x1="0" y1="0" x2="0" y2="0" stroke="#054F7F" stroke-width="2.5" marker-end="url(#arrow_16)" />
-										</svg>
-									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 		 	</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 blue-dark-1">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 border-div">
+							<div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div class="container-div-custom blue-light">
+										<h4>Salidas Grafica</h4>
+										<div id="plot" style="width: 100%; height: 400px; overflow:hidden; position:relative;"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript" src="js/my_libs/chart_init.js"></script>
 		<script type="text/javascript" src="js/my_libs/exmaples.js"></script>
 		<script type="text/javascript" src="js/my_libs/find_element.js"></script>
 		<script type="text/javascript" src="js/my_libs/funciones.js"></script>
+
+		<script type="text/javascript">
+			$("#snom").val(400000);
+			$("#polos").val(4);
+			$("#Vnom").val(220);
+			$("#RA").val(0.012);
+			$("#Conexion").attr('checked','checked');
+			$("#XS").val(0.133);
+			$("#fpn").val(0.8);
+			$("#sp").val(195000);
+			$("#fnom").val(60);
+			$("#conexion").val(0.8);
+			$("#if_a").val(0.30);
+			$("#pmotor").val(320000);
+			$("#nvacio").val(1840);
+			$("#vcarga").val(220);
+			$("#fcarga").val(60);
+			$("#pmax").val(250000);
+			$("#pcarga").val(200000);
+			$("#qmax").val(150000);
+			$("#qcarga").val(300000);
+			$("#i_a").val(946.21);
+			$("#fp").val(0.55);
+		</script>
 	</body>
 </html>

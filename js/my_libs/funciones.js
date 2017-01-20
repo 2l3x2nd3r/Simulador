@@ -1,4 +1,5 @@
 $(document).on('ready',function(){
+
   $('input:not([type=file])').prop('disabled', true) // deshabilito todos los input hasta que se carge el archivo
 
   //Se 'amarra' el slide con el input
@@ -24,7 +25,7 @@ $(document).on('ready',function(){
 function constructor()
 {
   $('input:not(.disabled_always)').prop('disabled', false) // habilito todos los input exepto los de salida
-  $('#xlf').prop('disabled', true) 
+  $('#xlf').prop('disabled', true)
   $('input[type=range],input[type=number]').each(function(){
     $(this).prop('step',0.001) //se define el step de todos los input range
   })
@@ -62,13 +63,35 @@ function if_a_slide(value) {
   $("#if_a").val(value)
   change_values()
 }
+
 function pcarga_range(value) {
   $("#pcarga").val(value)
   change_values()
 }
+
 function qcarga_range(value) {
   $("#qcarga").val(value)
   change_values()
+}
+
+function descent(points){
+  return (points.y2 - points.y1)/(points.x2 - points.x1);
+}
+
+function calculate_ecuation(points) {
+  sign1 = ' - ';
+  sign2 = ' + ';
+  if(points.x1 < 0){
+    sign1 = ' + ';
+    points.x1 *= -1;
+  }
+  if(points.y1 < 0){
+    sign2 = ' - ';
+    points.y1 *= -1;
+  }
+  ecuation = descent(points) + " * (theta" + sign1 + points.x1 + ")" + sign2 + points.y1;
+  console.log(ecuation);
+  return ecuation;
 }
 
 function change_values(){
@@ -143,7 +166,7 @@ function change_values(){
       }
       $('#vt').val(Vt.toFixed(3));
       $('#vt_div').show()
-      
+
     }else{
       if(!document.getElementById('Conexion').checked){
         Vf=parseFloat(vn) / Math.sqrt(3);
@@ -156,9 +179,9 @@ function change_values(){
     var prt31= (pgen/prt3);
     var prt32= raizt * prt31 // primera parte de la suma RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7)
 
-    
+
     var raxs=Math.atan(xs/ra);
-    
+
     var raxs2 = Math.cos(raxs* -1) / ea_find;
 
     var raxs3 = Vf * raxs2 // segunda parte de la suma Q7*COS(-ATAN(H8/G8))/Q6
@@ -216,48 +239,55 @@ function change_values(){
 
     if(op){
     //salida 13 1
-      var s13 = ea_find*Math.cos(ope*Math.PI/180);
+      var EAx = ea_find*Math.cos(ope*Math.PI/180);
     //salida 13 2
-      var s131= ea_find*Math.sin(ope*Math.PI/180);
+      var EAy= ea_find*Math.sin(ope*Math.PI/180);
     }else{
     //salida 13 1
-      var s13 = ea_find*Math.cos(acos*Math.PI/180);
+      var EAx = ea_find*Math.cos(acos*Math.PI/180);
     //salida 13 2
-      var s131= ea_find*Math.sin(acos*Math.PI/180);
+      var EAy= ea_find*Math.sin(acos*Math.PI/180);
     }
-    $('#s_13').attr('x2', s13)
-    $('#s_13').attr('y2', s131)
-    
-    //salida 16 1
-    var s16 = Vf;
-    //salida16 2
-    var s161=0;
-    
-    $('#s_16').attr('x2', s16)
-    $('#s_16').attr('y2', s161)
-
 
     //salida 14 1
-    var s14= sal*ra*(Math.cos(-acos*Math.PI/180));
+    var VRAx= sal*ra*(Math.cos(-acos*Math.PI/180));
     //salida 14 2
-    var s141= sal*ra*(Math.sin(-acos*(Math.PI/180)));
-    
-    $('#s_14').attr('x1', s16)
-    $('#s_14').attr('y1', s161)
-    $('#s_14').attr('x2', s16 + s14)
-    $('#s_14').attr('y2', s141)
+    var VRAy= sal*ra*(Math.sin(-acos*(Math.PI/180)));
 
     //salida 15 1
-    var s15= sal*xs*Math.cos(Math.PI/2-acos*Math.PI/180);
+    var VXSx= sal*xs*Math.cos(Math.PI/2-acos*Math.PI/180);
     //salida 15 2
-    var s151= sal*xs*Math.sin(Math.PI/2-acos*Math.PI/180);
-    
-    $('#s_15').attr('x1', s16 + s14)
-    $('#s_15').attr('y1', s141)
-    $('#s_15').attr('x2', s16 + s14 + s15)
-    $('#s_15').attr('y2', s141 + s151 )
+    var VXSy= sal*xs*Math.sin(Math.PI/2-acos*Math.PI/180);
 
-    
+    //salida 16 1
+    var Vfx = Vf;
+    //salida16 2
+    var Vfy=0;
 
+    $('#plot').empty();
+
+    gr = new jsGraphics(document.getElementById("plot"));
+    gr.setOrigin(new jsPoint(1, 300));
+    gr.setCoordinateSystem("cartecian");
+    gr.showGrid(20);
+
+    console.log(EAx, ' - ', EAy);
+    console.log(VRAx, ' - ', VRAy);
+    console.log(VXSx, ' - ', VXSy);
+    console.log(Vfx, ' - ', Vfy);
+
+    pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
+    gr.drawLine(new jsPen(new jsColor("red"), 2), pts._1, pts._2);
+    // console.log(pts._1, ' - ', pts._2);
+    pts = {_1: new jsPoint(Vfx, Vfy), _2: new jsPoint(Vfx + VRAx, VRAy)}
+    gr.drawLine(new jsPen(new jsColor("blue"), 2), pts._1, pts._2);
+    // console.log(pts._1, ' - ', pts._2);
+    pts = {_1: new jsPoint(Vfx + VRAx, VRAy), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
+    gr.drawLine(new jsPen(new jsColor("green"), 2), pts._1, pts._2);
+    // console.log(pts._1, ' - ', pts._2);
+    pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx, 0)}
+    gr.drawLine(new jsPen(new jsColor("yellow"), 2), pts._1, pts._2);
+    // console.log(pts._1, ' - ', pts._2);
   }
+
 };
