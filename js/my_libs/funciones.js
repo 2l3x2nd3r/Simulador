@@ -1,3 +1,4 @@
+var instance = null;
 $(document).on('ready',function(){
 
   $('input:not([type=file])').prop('disabled', true) // deshabilito todos los input hasta que se carge el archivo
@@ -266,27 +267,72 @@ function change_values(){
 
     $('#plot').empty();
 
-    gr = new jsGraphics(document.getElementById("plot"));
-    gr.setOrigin(new jsPoint(1, 300));
-    gr.setCoordinateSystem("cartecian");
-    gr.showGrid(20);
+    var opts = {
+      target: '#plot',
+      xAxis: {domain: [-50, 800]},
+      yAxis: {domain: [-200, 500]},
+      grid: true,
+      data: [{
+        //AZUL
+        vector: [Vfx + VRAx + VXSx, VRAy + VXSy],
+        offset: [0, 0],
+        graphType: 'polyline',
+        fnType: 'vector'
+      },
+      {
+        //ROJO
+        vector: [(Vfx + VRAx) - Vfx /* resta del offset */, (VRAy) - Vfy /* resta del offset */],
+        offset: [Vfx, Vfy],
+        graphType: 'polyline',
+        fnType: 'vector'
+      },
+      {
+        //VERDE
+        vector: [(Vfx + VRAx + VXSx) - (Vfx + VRAx) /* resta del offset */, (VRAy + VXSy) - VRAy  /* resta del offset */],
+        offset: [Vfx + VRAx, VRAy],
+        graphType: 'polyline',
+        fnType: 'vector'
+      },
+      {
+        //AMARILLO
+        vector: [Vfx, 0],
+        offset: [0, 0],
+        graphType: 'polyline',
+        fnType: 'vector'
+      }]
+    }
+    if(instance){
+      opts.xAxis.domain = instance.options.xAxis.domain;
+      opts.yAxis.domain = instance.options.yAxis.domain;
+      console.log("opt", instance);
+    }
+    instance = functionPlot(opts);
 
-    console.log(EAx, ' - ', EAy);
-    console.log(VRAx, ' - ', VRAy);
-    console.log(VXSx, ' - ', VXSy);
-    console.log(Vfx, ' - ', Vfy);
-
-    pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    gr.drawLine(new jsPen(new jsColor("red"), 2), pts._1, pts._2);
+    // $('#plot').empty();
+    // gr = new jsGraphics(document.getElementById("plot2"));
+    // gr.setOrigin(new jsPoint(1, 300));
+    // gr.setCoordinateSystem("cartecian");
+    // gr.showGrid(20);
+    //
+    // console.log(EAx, ' - ', EAy);
+    // console.log(VRAx, ' - ', VRAy);
+    // console.log(VXSx, ' - ', VXSy);
+    // console.log(Vfx, ' - ', Vfy);
+    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
+    // gr.drawLine(new jsPen(new jsColor("blue"), 2), pts._1, pts._2);
+    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
     // console.log(pts._1, ' - ', pts._2);
-    pts = {_1: new jsPoint(Vfx, Vfy), _2: new jsPoint(Vfx + VRAx, VRAy)}
-    gr.drawLine(new jsPen(new jsColor("blue"), 2), pts._1, pts._2);
+    // pts = {_1: new jsPoint(Vfx, Vfy), _2: new jsPoint(Vfx + VRAx, VRAy)}
+    // gr.drawLine(new jsPen(new jsColor("red"), 2), pts._1, pts._2);
+    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
     // console.log(pts._1, ' - ', pts._2);
-    pts = {_1: new jsPoint(Vfx + VRAx, VRAy), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    gr.drawLine(new jsPen(new jsColor("green"), 2), pts._1, pts._2);
+    // pts = {_1: new jsPoint(Vfx + VRAx, VRAy), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
+    // gr.drawLine(new jsPen(new jsColor("green"), 2), pts._1, pts._2);
+    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
     // console.log(pts._1, ' - ', pts._2);
-    pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx, 0)}
-    gr.drawLine(new jsPen(new jsColor("yellow"), 2), pts._1, pts._2);
+    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx, 0)}
+    // gr.drawLine(new jsPen(new jsColor("yellow"), 2), pts._1, pts._2);
+    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
     // console.log(pts._1, ' - ', pts._2);
   }
 
