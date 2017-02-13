@@ -79,22 +79,6 @@ function descent(points){
   return (points.y2 - points.y1)/(points.x2 - points.x1);
 }
 
-function calculate_ecuation(points) {
-  sign1 = ' - ';
-  sign2 = ' + ';
-  if(points.x1 < 0){
-    sign1 = ' + ';
-    points.x1 *= -1;
-  }
-  if(points.y1 < 0){
-    sign2 = ' - ';
-    points.y1 *= -1;
-  }
-  ecuation = descent(points) + " * (theta" + sign1 + points.x1 + ")" + sign2 + points.y1;
-  console.log(ecuation);
-  return ecuation;
-}
-
 function change_values(){
   var ok = $('.input_always').toArray().every(function (input) {
     if ($(input).val())
@@ -117,8 +101,7 @@ function change_values(){
     var resul=(Math.pow(rpot,0.5))
 
    //PASO 2
-    var r3=(Math.sqrt(3));
-    var r4=resul/(r3*vcarga);
+    var r4=resul/(3*vcarga);
     $('#i_a').val(r4);
 
     //PASO 3
@@ -136,7 +119,7 @@ function change_values(){
       var fsc1 = (fsc-fnom);
       var pgen = sp * fsc1;
     }else{
-      var pgen = pcarga
+      var pgen = pcarga;
     }
     $('#pgen').val(pgen);
 
@@ -270,11 +253,11 @@ function change_values(){
     var opts = {
       target: '#plot',
       xAxis: {domain: [-50, 800]},
-      yAxis: {domain: [-200, 500]},
+      yAxis: {domain: [-200, 200]},
       grid: true,
       data: [{
         //AZUL
-        vector: [Vfx + VRAx + VXSx, VRAy + VXSy],
+        vector: [EAx, EAy],
         offset: [0, 0],
         graphType: 'polyline',
         fnType: 'vector'
@@ -314,26 +297,30 @@ function change_values(){
     // gr.setCoordinateSystem("cartecian");
     // gr.showGrid(20);
     //
-    // console.log(EAx, ' - ', EAy);
-    // console.log(VRAx, ' - ', VRAy);
-    // console.log(VXSx, ' - ', VXSy);
-    // console.log(Vfx, ' - ', Vfy);
-    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    // gr.drawLine(new jsPen(new jsColor("blue"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(Vfx, Vfy), _2: new jsPoint(Vfx + VRAx, VRAy)}
-    // gr.drawLine(new jsPen(new jsColor("red"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(Vfx + VRAx, VRAy), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    // gr.drawLine(new jsPen(new jsColor("green"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx, 0)}
-    // gr.drawLine(new jsPen(new jsColor("yellow"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
+    console.log("EAx = " + EAx);
+    console.log("EAy = " + EAy);
+    console.log("VRAx = " + VRAx);
+    console.log("VRAy = " + VRAy);
+    console.log("VXSx = " + VXSx);
+    console.log("VXSy = " + VXSy);
+    console.log("Vfx = " + Vfx);
+    console.log("Vfy = " + Vfy);
+
+    console.log("Vector Azul");
+    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    console.log("[x2, y2] = " + "[" + EAx + ", " + EAy + "]");
+
+    console.log("Vector Rojo");
+    console.log("[x1, y1] = " + "[" + Vfx + ", " + Vfy + "]");
+    console.log("[x2, y2] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+
+    console.log("Vector Verde");
+    console.log("[x1, y1] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+    console.log("[x2, y2] = " + "[" + (Vfx + VRAx + VXSx) + ", " + (VRAy + VXSy) + "]");
+
+    console.log("Vector Amarillo");
+    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    console.log("[x2, y2] = " + "[" + Vfx + ", " + 0 + "]");
   }
 
 };
