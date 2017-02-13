@@ -93,7 +93,31 @@ function change_values(){
     var qcarga=parseFloat($('#qcarga').val());
     var vcarga=parseFloat($('#vcarga').val());
     var op = JSON.parse($("input[name=opg]:checked").val())
+    var  vn  =  document.getElementById('Vnom').value;
+    var Vf = 0
+    var Vt = null
+    if(!op){
+      var A = 1
+      var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
+      var C = ((Math.pow(ra,2)+(Math.pow(xs,2)))*((Math.pow(pcarga,2)+(Math.pow(qcarga,2)))/9))
 
+      Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
+      if(!document.getElementById('Conexion').checked){
+        Vt= Vf*Math.sqrt(3);
+      }else{
+        Vt = Vf
+      }
+      $('#vt').val(Vt.toFixed(3));
+      $('#vt_div').show()
+
+    }else{
+      if(!document.getElementById('Conexion').checked){
+        Vf=parseFloat(vn) / Math.sqrt(3);
+      }else{
+        Vf=parseFloat(vn);
+      }
+      $('#vt_div').hide()
+    }
     //PASO 1
     var pot=(Math.pow(pcarga,2));
     var pot1=(Math.pow(qcarga,2));
@@ -101,7 +125,7 @@ function change_values(){
     var resul=(Math.pow(rpot,0.5))
 
    //PASO 2
-    var r4=resul/(3*vcarga);
+    var r4=resul/(3*Vf);
     $('#i_a').val(r4);
 
     //PASO 3
@@ -135,30 +159,7 @@ function change_values(){
     //  raiz
     var raizt=Math.sqrt(ra3); // raiz de la suma de potencias
 
-    var  vn  =  document.getElementById('Vnom').value;
-    var Vf = 0
-    var Vt = null
-    if(!op){
-      var A = 1
-      var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
-      var C = (ra3 * rpot) / 9
-      Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
-      if(!document.getElementById('Conexion').checked){
-        Vt= Vf*Math.sqrt(3);
-      }else{
-        Vt = Vf
-      }
-      $('#vt').val(Vt.toFixed(3));
-      $('#vt_div').show()
 
-    }else{
-      if(!document.getElementById('Conexion').checked){
-        Vf=parseFloat(vn) / Math.sqrt(3);
-      }else{
-        Vf=parseFloat(vn);
-      }
-      $('#vt_div').hide()
-    }
     var prt3 = 3 * ea_find * Vf;
     var prt31= (pgen/prt3);
     var prt32= raizt * prt31 // primera parte de la suma RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7)
@@ -193,11 +194,11 @@ function change_values(){
     $('#fpnom').val(fpgen);
 
     //salida 6
-    var sal = Math.sqrt((Math.pow(pgen,2)+Math.pow(qgen,2)))/(Math.sqrt(3)*parseFloat(vn));
+    var sal = Math.sqrt((Math.pow(pgen,2)+Math.pow(qgen,2)))/(3*Vf);
     $('#ia').val(sal);
 
     //salida 8
-    var acos = Math.acos(fpgen)*rad;
+    var acos = (qgen / Math.abs(qgen)) * Math.acos(fpgen)*rad;
     $('#teta').val(acos);
 
     if (op){
