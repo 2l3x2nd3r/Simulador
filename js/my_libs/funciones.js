@@ -79,22 +79,6 @@ function descent(points){
   return (points.y2 - points.y1)/(points.x2 - points.x1);
 }
 
-function calculate_ecuation(points) {
-  sign1 = ' - ';
-  sign2 = ' + ';
-  if(points.x1 < 0){
-    sign1 = ' + ';
-    points.x1 *= -1;
-  }
-  if(points.y1 < 0){
-    sign2 = ' - ';
-    points.y1 *= -1;
-  }
-  ecuation = descent(points) + " * (theta" + sign1 + points.x1 + ")" + sign2 + points.y1;
-  console.log(ecuation);
-  return ecuation;
-}
-
 function change_values(){
   var ok = $('.input_always').toArray().every(function (input) {
     if ($(input).val())
@@ -109,56 +93,14 @@ function change_values(){
     var qcarga=parseFloat($('#qcarga').val());
     var vcarga=parseFloat($('#vcarga').val());
     var op = JSON.parse($("input[name=opg]:checked").val())
-
-    //PASO 1
-    var pot=(Math.pow(pcarga,2));
-    var pot1=(Math.pow(qcarga,2));
-    var rpot=pot+pot1;
-    var resul=(Math.pow(rpot,0.5))
-
-   //PASO 2
-    var r3=(Math.sqrt(3));
-    var r4=resul/(r3*vcarga);
-    $('#i_a').val(r4);
-
-    //PASO 3
-    var r5=pcarga/resul;
-    $('#fp').val(r5);
-
-  //salida 3
-    var polos=parseFloat($('#polos').val());
-    var sp=parseFloat($('#sp').val());
-    var fnom=parseFloat($('#fnom').val());
-    var nvacio=parseFloat($('#nvacio').val());
-
-    if (op){
-      var fsc = (polos * nvacio) / 120;
-      var fsc1 = (fsc-fnom);
-      var pgen = sp * fsc1;
-    }else{
-      var pgen = pcarga
-    }
-    $('#pgen').val(pgen);
-
-    //salida 7
-    var ra=parseFloat($('#RA').val());
-    var xs=parseFloat($('#XS').val());
-    var rad = 180/(Math.PI) //180/pi()
-    //  potencia
-    var ra1=Math.pow(ra,2);
-    var ra2=Math.pow(xs,2);
-    //  suma de potencias
-    var ra3=ra1+ra2;
-    //  raiz
-    var raizt=Math.sqrt(ra3); // raiz de la suma de potencias
-
     var  vn  =  document.getElementById('Vnom').value;
     var Vf = 0
     var Vt = null
     if(!op){
       var A = 1
       var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
-      var C = (ra3 * rpot) / 9
+      var C = ((Math.pow(ra,2)+(Math.pow(xs,2)))*((Math.pow(pcarga,2)+(Math.pow(qcarga,2)))/9))
+
       Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
       if(!document.getElementById('Conexion').checked){
         Vt= Vf*Math.sqrt(3);
@@ -176,6 +118,48 @@ function change_values(){
       }
       $('#vt_div').hide()
     }
+    //PASO 1
+    var pot=(Math.pow(pcarga,2));
+    var pot1=(Math.pow(qcarga,2));
+    var rpot=pot+pot1;
+    var resul=(Math.pow(rpot,0.5))
+
+   //PASO 2
+    var r4=resul/(3*Vf);
+    $('#i_a').val(r4);
+
+    //PASO 3
+    var r5=pcarga/resul;
+    $('#fp').val(r5);
+
+  //salida 3
+    var polos=parseFloat($('#polos').val());
+    var sp=parseFloat($('#sp').val());
+    var fnom=parseFloat($('#fnom').val());
+    var nvacio=parseFloat($('#nvacio').val());
+
+    if (op){
+      var fsc = (polos * nvacio) / 120;
+      var fsc1 = (fsc-fnom);
+      var pgen = sp * fsc1;
+    }else{
+      var pgen = pcarga;
+    }
+    $('#pgen').val(pgen);
+
+    //salida 7
+    var ra=parseFloat($('#RA').val());
+    var xs=parseFloat($('#XS').val());
+    var rad = 180/(Math.PI) //180/pi()
+    //  potencia
+    var ra1=Math.pow(ra,2);
+    var ra2=Math.pow(xs,2);
+    //  suma de potencias
+    var ra3=ra1+ra2;
+    //  raiz
+    var raizt=Math.sqrt(ra3); // raiz de la suma de potencias
+
+    
     var prt3 = 3 * ea_find * Vf;
     var prt31= (pgen/prt3);
     var prt32= raizt * prt31 // primera parte de la suma RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7)
@@ -210,11 +194,11 @@ function change_values(){
     $('#fpnom').val(fpgen);
 
     //salida 6
-    var sal = Math.sqrt((Math.pow(pgen,2)+Math.pow(qgen,2)))/(Math.sqrt(3)*parseFloat(vn));
+    var sal = Math.sqrt((Math.pow(pgen,2)+Math.pow(qgen,2)))/(3*Vf);
     $('#ia').val(sal);
 
     //salida 8
-    var acos = Math.acos(fpgen)*rad;
+    var acos = (qgen / Math.abs(qgen)) * Math.acos(fpgen)*rad;
     $('#teta').val(acos);
 
     if (op){
@@ -270,11 +254,11 @@ function change_values(){
     var opts = {
       target: '#plot',
       xAxis: {domain: [-50, 800]},
-      yAxis: {domain: [-200, 500]},
+      yAxis: {domain: [-200, 200]},
       grid: true,
       data: [{
         //AZUL
-        vector: [Vfx + VRAx + VXSx, VRAy + VXSy],
+        vector: [EAx, EAy],
         offset: [0, 0],
         graphType: 'polyline',
         fnType: 'vector'
@@ -314,26 +298,30 @@ function change_values(){
     // gr.setCoordinateSystem("cartecian");
     // gr.showGrid(20);
     //
-    // console.log(EAx, ' - ', EAy);
-    // console.log(VRAx, ' - ', VRAy);
-    // console.log(VXSx, ' - ', VXSy);
-    // console.log(Vfx, ' - ', Vfy);
-    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    // gr.drawLine(new jsPen(new jsColor("blue"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(Vfx, Vfy), _2: new jsPoint(Vfx + VRAx, VRAy)}
-    // gr.drawLine(new jsPen(new jsColor("red"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(Vfx + VRAx, VRAy), _2: new jsPoint(Vfx + VRAx + VXSx, VRAy + VXSy)}
-    // gr.drawLine(new jsPen(new jsColor("green"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
-    // pts = {_1: new jsPoint(0, 0), _2: new jsPoint(Vfx, 0)}
-    // gr.drawLine(new jsPen(new jsColor("yellow"), 2), pts._1, pts._2);
-    // gr.drawCircle(new jsPen(new jsColor("black"), 3), pts._2, 2);
-    // console.log(pts._1, ' - ', pts._2);
+    console.log("EAx = " + EAx);
+    console.log("EAy = " + EAy);
+    console.log("VRAx = " + VRAx);
+    console.log("VRAy = " + VRAy);
+    console.log("VXSx = " + VXSx);
+    console.log("VXSy = " + VXSy);
+    console.log("Vfx = " + Vfx);
+    console.log("Vfy = " + Vfy);
+
+    console.log("Vector Azul");
+    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    console.log("[x2, y2] = " + "[" + EAx + ", " + EAy + "]");
+
+    console.log("Vector Rojo");
+    console.log("[x1, y1] = " + "[" + Vfx + ", " + Vfy + "]");
+    console.log("[x2, y2] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+
+    console.log("Vector Verde");
+    console.log("[x1, y1] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+    console.log("[x2, y2] = " + "[" + (Vfx + VRAx + VXSx) + ", " + (VRAy + VXSy) + "]");
+
+    console.log("Vector Amarillo");
+    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    console.log("[x2, y2] = " + "[" + Vfx + ", " + 0 + "]");
   }
 
 };
