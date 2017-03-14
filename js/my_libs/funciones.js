@@ -3,6 +3,25 @@ $(document).on('ready',function(){
 
   $('input:not([type=file])').prop('disabled', true) // deshabilito todos los input hasta que se carge el archivo
 
+  pmax = $('#pmax');
+  $('#pcarga_range').prop(
+    {
+      'min': 0,
+      'max': pmax.val()
+    }
+  ).val(pmax.val()/2)
+  $('#pcarga').val(pmax.val()/2)
+
+  qmax = $('#qmax');
+  $('#qcarga_range').prop(
+    {
+      'min': -(qmax.val()),
+      'max': qmax.val()
+    }
+  ).val(qmax.val()/2)
+  $('#qcarga').val(qmax.val()/2)
+
+
   //Se 'amarra' el slide con el input
   $("#if_a").on('input',function(){
     $("#if_a_slide").val($(this).val())
@@ -50,7 +69,7 @@ function constructor()
   $('#qmax').change(function(){
     $('#qcarga_range').prop(
       {
-        'min': 0,
+        'min': -($(this).val()),
         'max': $(this).val()
       }
     ).val($(this).val()/2)
@@ -61,18 +80,18 @@ function constructor()
 }
 
 function if_a_slide(value) {
-  $("#if_a").val(value)
-  change_values()
+  $("#if_a").val(value);
+  change_values();
 }
 
 function pcarga_range(value) {
-  $("#pcarga").val(value)
-  change_values()
+  $("#pcarga").val(value);
+  change_values();
 }
 
 function qcarga_range(value) {
-  $("#qcarga").val(value)
-  change_values()
+  $("#qcarga").val(value);
+  change_values();
 }
 
 function descent(points){
@@ -86,29 +105,31 @@ function change_values(){
     else
       return false
   })
+
   var ea_find = find_element(values_xls,$("#if_a").val())
   if(ok){
-    $('#s_g').show()
+    $('#s_g').show();
     var pcarga=parseFloat($('#pcarga').val());
     var qcarga=parseFloat($('#qcarga').val());
     var vcarga=parseFloat($('#vcarga').val());
+
     var op = JSON.parse($("input[name=opg]:checked").val())
     var  vn  =  document.getElementById('Vnom').value;
-    var Vf = 0
-    var Vt = null
+    var Vf = 0;
+    var Vt = null;
     if(!op){
-      var A = 1
-      var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2)
-      var C = ((Math.pow(ra,2)+(Math.pow(xs,2)))*((Math.pow(pcarga,2)+(Math.pow(qcarga,2)))/9))
+      var A = 1;
+      var B = 2 * ra * (pcarga/3) + 2 * xs * (qcarga/3) - Math.pow(ea_find,2);
+      var C = ((Math.pow(ra,2)+(Math.pow(xs,2)))*((Math.pow(pcarga,2)+(Math.pow(qcarga,2)))/9));
 
-      Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A))
+      Vf = Math.sqrt(((B * -1) + Math.sqrt(Math.pow(B,2)-4*A*C))/(2*A));
       if(!document.getElementById('Conexion').checked){
         Vt= Vf*Math.sqrt(3);
       }else{
-        Vt = Vf
+        Vt = Vf;
       }
       $('#vt').val(Vt.toFixed(3));
-      $('#vt_div').show()
+      $('#vt_div').show();
 
     }else{
       if(!document.getElementById('Conexion').checked){
@@ -116,21 +137,21 @@ function change_values(){
       }else{
         Vf=parseFloat(vn);
       }
-      $('#vt_div').hide()
+      $('#vt_div').hide();
     }
     //PASO 1
     var pot=(Math.pow(pcarga,2));
     var pot1=(Math.pow(qcarga,2));
     var rpot=pot+pot1;
-    var resul=(Math.pow(rpot,0.5))
+    var Scarga=(Math.pow(rpot,0.5));
 
    //PASO 2
-    var r4=resul/(3*Vf);
-    $('#i_a').val(r4);
+    var I=Scarga/(3*Vf);
+    $('#i_a').val(I);
 
     //PASO 3
-    var r5=pcarga/resul;
-    $('#fp').val(r5);
+    var Fp=pcarga/Scarga;
+    $('#fp').val(Fp);
 
   //salida 3
     var polos=parseFloat($('#polos').val());
@@ -174,16 +195,16 @@ function change_values(){
     var raizt1=Math.acos(prt32 + raxs3); // arcoseno grande ACOS(RAIZ(G8^2+H8^2)*Q15/(3*Q6*Q7) + Q7*COS(-ATAN(H8/G8))/Q6)
 
     //ope salida 7
-    var ope= rad * ( (raizt1 * -1) + raxs)
+    var ope= rad * ( (raizt1 * -1) + raxs);
     $('#delta').val(ope.toFixed(3));
 
     if (op){
     //salida N°4
-      var sen1 = -3 * ea_find * Vf * Math.sin(((ope * Math.PI)/180 )- Math.atan(xs/ra)) //1ra suma del parentesis -3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))
-      var sen2 = (3*Vf*Vf)*(Math.sin((raxs * -1))) // 2da suma del parentesis grande 3*Q7*Q7*SENO(-ATAN(H8/G8))
-      var qgen = (sen1 + sen2) / raizt // operacion (-3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))+3*Q7*Q7*SENO(-ATAN(H8/G8)))/RAIZ(G8^2+H8^2)
+      var sen1 = -3 * ea_find * Vf * Math.sin(((ope * Math.PI)/180 )- Math.atan(xs/ra)); //1ra suma del parentesis -3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))
+      var sen2 = (3*Vf*Vf)*(Math.sin((raxs * -1))); // 2da suma del parentesis grande 3*Q7*Q7*SENO(-ATAN(H8/G8))
+      var qgen = (sen1 + sen2) / raizt; // operacion (-3*Q6*Q7*SENO(Q16*PI()/180-ATAN(H8/G8))+3*Q7*Q7*SENO(-ATAN(H8/G8)))/RAIZ(G8^2+H8^2)
     }else{
-      var qgen = qcarga
+      var qgen = qcarga;
     }
     $('#qgen').val(qgen);
 
@@ -202,8 +223,8 @@ function change_values(){
     $('#teta').val(acos);
 
     if (op){
-      var sn = pcarga-pgen
-      var sd = qcarga-qgen
+      var sn = pcarga-pgen;
+      var sd = qcarga-qgen;
       var sd1 =(Math.pow(sn,2)+(Math.pow(sd,2)));
       var sred = Math.sqrt(sd1)
       var fpred = sn/sred
@@ -253,8 +274,8 @@ function change_values(){
 
     var opts = {
       target: '#plot',
-      xAxis: {domain: [-50, 800]},
-      yAxis: {domain: [-200, 200]},
+      xAxis: {domain: [-50, 400]},
+      yAxis: {domain: [-150, 100]},
       grid: true,
       data: [{
         //AZUL
@@ -288,7 +309,7 @@ function change_values(){
     if(instance){
       opts.xAxis.domain = instance.options.xAxis.domain;
       opts.yAxis.domain = instance.options.yAxis.domain;
-      console.log("opt", instance);
+      // console.log("opt", instance);
     }
     instance = functionPlot(opts);
 
@@ -297,31 +318,32 @@ function change_values(){
     // gr.setOrigin(new jsPoint(1, 300));
     // gr.setCoordinateSystem("cartecian");
     // gr.showGrid(20);
-    //
-    console.log("EAx = " + EAx);
-    console.log("EAy = " + EAy);
-    console.log("VRAx = " + VRAx);
-    console.log("VRAy = " + VRAy);
-    console.log("VXSx = " + VXSx);
-    console.log("VXSy = " + VXSy);
-    console.log("Vfx = " + Vfx);
-    console.log("Vfy = " + Vfy);
+    
 
-    console.log("Vector Azul");
-    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
-    console.log("[x2, y2] = " + "[" + EAx + ", " + EAy + "]");
+    // console.log("EAx = " + EAx);
+    // console.log("EAy = " + EAy);
+    // console.log("VRAx = " + VRAx);
+    // console.log("VRAy = " + VRAy);
+    // console.log("VXSx = " + VXSx);
+    // console.log("VXSy = " + VXSy);
+    // console.log("Vfx = " + Vfx);
+    // console.log("Vfy = " + Vfy);
 
-    console.log("Vector Rojo");
-    console.log("[x1, y1] = " + "[" + Vfx + ", " + Vfy + "]");
-    console.log("[x2, y2] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+    // console.log("Vector Azul");
+    // console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    // console.log("[x2, y2] = " + "[" + EAx + ", " + EAy + "]");
 
-    console.log("Vector Verde");
-    console.log("[x1, y1] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
-    console.log("[x2, y2] = " + "[" + (Vfx + VRAx + VXSx) + ", " + (VRAy + VXSy) + "]");
+    // console.log("Vector Rojo");
+    // console.log("[x1, y1] = " + "[" + Vfx + ", " + Vfy + "]");
+    // console.log("[x2, y2] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
 
-    console.log("Vector Amarillo");
-    console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
-    console.log("[x2, y2] = " + "[" + Vfx + ", " + 0 + "]");
+    // console.log("Vector Verde");
+    // console.log("[x1, y1] = " + "[" + (Vfx + VRAx) + ", " + VRAy + "]");
+    // console.log("[x2, y2] = " + "[" + (Vfx + VRAx + VXSx) + ", " + (VRAy + VXSy) + "]");
+
+    // console.log("Vector Amarillo");
+    // console.log("[x1, y1] = " + "[" + 0 + ", " + 0 + "]");
+    // console.log("[x2, y2] = " + "[" + Vfx + ", " + 0 + "]");
   }
 
 };
